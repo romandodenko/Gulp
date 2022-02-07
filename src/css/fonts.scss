@@ -1,0 +1,109 @@
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 100;
+  display: swap;
+  src: local('Roboto-thin'),
+       url("../fonts/Roboto-thin.woff2") format("woff2"),
+       url("../fonts/Roboto-thin.woff") format("woff");
+}
+
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 200;
+  display: swap;
+  src: local('Roboto-ExtraLight'),
+       url("../fonts/Roboto-ExtraLight.woff2") format("woff2"),
+       url("../fonts/Roboto-ExtraLight.woff") format("woff");
+}
+
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 300;
+  display: swap;
+  src: local('Roboto-light'),
+       url("../fonts/Roboto-light.woff2") format("woff2"),
+       url("../fonts/Roboto-light.woff") format("woff");
+}
+
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  display: swap;
+  src: local('Roboto-regular'),
+       url("../fonts/Roboto-regular.woff2") format("woff2"),
+       url("../fonts/Roboto-regular.woff") format("woff");
+}
+
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 500;
+  display: swap;
+  src: local('Roboto-medium'),
+       url("../fonts/Roboto-medium.woff2") format("woff2"),
+       url("../fonts/Roboto-medium.woff") format("woff");
+}
+
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 600;
+  display: swap;
+  src: local('Roboto-SemiBold'),
+       url("../fonts/Roboto-SemiBold.woff2") format("woff2"),
+       url("../fonts/Roboto-SemiBold.woff") format("woff");
+}
+
+
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 700;
+  display: swap;
+  src: local('Roboto-Bold'),
+       url("../fonts/Roboto-Bold.woff2") format("woff2"),
+       url("../fonts/Roboto-Bold.woff") format("woff");
+}
+
+
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 800;
+  display: swap;
+  src: local('Roboto-ExtraBold'),
+       url("../fonts/Roboto-ExtraBold.woff2") format("woff2"),
+       url("../fonts/Roboto-ExtraBold.woff") format("woff");
+}
+
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 900;
+  display: swap;
+  src: local('Roboto-Black'),
+       url("../fonts/Roboto-Black.woff2") format("woff2"),
+       url("../fonts/Roboto-Black.woff") format("woff");
+}
+
+
+
+
+
+/* Начертания
+
+100 - thin
+200 - extra light
+300 - light
+400 - regular ( normal )
+500 - medium
+600 - semi bold
+700 - bold
+800 - extra bold
+900 - black 
+
+*/

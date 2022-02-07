@@ -1,0 +1,42 @@
+.container {
+  max-width: 1320px;
+  padding: 0 15px;
+  margin: 0 auto;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  font-family: 'Roboto400';
+}
+
+main {
+  flex: 1 1 auto;
+}
+
+.text {
+  font-family: "Roboto400";
+  font-size: 16px;
+  line-height: 22px;
+  color: #202020;;
+}
+
+.title {
+  font-family: "TTFirsNeue400";
+  font-size: 24px;
+  line-height: 22px;
+  color: #202020;
+}
+
+.btn {
+  font-family: "Roboto700";
+  font-size: 16px;
+  line-height: 19px;
+  color: #FFFFFF;
+  background-color: #FF6E30;
+  padding: 15px 21px;
+  border: 2px solid transparent;
+  transition: all .2s ease-in-out;
+  display: inline-block;
+}
+
