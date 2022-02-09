@@ -1,5 +1,10 @@
 "use strict"
 
+var selector = document.querySelector("input[type='tel']");
+var im = new Inputmask("+7 (999)-999-99-99");
+
+im.mask(selector);
+
 export function validate() {
   new JustValidate('.contacts__form', {
     colorWrong: "#FF6972",

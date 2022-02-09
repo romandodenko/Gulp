@@ -15,6 +15,8 @@ export const path = {
     svgSprite: `${buildFolder}/img/svg/`,
     js: `${buildFolder}/js/`,
     modules: `${buildFolder}/js/modules/`,
+    phpMailer: `${buildFolder}/PHPMailer/`,
+    mailPhpBuild: `${buildFolder}/`,
   },
   dev: {
     js: `${devFolder}/js/`,
@@ -33,6 +35,10 @@ export const path = {
     resources: `${devFolder}/resources/`,
     resourcesBuild: `${devFolder}/resources/**`,
     svgSprite: `${devFolder}/img/svg/sprites.svg`,
+    phpMailer: `${devFolder}/PHPMailer/`,
+    phpMailerBuild: `${devFolder}/PHPMailer/**`,
+    mailPhp: `${devFolder}/`,
+    mailPhpBuild: `${devFolder}/mail.php`,
   },
   src: {
     js: `${srcFolder}/js/main.js`,
@@ -43,7 +49,9 @@ export const path = {
     svg: `${srcFolder}/img/**/*.svg`,
     html: `${srcFolder}/**/*.html`,
     src: `${srcFolder}/`,
+    phpMailer: `${srcFolder}/PHPMailer/**`,
     resources: `${srcFolder}/resources/**`,
+    mailPhp: `${srcFolder}/mail.php`,
   },
   watch: {
     js: `${srcFolder}/js/**/*.js`,
