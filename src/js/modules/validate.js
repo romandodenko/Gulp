@@ -6,59 +6,58 @@ var im = new Inputmask("+7 (999)-999-99-99");
 im.mask(selector);
 
 export function validate() {
-  new JustValidate('.contacts__form', {
-    colorWrong: "#FF6972",
-    rules: {
-      name: {
-        required: true,
-        minLength: 2,
-        strength: {
-          custom: '[а-яА-Я\d]',
-       },
+  document.addEventListener("DOMContentLoaded", function() {
+    new JustValidate('.contacts__form', {
+      colorWrong: "#FF6972",
+      rules: {
+        name: {
+          required: true,
+          minLength: 2,
+          strength: {
+            custom: '[а-яА-Я\d]',
+         },
+        },
+        tel: {
+          required: true,
+          function: (name, value) => {
+            const phone = selector.inputmask.unmaskedvalue()
+            return Number(phone) && phone.length === 10
+          }
+        },
       },
-      tel: {
-        required: true,
-        function: (name, value) => {
-          const phone = selector.inputmask.unmaskedvalue()
-          return Number(phone) && phone.length === 10
-        }
+      messages: {
+        name: {
+          required: 'Введите ваше имя',
+          minLength: 'Минимальное количество букв - 2',
+          strength: 'Недопустимый формат',
+        },
+        tel: 'Введите ваш телефон'
       },
-    },
-    messages: {
-      name: {
-        required: 'Введите ваше имя',
-        minLength: 'Минимальное количество букв - 2',
-        strength: 'Недопустимый формат',
-      },
-      tel: 'Введите ваш телефон'
-    },
+    
   
-
-    // Отправка на почту
-    submitHandler: function(form, values, ajax) {
-      let formData = new FormData(form);
-  
-      let xhr = new XMLHttpRequest();
-  
-      xhr.onreadystatechange = function() {
-  
-        if (xhr.readyState === 4) {
-          if (xhr.status === 200) {
-            console.log("Отправлено")
+      // Отправка на почту
+      submitHandler: function(form, values, ajax) {
+        let formData = new FormData(form);
+    
+        let xhr = new XMLHttpRequest();
+    
+        xhr.onreadystatechange = function() {
+    
+          if (xhr.readyState === 4) {
+            if (xhr.status === 200) {
+              console.log("Отправлено")
+            }
           }
         }
+    
+        xhr.open("POST", "mail.php", true);
+        xhr.send(formData)
+    
+        form.reset();
       }
-  
-      xhr.open("POST", "mail.php", true);
-      xhr.send(formData)
-  
-      form.reset();
-    }
-  });
+    });
+  })
 }
-
-// установить пакет из npm , если что можно поменять пути у mail.php 
-
 
 /* <form action="mail.php" class="contacts__form" method="post" enctype="multipart/form-data">
 <h3 class="contacts__form-subtitle">Заказать обратный звонок</h3>

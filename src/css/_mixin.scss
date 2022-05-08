@@ -1,9 +1,6 @@
 $maxWidth: 1920;
 $maxWidthContainer: 1320;
 
-$maxWidth: 1920;
-$maxWidthContainer: 1320;
-
 @mixin adaptive ($property, $startSize, $minSize, $type) {
   $addSize: $startSize - $minSize;
   @if $type==1 {
@@ -41,4 +38,3 @@ $maxWidthContainer: 1320;
 // Как использовать
 
 @include adaptiv-font($pcSize, $mobSize); // 1 значение - шрифт на пк, 2 значение шрифт на мобильном разрешение. maxwidth разрешение макета
-

@@ -1,7 +1,8 @@
 "use strict";
 
 export function contactsMap() {
-  let flag = 0;
+  document.addEventListener("DOMContentLoaded", function() {
+    let flag = 0;
 
   window.addEventListener("scroll", function () {
     let scrollY = window.scrollY;
@@ -28,5 +29,6 @@ export function contactsMap() {
       flag = 1;
     }
   
+  })
   })
 }

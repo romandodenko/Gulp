@@ -1,6 +1,7 @@
 import gsap from 'gsap';
 
 export function gsapScript() {
+  document.addEventListener("DOMContentLoaded", function() {
   const openBtn = document.querySelector(".open-btn")
   const collapseBtn = document.querySelector(".collapse-btn")
   let productList = gsap.timeline({ paused: true })
@@ -19,6 +20,8 @@ export function gsapScript() {
     openBtn.classList.remove("open-btn-disabled")
     productList.timeScale(2).reverse()
   })
+  })
 }
+
 
 // не забудь установить пакет

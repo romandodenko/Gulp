@@ -1,6 +1,7 @@
 "use strict"
 
 export function fur() {
+  document.addEventListener("DOMContentLoaded", function() {
     const furniture = document.querySelector(".furniture__body");
     const body = document.querySelector("body");
     
@@ -50,9 +51,8 @@ export function fur() {
       }
     });
    }
-
+  })
 }
-
 /* <div data-speed="0.01" class="furniture__body">
     <div class="furniture__items">
       <div class="furniture__column">
