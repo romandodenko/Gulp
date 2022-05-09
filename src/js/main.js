@@ -53,3 +53,15 @@ dynamic.dynamic()
 // import * as smooth from './modules/smooth-anchor-v2.js'
 
 // smooth.smooth()
+
+// import * as rat from './modules/rating.js'
+
+// rat.rat()
+
+// import * as popup from './modules/popup.js'
+
+// popup.popup()
+
+// import * as tooltip from './modules/tooltip.js'
+
+// tooltip.tooltip()
