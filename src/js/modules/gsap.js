@@ -1,4 +1,4 @@
-import gsap from 'gsap';
+"use strict"
 
 export function gsapScript() {
   document.addEventListener("DOMContentLoaded", function() {

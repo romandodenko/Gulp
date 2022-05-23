@@ -2,15 +2,13 @@ import * as isWebp from './modules/webp.js'
 
 isWebp.isWebp()
 
-// import * as burger from './modules/burger.js'
+// import * as header from './modules/header.js'
 
-// burger.burgerOpen()
+// header.header()
 
-
-// import * as smoothScroll from './modules/smooth-anchor.js'
+// import * as smoothScroll from './modules/smooth-scroll.js'
 
 // smoothScroll.smoothScroll()
-
 
 import * as dynamic from './modules/dynamic-adaptive.js'
 
@@ -32,11 +30,9 @@ dynamic.dynamic()
 
 // dropdown.dropdown()
 
-
 // import * as gsapScript from './modules/gsap.js'
 
 // gsapScript.gsapScript()
-
 
 // import * as swiper from './modules/slider.js'
 
@@ -50,10 +46,6 @@ dynamic.dynamic()
 
 // validate.validate()
 
-// import * as smooth from './modules/smooth-anchor-v2.js'
-
-// smooth.smooth()
-
 // import * as rat from './modules/rating.js'
 
 // rat.rat()
@@ -65,3 +57,11 @@ dynamic.dynamic()
 // import * as tooltip from './modules/tooltip.js'
 
 // tooltip.tooltip()
+
+// import * as inputTel from './modules/input-tel.js'
+
+// inputTel.inputTel()
+
+// import * as range from './modules/range.js'
+
+// range.range()
