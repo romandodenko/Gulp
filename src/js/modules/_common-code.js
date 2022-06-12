@@ -129,3 +129,18 @@ buttonUp.addEventListener("click", function() {
 /* <button class="button-up"></button> */
 
 // ===================================================================================================================================================
+
+const b = document.querySelectorAll(".wrapper") // элемент на которой наводишься и должен появляться скрытый список
+const e = document.querySelectorAll(".e"); // скрытый список
+
+b.forEach(function (b) {
+  b.addEventListener("mouseover", function () {
+    b.querySelector('.e').classList.add("eeeeee") // если много элементов b то пишем так, код означает что данный класс будет даваться е, который находится во враппере на который навели а не у всех врапперов
+  })
+})
+b.forEach(function (b) {
+  b.addEventListener("mouseleave", function () {
+    b.querySelector('.e').classList.remove("eeeeee")
+  })
+})
+// ===================================================================================================================================================

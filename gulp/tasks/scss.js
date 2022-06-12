@@ -1,7 +1,7 @@
 import dartSass from 'sass';
 import gulpSass from 'gulp-sass';
 import cleanCss from 'gulp-clean-css';
-import webpcss from 'gulp-webpcss';
+// import webpcss from 'gulp-webpcss'; // для webp формата
 import autoprefixer from 'gulp-autoprefixer';
 import sourcemaps from 'gulp-sourcemaps';
 
@@ -17,12 +17,12 @@ export const scss = () => {
   )
   .pipe(sourcemaps.init())
   .pipe(sass().on('error', sass.logError))
-  .pipe(webpcss(
-    {
-      webpClass: '.webp',
-      noWebpClass: '.no-webp',
-    }
-  ))
+  // .pipe(webpcss( // для webp формата
+  //   {
+  //     webpClass: '.webp',
+  //     noWebpClass: '.no-webp',
+  //   }
+  // ))
   .pipe(autoprefixer({
     grid: true,
     overrideBrowserslist: ["last 3 versions"],
@@ -39,12 +39,12 @@ export const scss = () => {
   )
   .pipe(sourcemaps.init())
   .pipe(sass().on('error', sass.logError))
-  .pipe(webpcss(
-    {
-      webpClass: '.webp',
-      noWebpClass: '.no-webp',
-    }
-  ))
+  // .pipe(webpcss( // для webp формата
+  //   {
+  //     webpClass: '.webp',
+  //     noWebpClass: '.no-webp',
+  //   }
+  // ))
   .pipe(autoprefixer({
     grid: true,
     overrideBrowserslist: ["last 3 versions"],
@@ -55,8 +55,9 @@ export const scss = () => {
   .pipe(app.plugins.browsersync.stream());
 }
 
+
 export const cssBuild = () => {
-  //  app.gulp.src(app.path.dev.cssOveralBuild)
+  //  app.gulp.src(app.path.dev.cssOveralBuild) // хз что за код, не помню ))
   // .pipe(sass().on('error', sass.logError))
   // .pipe(webpcss(
   //   {
@@ -70,15 +71,15 @@ export const cssBuild = () => {
   //   cascade: false
   // }))
   // .pipe(cleanCss())
-  // .pipe(app.gulp.dest(app.path.build.cssOveral))
+  // .pipe(app.gulp.dest(app.path.build.cssOveral))  // хз что за код, не помню ))
   return app.gulp.src(app.path.dev.cssBuild)
   .pipe(sass().on('error', sass.logError))
-  .pipe(webpcss(
-    {
-      webpClass: '.webp',
-      noWebpClass: '.no-webp',
-    }
-  ))
+  // .pipe(webpcss( // для webp формата
+  //   {
+  //     webpClass: '.webp',
+  //     noWebpClass: '.no-webp',
+  //   }
+  // ))
   .pipe(autoprefixer({
     grid: true,
     overrideBrowserslist: ["last 3 versions"],

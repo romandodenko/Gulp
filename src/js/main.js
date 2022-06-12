@@ -1,6 +1,6 @@
-import * as isWebp from './modules/webp.js'
+// import * as isWebp from './modules/webp.js' // для webp формата
 
-isWebp.isWebp()
+// isWebp.isWebp()
 
 // import * as header from './modules/header.js'
 
@@ -10,9 +10,9 @@ isWebp.isWebp()
 
 // smoothScroll.smoothScroll()
 
-import * as dynamic from './modules/dynamic-adaptive.js'
+// import * as dynamic from './modules/dynamic-adaptive.js'
 
-dynamic.dynamic()
+// dynamic.dynamic()
 
 // import * as tabs from './modules/tabs.js'
 

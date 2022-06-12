@@ -1,4 +1,4 @@
-import webpHtmlNoSvg from 'gulp-webp-html-nosvg';
+// import webpHtmlNoSvg from 'gulp-webp-html-nosvg'; // для webp формата
 import htmlMin from 'gulp-htmlmin';
 
 export const html = () => {
@@ -9,7 +9,7 @@ export const html = () => {
         message: 'Error: <%= error.message %>',
       }))
     )
-    .pipe(webpHtmlNoSvg())
+    // .pipe(webpHtmlNoSvg()) // для webp формата
     .pipe(app.gulp.dest(app.path.dev.dist))
     .pipe(app.plugins.browsersync.stream());
 }

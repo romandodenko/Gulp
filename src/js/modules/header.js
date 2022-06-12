@@ -1,6 +1,6 @@
 "use strict"
 
-export function burgerOpen() {
+export function header() {
   document.addEventListener("DOMContentLoaded", function () {
     const burger = document.querySelector(".header__burger");
     const nav = document.querySelector(".header__nav");
