@@ -5,6 +5,7 @@ export function swiper() {
     const swiper = new Swiper('.hero__swiper', {
       loop: true,
       // loopAdditionalSlides: 3, // Добавляет количество слайдов которые будут склонированы после создания цикла
+      // centeredSlides: true, // центрирует активный слайд по центру а не слева
       observer: true,
       observeParents: true,
       watchOverflow: true,
@@ -31,6 +32,10 @@ export function swiper() {
         nextEl: '.hero__button-next',
         prevEl: '.hero__button-prev',
       },
+      // scrollbar: {
+      //   el: '.hero__scrollbar',
+      //   draggable: true, // позволяет сделать полосу прокрутки перетаскиваемой
+      // },
       // breakpoints: {
       //   320: {
       //     slidesPerView: 2,

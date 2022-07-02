@@ -59,3 +59,12 @@ export function contactsMap() {
     // })
   })
 }
+
+
+// html
+
+/* 
+        <div class="contacts__map" id="map"></div>
+<script src="https://api-maps.yandex.ru/2.1/?apikey=&lang=ru_RU"></script>
+
+*/

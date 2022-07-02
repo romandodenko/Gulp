@@ -18,6 +18,18 @@
 
 // tabs.tabs()
 
+// import * as show from './modules/show.js'
+
+// show.show()
+
+// import * as customSelect from './modules/custom-select.js'
+
+// customSelect.customSelect()
+
+// import * as selectChoices from './modules/select-choices.js'
+
+// selectChoices.selectChoices()
+
 // import * as accordion from './modules/accordion.js'
 
 // accordion.accordion()
