@@ -17,6 +17,7 @@ export const path = {
     modules: `${buildFolder}/js/modules/`,
     phpMailer: `${buildFolder}/PHPMailer/`,
     mailPhpBuild: `${buildFolder}/`,
+    videoBuild: `${buildFolder}/video/`,
   },
   dev: {
     js: `${devFolder}/js/`,
@@ -32,6 +33,8 @@ export const path = {
     imagesBuild: `${devFolder}/img/**/*.{jpg,jpeg,png,gif}`,
     imagesWebpSvg: `${devFolder}/img/**/*.{webp,svg}`,
     dist: `${devFolder}/`,
+    video: `${devFolder}/video/`,
+    videoBuild: `${devFolder}/video/**`,
     html: `${devFolder}/**/*.html`,
     resources: `${devFolder}/resources/`,
     resourcesBuild: `${devFolder}/resources/**`,
@@ -53,6 +56,7 @@ export const path = {
     src: `${srcFolder}/`,
     phpMailer: `${srcFolder}/PHPMailer/**`,
     resources: `${srcFolder}/resources/**`,
+    video: `${srcFolder}/video/**`,
     mailPhp: `${srcFolder}/mail.php`,
   },
   watch: {
@@ -61,6 +65,7 @@ export const path = {
     images: `${srcFolder}/img/**/*.{jpg,jpeg,png,gif,webp,ico,svg}`,
     html: `${srcFolder}/**/*.html`,
     src: `${srcFolder}/`,
+    video: `${srcFolder}/video/**`,
     resources: `${srcFolder}/`,
   },
   clean: devFolder,

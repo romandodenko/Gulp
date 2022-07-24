@@ -12,7 +12,8 @@ export function swiper() {
       slidesPerView: 1,
       spaceBetween: 32,
       // slidesPerGroup: 1, 
-      autoHeight: true,
+      // centeredSlides: true, // активный слайд будет в центре
+      // autoHeight: true,
       direction: 'horizontal',
       // speed: 500, // Автовоспроизведение
       // autoplay: {

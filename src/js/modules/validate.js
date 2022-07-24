@@ -1,12 +1,11 @@
 "use strict"
 
-var selector = document.querySelector("input[type='tel']");
-var im = new Inputmask("+7 (999)-999-99-99");
-
-im.mask(selector);
-
 export function validate() {
-  document.addEventListener("DOMContentLoaded", function() {
+  document.addEventListener("DOMContentLoaded", function () {
+    var selector = document.querySelector("input[type='tel']");
+    var im = new Inputmask("+7 (999)-999-99-99");
+    im.mask(selector);
+
     new JustValidate('.contacts__form', {
       colorWrong: "#FF6972",
       rules: {
@@ -15,7 +14,7 @@ export function validate() {
           minLength: 2,
           strength: {
             custom: '[а-яА-Я\d]',
-         },
+          },
         },
         tel: {
           required: true,
@@ -33,33 +32,36 @@ export function validate() {
         },
         tel: 'Введите ваш телефон'
       },
-    
-  
+
+
       // Отправка на почту
-      submitHandler: function(form, values, ajax) {
+      submitHandler: function (form, values, ajax) {
         let formData = new FormData(form);
-    
+
         let xhr = new XMLHttpRequest();
-    
-        xhr.onreadystatechange = function() {
-    
+
+        xhr.onreadystatechange = function () {
+
           if (xhr.readyState === 4) {
             if (xhr.status === 200) {
               console.log("Отправлено")
             }
           }
         }
-    
+
         xhr.open("POST", "mail.php", true);
         xhr.send(formData)
-    
+
         form.reset();
       }
     });
   })
 }
 
-/* <form action="mail.php" class="contacts__form" method="post" enctype="multipart/form-data">
+/* Обязательно инпутам добавить name и проверь пути к mail.php в js и html
+
+
+<form action="mail.php" class="contacts__form" method="post" enctype="multipart/form-data">
 <h3 class="contacts__form-subtitle">Заказать обратный звонок</h3>
 <input type="hidden" name="admin_email[]" value="exigonyashka@yandex.ru">
 <input type="hidden" name="form_subject" value="Заявка с сайта">
@@ -69,4 +71,7 @@ export function validate() {
     data-validate-field="tel" data-validate-rules="phone" id="tel"
     aria-label="Введите свой телефон"></label>
 <button class="contacts__form-btn" type="submit">Заказать</button>
-</form> */
+</form> 
+
+
+*/

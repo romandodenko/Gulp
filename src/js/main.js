@@ -14,6 +14,14 @@
 
 // dynamic.dynamic()
 
+// import * as tabsPlugin from './modules/tabs-plugin.js'
+
+// tabsPlugin.tabsPlugin()
+
+// import * as parallax from './modules/parallax.js'
+
+// parallax.parallax()
+
 // import * as tabs from './modules/tabs.js'
 
 // tabs.tabs()
@@ -33,6 +41,10 @@
 // import * as accordion from './modules/accordion.js'
 
 // accordion.accordion()
+
+// import * as accordionTwo from './modules/accordion-2.js'
+
+// accordionTwo.accordionTwo()
 
 // import * as scrollAddClass from './modules/add-class-for-scroll.js'
 

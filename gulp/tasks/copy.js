@@ -13,6 +13,15 @@ export const mailPhpBuild = () => {
   .pipe(app.gulp.dest(app.path.build.mailPhpBuild))
 }
 
+export const video = () => {
+  return app.gulp.src(app.path.src.video)
+  .pipe(app.gulp.dest(app.path.dev.video))
+}
+
+export const videoBuild = () => {
+  return app.gulp.src(app.path.dev.videoBuild)
+  .pipe(app.gulp.dest(app.path.build.videoBuild))
+}
 
 
 export const phpMailer = () => {

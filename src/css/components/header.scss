@@ -51,7 +51,7 @@ $maxWidthContainer: 1440;
   }
   
   &__menu {
-    @media (max-width: 1024px) {
+    @media (max-width: 991px) {
       display: flex;
       flex-direction: column;
       position: fixed;
@@ -76,7 +76,7 @@ $maxWidthContainer: 1440;
     width: 30px;
     height: 30px;
     background-color: transparent;
-    @media (max-width: 1024px) {
+    @media (max-width: 991px) {
       display: block;
       @include adaptive ("top", 30, 15, 0);
       @include adaptive ("right", 30, 15, 0);
@@ -110,7 +110,7 @@ $maxWidthContainer: 1440;
   @include adaptive ("width", 72, 45, 0);
   @include adaptive ("height", 26, 19, 0);
   background-color: transparent;
-  @media (max-width: 1024px) {
+  @media (max-width: 991px) {
     display: block;
   }
   &__line {

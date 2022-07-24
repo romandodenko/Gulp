@@ -15,7 +15,7 @@ global.app = {
 }
 
 // Ипорт задач
-import { copy, phpMailer, phpMailerBuild, mailPhp, mailPhpBuild } from './gulp/tasks/copy.js';
+import { copy, phpMailer, phpMailerBuild, mailPhp, mailPhpBuild, video, videoBuild } from './gulp/tasks/copy.js';
 import { reset, resetBuild } from './gulp/tasks/reset.js';
 import { html, htmlBuild } from './gulp/tasks/html.js'
 import { server } from './gulp/tasks/server.js';
@@ -36,7 +36,7 @@ function watcher() {
 }
 
 // Построение сценариев задач по умолчанию
-const mainTasks = gulp.series(fonts, gulp.parallel(copy, html, scss, js, resources, images, mailPhp, phpMailer));
+const mainTasks = gulp.series(fonts, gulp.parallel(copy, html, scss, js, resources, images, mailPhp, phpMailer, video));
 
 const dev = gulp.series(reset, mainTasks, gulp.parallel(watcher, server));
 
@@ -44,7 +44,7 @@ const dev = gulp.series(reset, mainTasks, gulp.parallel(watcher, server));
 gulp.task('default', dev);
 
 // Построение сценариев задач build версия
-const build = gulp.series(resetBuild, fontsBuild, htmlBuild, cssBuild, jsBuild, resourcesBuild, imagesBuild, svgSprites, mailPhpBuild, phpMailerBuild);
+const build = gulp.series(resetBuild, fontsBuild, htmlBuild, cssBuild, jsBuild, resourcesBuild, imagesBuild, svgSprites, mailPhpBuild, phpMailerBuild, videoBuild);
 
 // Выполнения сценария build версия
 gulp.task('build', build);
