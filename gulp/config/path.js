@@ -18,6 +18,7 @@ export const path = {
     phpMailer: `${buildFolder}/PHPMailer/`,
     mailPhpBuild: `${buildFolder}/`,
     videoBuild: `${buildFolder}/video/`,
+    jsonFileBuild: `${buildFolder}/json/`,
   },
   dev: {
     js: `${devFolder}/js/`,
@@ -43,6 +44,8 @@ export const path = {
     phpMailerBuild: `${devFolder}/PHPMailer/**`,
     mailPhp: `${devFolder}/`,
     mailPhpBuild: `${devFolder}/mail.php`,
+    jsonFile: `${devFolder}/json/`,
+    jsonFileBuild: `${devFolder}/json/**`,
   },
   src: {
     js: `${srcFolder}/js/main.js`,
@@ -57,6 +60,7 @@ export const path = {
     phpMailer: `${srcFolder}/PHPMailer/**`,
     resources: `${srcFolder}/resources/**`,
     video: `${srcFolder}/video/**`,
+    jsonFile: `${srcFolder}/json/**`,
     mailPhp: `${srcFolder}/mail.php`,
   },
   watch: {
@@ -66,6 +70,7 @@ export const path = {
     html: `${srcFolder}/**/*.html`,
     src: `${srcFolder}/`,
     video: `${srcFolder}/video/**`,
+    jsonFile: `${srcFolder}/json/**`,
     resources: `${srcFolder}/`,
   },
   clean: devFolder,

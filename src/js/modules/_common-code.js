@@ -144,3 +144,58 @@ b.forEach(function (b) {
   })
 })
 // ===================================================================================================================================================
+
+// Закрытие при нажатии вне элемента
+
+const btnMenu = document.querySelector(".btn");
+const menu = document.querySelector(".menu");
+function toggleMenu() {
+    menu.classList.toggle("menu-active");
+}
+
+btnMenu.addEventListener("click", function (e) {
+    e.stopPropagation();
+    toggleMenu();
+});
+
+document.addEventListener("click", function (e) {
+    const target = e.target;
+    const itsMenu = target == menu || menu.contains(target);
+    const itsBtnMenu = target == btnMenu;
+    const menuIsActive = menu.classList.contains("menu-active");
+
+    if (!itsMenu && !itsBtnMenu && menuIsActive) {
+        toggleMenu();
+    }
+});
+
+// ===================================================================================================================================================
+
+// Запуск видео
+
+const btn = document.querySelector(".btn");
+const video = document.querySelector(".video video");
+
+btn.addEventListener("click", function() {
+  video.play();
+  video.setAttribute("controls","controls");
+  btn.classList.add("hidden")
+})
+
+// ===================================================================================================================================================
+
+// при  прокручивание скролом до 1200 пикселей высоты классу контейнер дается доп класс
+
+const con = document.querySelector(".container");
+document.addEventListener("scroll", function() {
+  let pop = Math.floor(scrollY);
+  console.log(pop)
+  // console.log(`${scrollY}px`)
+  if (pop >= 1200) {
+    con.style.backgroundColor = "red"
+  } else {
+    con.style.backgroundColor = ""
+  }
+})
+
+// ===================================================================================================================================================

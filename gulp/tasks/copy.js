@@ -23,6 +23,15 @@ export const videoBuild = () => {
   .pipe(app.gulp.dest(app.path.build.videoBuild))
 }
 
+export const jsonFile = () => {
+  return app.gulp.src(app.path.src.jsonFile)
+  .pipe(app.gulp.dest(app.path.dev.jsonFile))
+}
+
+export const jsonFileBuild = () => {
+  return app.gulp.src(app.path.dev.jsonFileBuild)
+  .pipe(app.gulp.dest(app.path.build.jsonFileBuild))
+}
 
 export const phpMailer = () => {
   return app.gulp.src(app.path.src.phpMailer)
