@@ -199,3 +199,19 @@ document.addEventListener("scroll", function() {
 })
 
 // ===================================================================================================================================================
+
+// Копирует текст с инпута copyText при нажатии на кнопку copyButton
+
+const copyButton = document.querySelector(".copy-btn");
+
+copyButton.addEventListener("click", function() {
+  copyFunction()
+})
+
+function copyFunction() {
+  var copyText = document.querySelector(".copy-value");
+  copyText.select();
+  document.execCommand("copy");
+} 
+
+// ===================================================================================================================================================

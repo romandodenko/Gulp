@@ -1,39 +1,33 @@
-"use strict"
+const accordionItems = document.querySelectorAll('.accordion__item')
 
-export function accordionTwo() {
-  const accordionItems = document.querySelectorAll('.accordion__item')
+if (accordionItems.length > 0) {
+  accordionItems.forEach((item) => {
+    const accordionHeader = item.querySelector('.accordion__header')
 
-  if (accordionItems.length > 0) {
-    accordionItems.forEach((item) => {
-      const accordionHeader = item.querySelector('.accordion__header')
+    accordionHeader.addEventListener('click', () => {
 
-      accordionHeader.addEventListener('click', () => {
+      const openItem = document.querySelector('.accordion-open')
 
-        const openItem = document.querySelector('.accordion-open')
+      toggleItem(item)
 
-        toggleItem(item)
-
-        if (openItem && openItem !== item) {
-          toggleItem(openItem)
-        }
-      })
+      if (openItem && openItem !== item) {
+        toggleItem(openItem)
+      }
     })
-  }
+  })
+}
+const toggleItem = (item) => {
+  const accordionContent = item.querySelector('.accordion__content')
 
-
-
-  const toggleItem = (item) => {
-    const accordionContent = item.querySelector('.accordion__content')
-
-    if (item.classList.contains('accordion-open')) {
-      accordionContent.removeAttribute('style')
-      item.classList.remove('accordion-open')
-    } else {
-      accordionContent.style.height = accordionContent.scrollHeight + 'px'
-      item.classList.add('accordion-open')
-    }
+  if (item.classList.contains('accordion-open')) {
+    accordionContent.removeAttribute('style')
+    item.classList.remove('accordion-open')
+  } else {
+    accordionContent.style.height = accordionContent.scrollHeight + 'px'
+    item.classList.add('accordion-open')
   }
 }
+
 
 
 

@@ -1,19 +1,14 @@
-"use strict";
+document.querySelectorAll(".btn").forEach(function (tabsBtn) {
+  tabsBtn.addEventListener("click", function (event) {
+    const path = event.currentTarget.dataset.path
 
-export function tabs() {
-  document.addEventListener("DOMContentLoaded", function() {
-    document.querySelectorAll(".btn").forEach(function (tabsBtn) {
-      tabsBtn.addEventListener("click", function (event) {
-        const path = event.currentTarget.dataset.path
-  
-        document.querySelectorAll(".content").forEach(function (tabContent) {
-          tabContent.classList.remove("content-active")
-        })
-        document.querySelector(`[data-target="${path}"]`).classList.add("content-active")
-      })
+    document.querySelectorAll(".content").forEach(function (tabContent) {
+      tabContent.classList.remove("content-active")
     })
+    document.querySelector(`[data-target="${path}"]`).classList.add("content-active")
   })
-}
+})
+
 
 /* 
             HTML

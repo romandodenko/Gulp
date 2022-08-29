@@ -1,19 +1,14 @@
-"use strict"
+tippy('.tooltip', {
+  placement: 'top', // Расположение
+  //content: '<strong>Текст Текст Текст</strong>', // Можно управлять наполнением тултипа с помощью этих свойств, чтобы работало нужно удалить атрибут у тултипа в html
+  //allowHTML: true, // Можно управлять наполнением тултипа с помощью этих свойств, чтобы работало нужно удалить атрибут у тултипа в html
+  role: 'tooltip',
+  trigger: 'mouseenter focus click', // Как срабатывает тултип, при наведение, фокусу и клике
+  hideOnClick: true,
+  theme: "colorToolp", // Кастомная тема
+  maxWidth: 123, // максимальная ширина тултипа
+});
 
-export function tooltip() {
-  document.addEventListener("DOMContentLoaded", function () {
-    tippy('.tooltip', {
-      placement: 'top', // Расположение
-      //content: '<strong>Текст Текст Текст</strong>', // Можно управлять наполнением тултипа с помощью этих свойств, чтобы работало нужно удалить атрибут у тултипа в html
-       //allowHTML: true, // Можно управлять наполнением тултипа с помощью этих свойств, чтобы работало нужно удалить атрибут у тултипа в html
-      role: 'tooltip',
-      trigger: 'mouseenter focus click', // Как срабатывает тултип, при наведение, фокусу и клике
-      hideOnClick: true,
-      theme: "colorToolp", // Кастомная тема
-      maxWidth: 123, // максимальная ширина тултипа
-    });
-  })
-}
 
 // Появление тултипа можно анимировать , в документации есть
 

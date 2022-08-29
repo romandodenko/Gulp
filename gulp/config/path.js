@@ -22,7 +22,7 @@ export const path = {
   },
   dev: {
     js: `${devFolder}/js/`,
-    jsBuild: `${devFolder}/js/**`,
+    jsBuild: `${devFolder}/js/main.js`,
     modules: `${devFolder}/js/modules/`,
     modulesBuild: `${srcFolder}/js/modules/**`,
     css: `${devFolder}/css`,

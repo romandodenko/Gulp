@@ -1,44 +1,41 @@
-"use strict"
+const products = document.querySelectorAll('.product'); // класс блока  в котором лежит блок картинки
+const body = document.querySelector("body");
+if (products) { // проверка на элемент, можно не делать
+  products.forEach(el => {
+    let currentProduct = el;
+    const imageSwitchItems = currentProduct.querySelectorAll('.image-switch__item');
+    const imagePagination = currentProduct.querySelector('.image-pagination');
+    if (imageSwitchItems.length > 1) {
+      imageSwitchItems.forEach((el, index) => {
+        el.setAttribute('data-index', index);
+        imagePagination.innerHTML += `<li class="image-pagination__item ${index == 0 ? 'image-pagination__item--active' : ''}" data-index="${index}"></li>`;
+        if (body.offsetWidth <= 991) { // вся эта система чтобы на мобилке при клике картинки работали, если не так сделал, то в лясе глянь, я там делал
+          el.addEventListener('mouseenter', (e) => {
+            currentProduct.querySelectorAll('.image-pagination__item').forEach(el => {
+              el.classList.remove('image-pagination__item--active')
+            });
+            currentProduct.querySelector(`.image-pagination__item[data-index="${e.currentTarget.dataset.index}"]`).classList.add('image-pagination__item--active');
+          });
 
-export function cartImageHover() {
-  const products = document.querySelectorAll('.product'); // класс блока  в котором лежит блок картинки
-  const body = document.querySelector("body");
-  if (products) { // проверка на элемент, можно не делать
-    products.forEach(el => {
-      let currentProduct = el;
-      const imageSwitchItems = currentProduct.querySelectorAll('.image-switch__item');
-      const imagePagination = currentProduct.querySelector('.image-pagination');
-      if (imageSwitchItems.length > 1) {
-        imageSwitchItems.forEach((el, index) => {
-          el.setAttribute('data-index', index);
-          imagePagination.innerHTML += `<li class="image-pagination__item ${index == 0 ? 'image-pagination__item--active' : ''}" data-index="${index}"></li>`;
-          if (body.offsetWidth <= 991) { // вся эта система чтобы на мобилке при клике картинки работали, если не так сделал, то в лясе глянь, я там делал
-            el.addEventListener('mouseenter', (e) => {
-              currentProduct.querySelectorAll('.image-pagination__item').forEach(el => {
-                el.classList.remove('image-pagination__item--active')
-              });
-              currentProduct.querySelector(`.image-pagination__item[data-index="${e.currentTarget.dataset.index}"]`).classList.add('image-pagination__item--active');
+          el.addEventListener('mouseleave', (e) => {
+            currentProduct.querySelectorAll('.image-pagination__item').forEach(el => {
+              el.classList.remove('image-pagination__item--active')
             });
-  
-            el.addEventListener('mouseleave', (e) => {
-              currentProduct.querySelectorAll('.image-pagination__item').forEach(el => {
-                el.classList.remove('image-pagination__item--active')
-              });
-              currentProduct.querySelector(`.image-pagination__item[data-index="0"]`).classList.add('image-pagination__item--active');
+            currentProduct.querySelector(`.image-pagination__item[data-index="0"]`).classList.add('image-pagination__item--active');
+          });
+        } else if ((body.offsetWidth >= 991)) { // вся эта система чтобы на мобилке при клике картинки работали, если не так сделал, то в лясе глянь, я там делал
+          el.addEventListener('click', (e) => {
+            currentProduct.querySelectorAll('.image-pagination__item').forEach(el => {
+              el.classList.remove('image-pagination__item--active')
             });
-          } else if ((body.offsetWidth >= 991)) { // вся эта система чтобы на мобилке при клике картинки работали, если не так сделал, то в лясе глянь, я там делал
-            el.addEventListener('click', (e) => {
-              currentProduct.querySelectorAll('.image-pagination__item').forEach(el => {
-                el.classList.remove('image-pagination__item--active')
-              });
-              currentProduct.querySelector(`.image-pagination__item[data-index="${e.currentTarget.dataset.index}"]`).classList.add('image-pagination__item--active');
-            });
-          }
-        });
-      }
-    });
-  }
+            currentProduct.querySelector(`.image-pagination__item[data-index="${e.currentTarget.dataset.index}"]`).classList.add('image-pagination__item--active');
+          });
+        }
+      });
+    }
+  });
 }
+
 
 
 

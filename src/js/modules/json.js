@@ -1,41 +1,38 @@
-"use strict"
-// если что-то не работает то смотри путь у консты file
-export function jsonFile() {
-  document.addEventListener("click", function (e) {
-    if (e.target.closest(".button")) {
-      getProducts(e.target)
-    }
-  })
+document.addEventListener("click", function (e) {
+  if (e.target.closest(".button")) {
+    getProducts(e.target)
+  }
+})
 
-  async function getProducts(button) {
-    if (!button.classList.contains("_hold")) { // проверяем класс для того чтобы выполнить нужен, класс нужен для того чтобы избежать повторной подгрузки одних и тех же файлов
-      button.classList.add("_hold");
-      const file = "../../json/json.json"; // получаем к нашему json файлу
-      let response = await fetch(file, { // выполняем get запросов с помощью fetch и получаем результат в переменную response
-        method: "GET"
-      });
-      if (response.ok) { // проверяем если все работает нормально то выполняем код ниже
-        let result = await response.json(); // подгружаем в переменную содержание json файла
-        loadProcuts(result)
-        button.classList.remove("_hold");
-        button.remove();
-      } else {
-        alert("ошибка");
-      }
+async function getProducts(button) {
+  if (!button.classList.contains("_hold")) { // проверяем класс для того чтобы выполнить нужен, класс нужен для того чтобы избежать повторной подгрузки одних и тех же файлов
+    button.classList.add("_hold");
+    const file = "../../json/json.json"; // получаем к нашему json файлу
+    let response = await fetch(file, { // выполняем get запросов с помощью fetch и получаем результат в переменную response
+      method: "GET"
+    });
+    if (response.ok) { // проверяем если все работает нормально то выполняем код ниже
+      let result = await response.json(); // подгружаем в переменную содержание json файла
+      loadProcuts(result)
+      button.classList.remove("_hold");
+      button.remove();
+    } else {
+      alert("ошибка");
     }
   }
+}
 
-  function loadProcuts(data) { // функция для подгрузки элементов из json
-    const cardWrapper = document.querySelector(".card__wrapper"); // куда будут подгружаться файлы
+function loadProcuts(data) { // функция для подгрузки элементов из json
+  const cardWrapper = document.querySelector(".card__wrapper"); // куда будут подгружаться файлы
 
 
-    data.products.forEach(item => { // проходится по внутренностям карточки, products название объекта в json файле
-      const itemId = item.id;
-      const itemTitle = item.title;
-      const itemText = item.text;
-      const itemImage = item.image;
+  data.products.forEach(item => { // проходится по внутренностям карточки, products название объекта в json файле
+    const itemId = item.id;
+    const itemTitle = item.title;
+    const itemText = item.text;
+    const itemImage = item.image;
 
-      let template = `
+    let template = `
       <div data-pid="${itemId}" class="card">
       <div class="card__image">
         <img src="${itemImage}" alt="">
@@ -50,11 +47,11 @@ export function jsonFile() {
       </div>
     </div>
       `
-      cardWrapper.insertAdjacentHTML("beforeend", template) // добавляем в элемент
-    });
-  }
-
+    cardWrapper.insertAdjacentHTML("beforeend", template) // добавляем в элемент
+  });
 }
+
+
 
 /*   в json файле все внутренности подгружаемые 
 

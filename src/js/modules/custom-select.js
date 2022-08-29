@@ -1,7 +1,4 @@
-"use strict"
-
-export function customSelect() {
-  // скрипт для селектов
+// скрипт для селектов
 document.querySelectorAll('.dropdown').forEach((select) => {
 
   const dropDownCurrent = select.querySelector('.dropdown__current');
@@ -55,7 +52,7 @@ document.querySelectorAll('.dropdown').forEach((select) => {
   });
 
 });
-} 
+
 
 
 /* 

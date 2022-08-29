@@ -27,13 +27,13 @@ import { resources, resourcesBuild } from './gulp/tasks/resources.js';
 
 // Наблюдатель за изменениями в файлах
 function watcher() {
-  gulp.watch(path.watch.src, copy);
+  // gulp.watch(path.watch.src, copy);
   gulp.watch(path.watch.html, html);
   gulp.watch(path.watch.scss, scss);
   gulp.watch(path.watch.js, js);
   gulp.watch(path.watch.images, images);
   gulp.watch(path.watch.video, video);
-  gulp.watch(path.watch.resources, resources);
+  // gulp.watch(path.watch.resources, resources);
   gulp.watch(path.watch.jsonFile, jsonFile);
 }
 

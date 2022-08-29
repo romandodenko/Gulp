@@ -1,95 +1,61 @@
-// import * as isWebp from './modules/webp.js' // для webp формата
+"use strict"
 
-// isWebp.isWebp()
+window.onload = function() {
 
-// import * as header from './modules/header.js'
 
-// header.header()
+// --include("./modules/accordion-2.js")
 
-// import * as smoothScroll from './modules/smooth-scroll.js'
+// --include("./modules/accordion.js")
 
-// smoothScroll.smoothScroll()
+// --include("./modules/add-class-for-scroll.js")
 
-// import * as dynamic from './modules/dynamic-adaptive.js'
+// --include("./modules/aos-init.js")
 
-// dynamic.dynamic()
+// --include("./modules/cart-image-hover.js")
 
-// import * as tabsPlugin from './modules/tabs-plugin.js'
+// --include("./modules/custom-select.js")
 
-// tabsPlugin.tabsPlugin()
+// --include("./modules/dropdown.js")
 
-// import * as parallax from './modules/parallax.js'
+// --include("./modules/dynamic-adaptive.js")
 
-// parallax.parallax()
+// --include("./modules/gsap.js")
 
-// import * as tabs from './modules/tabs.js'
+// --include("./modules/header.js")
 
-// tabs.tabs()
+// --include("./modules/input-tel.js")
 
-// import * as show from './modules/show.js'
+// --include("./modules/json.js")
 
-// show.show()
+// --include("./modules/move-the-mouse.js")
 
-// import * as jsonFile from './modules/json.js'
+// --include("./modules/parallax.js")
 
-// jsonFile.jsonFile()
+// --include("./modules/popup.js")
 
-// import * as customSelect from './modules/custom-select.js'
+// --include("./modules/range.js")
 
-// customSelect.customSelect()
+// --include("./modules/rating.js")
 
-// import * as selectChoices from './modules/select-choices.js'
+// --include("./modules/select-choices.js")
 
-// selectChoices.selectChoices()
+// --include("./modules/show.js")
 
-// import * as accordion from './modules/accordion.js'
+// --include("./modules/slider.js")
 
-// accordion.accordion()
+// --include("./modules/smooth-scroll.js")
 
-// import * as accordionTwo from './modules/accordion-2.js'
+// --include("./modules/tabs-plugin.js")
 
-// accordionTwo.accordionTwo()
+// --include("./modules/tabs.js")
 
-// import * as scrollAddClass from './modules/add-class-for-scroll.js'
+// --include("./modules/tooltip.js")
 
-// scrollAddClass.scrollAddClass()
+// --include("./modules/validate.js")
 
-// import * as dropdown from './modules/dropdown.js'
+// --include("./modules/webp.js")
 
-// dropdown.dropdown()
+// --include("./modules/yandex-map.js")
 
-// import * as gsapScript from './modules/gsap.js'
 
-// gsapScript.gsapScript()
-
-// import * as swiper from './modules/slider.js'
-
-// swiper.swiper()
-
-// import * as fur from './modules/move-the-mouse.js'
-
-// fur.fur()
-
-// import * as validate from './modules/validate.js'
-
-// validate.validate()
-
-// import * as rat from './modules/rating.js'
-
-// rat.rat()
-
-// import * as popup from './modules/popup.js'
-
-// popup.popup()
-
-// import * as tooltip from './modules/tooltip.js'
-
-// tooltip.tooltip()
-
-// import * as inputTel from './modules/input-tel.js'
-
-// inputTel.inputTel()
-
-// import * as range from './modules/range.js'
-
-// range.range()
+}
