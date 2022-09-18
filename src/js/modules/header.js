@@ -1,7 +1,7 @@
 const menu = document.querySelector(".header__menu");
 
 document.addEventListener("click", function (e) {
-  if (e.target.closest(".header__burger")) {
+  if(e.target.closest(".burger")) {
     menu.classList.add("menu-active")
     document.body.style.overflow = "hidden";
   }
