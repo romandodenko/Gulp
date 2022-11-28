@@ -5,10 +5,18 @@ if (mapClass) {
   function init() {
     const myMap = new ymaps.Map(
       "map", {
-        center: [59.947477353530964, 30.318436256741137],
+        center: [59.94, 30.31],
         zoom: 14,
       },
     );
+    // var myPlacemark = new ymaps.Placemark(myMap.getCenter(55.76932, 37.63952), {}, { // Если нужно чтобы точка была всегда по центру
+    var myPlacemark = new ymaps.Placemark([59.9431223132132, 30.321231321], {}, { // Если нужно чтобы точка была слегка смещена
+      iconLayout: 'default#image',
+      iconImageHref: '../../img/baloon.png',
+      iconImageSize: [20, 20],
+    });
+
+    myMap.geoObjects.add(myPlacemark);
     myMap.controls.remove('geolocationControl'); // удаляем геолокацию
     myMap.controls.remove('searchControl'); // удаляем поиск
     myMap.controls.remove('trafficControl'); // удаляем контроль трафика
@@ -17,8 +25,6 @@ if (mapClass) {
     myMap.controls.remove('zoomControl'); // удаляем контрол зуммирования
     myMap.controls.remove('rulerControl'); // удаляем контрол правил
   }
-
-
 
 
   // для позднего появления карты 
@@ -31,28 +37,33 @@ if (mapClass) {
   //   if (scrollY >= mapOffset - 1000 && flag == 0) {
   //     ymaps.ready(init);
 
-  //       function init() {
+  //     function init() {
   //       const myMap = new ymaps.Map(
-  //         "map",
-  //         { 
-  //           center: [55.76963601332982,37.63668850000002],
+  //         "map", {
+  //           center: [59.94, 30.31],
   //           zoom: 14,
   //         },
   //       );
-  //       var myPlacemark = new ymaps.Placemark([55.76963601332982,37.63668850000002], {}, {
+  //       // var myPlacemark = new ymaps.Placemark(myMap.getCenter(55.76932, 37.63952), {}, { // Если нужно чтобы точка была всегда по центру
+  //       var myPlacemark = new ymaps.Placemark([59.9431223132132, 30.321231321], {}, { // Если нужно чтобы точка была слегка смещена
   //         iconLayout: 'default#image',
   //         iconImageHref: '../../img/baloon.png',
-  //         iconImageSize: [12, 12],
+  //         iconImageSize: [20, 20],
   //       });
 
   //       myMap.geoObjects.add(myPlacemark);
+  //       myMap.controls.remove('geolocationControl'); // удаляем геолокацию
+  //       myMap.controls.remove('searchControl'); // удаляем поиск
+  //       myMap.controls.remove('trafficControl'); // удаляем контроль трафика
+  //       myMap.controls.remove('typeSelector'); // удаляем тип
+  //       myMap.controls.remove('fullscreenControl'); // удаляем кнопку перехода в полноэкранный режим
+  //       myMap.controls.remove('zoomControl'); // удаляем контрол зуммирования
+  //       myMap.controls.remove('rulerControl'); // удаляем контрол правил
   //     }
-  //     flag = 1;
   //   }
 
   // })
 }
-
 
 
 // html
