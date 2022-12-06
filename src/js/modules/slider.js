@@ -7,6 +7,7 @@ const swiper = new Swiper('.hero__swiper', {
   watchOverflow: true,
   slidesPerView: 1,
   spaceBetween: 32,
+  // effect: "fade", анимация перелистывания слайдера
   // slidesPerGroup: 1, 
   // centeredSlides: true, // активный слайд будет в центре
   // autoHeight: true,
@@ -15,6 +16,7 @@ const swiper = new Swiper('.hero__swiper', {
   // autoplay: {
   // delay: 5000,
   // disableOnInteraction: false,
+  // waitForTransition: false, если нужно чтобы слайды листались когда пользователь уходит со страницы
   // },
   // thumbs: { // Читаем ниже что даёт эта настройка
   //   swiper: thumbsSwiper,
@@ -45,6 +47,26 @@ const swiper = new Swiper('.hero__swiper', {
   //   640: {
   //     slidesPerView: 4,
   //     spaceBetween: 40
+  //   }
+  // },
+  // on: {
+  // slideChange () {
+  // Событие будет запущено при изменении текущего активного слайда
+  // },
+  // slideChangeTransitionEnd () {
+  // Событие будет запущено после анимации другого слайда (следующего или предыдущего).
+  // },
+  // slideChangeTransitionStart() {
+  // Событие будет запущено в начале анимации для другого слайда (следующего или предыдущего). Т.е при клике на кнопку или пагинацию или перелистывание
+  // },
+  //   slideNextTransitionStart() {
+  // То же, что и "slideChangeTransitionStart", но только для направления "вперед"
+  //   },
+  //   slidePrevTransitionStart() {
+  // То же, что и "slideChangeTransitionStart", но только для направления "назад"
+  //   },
+  //   afterInit() {
+  // Событие будет запущено сразу после инициализации т.е при загрузке страницы сразу все заработает
   //   }
   // }
 });

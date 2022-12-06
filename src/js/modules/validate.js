@@ -1,7 +1,7 @@
 var selector = document.querySelector("input[type='tel']");
 var im = new Inputmask("+7 (999)-999-99-99");
 im.mask(selector);
-
+// if ((document.querySelector(".input-tel").value.indexOf('_') == -1)) // Если нужно по макету чтобы при введение числа в инпуте появлялась допустим галочка , то инпут маска маской не будет давать это сделать, тогда делаем вот такое условие
 new JustValidate('.contacts__form', {
   colorWrong: "#FF6972",
   rules: {

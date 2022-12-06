@@ -10,11 +10,11 @@ btnClose.addEventListener("click", function () { // Закрыть оболоч�
 
 
 noUiSlider.create(rangeSlider, {
-  start: [2000, 150000],
-  connect: true,
+  start: [2000, 150000], // сколько ползунков
+  connect: true,  // сколько ползунков
   // tooltips: true, // показывает на каком значение находится элемент управления активным телом range
   animationDuration: 100,
-  step: 1,
+  step: 1,  // на сколько единиц перемещается ползунок
   handleAttributes: [{
       'aria-label': 'уменьшить цену'
     },
@@ -41,6 +41,10 @@ rangeSlider.noUiSlider.on("update", function (values, handle) {
   // priceWrapper.classList.add("wrapper-value-active") // так же удаляем если не нужно никуда записывать значения  с инпутов
 })
 
+// rangeSlider.noUiSlider.on('update', function (values, handle) { // если не работает верхний код
+//   termInput.value = Math.round(values[handle]); // куда передается значение с ползунка при перемещение
+// });
+
 const setRangeSlider = (i, value) => {
   let arr = [null, null]
   arr[i] = value;
@@ -48,8 +52,13 @@ const setRangeSlider = (i, value) => {
   rangeSlider.noUiSlider.set(arr)
 }
 
-inputPrice.forEach((el, index) => {
+inputPrice.forEach((el, index) => {  // связывает инпут и ползунок, при изменение информации в инпуте ползунок перемещается, оставлять этот код если используешь два ползунка
   el.addEventListener("change", (e) => {
     setRangeSlider(index, e.currentTarget.value);
   });
+
+  // termInput.addEventListener('change', function () { // Тоже самое но если 1 ползунок
+  //   termRangeSlider.noUiSlider.set(this.value);
+  // });
+
 });

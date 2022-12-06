@@ -80,8 +80,8 @@ const swiper = new Swiper('.swiper', {
   on: {
     init: function (swiper) {
       const allSliders = document.querySelector(".num_last");
-       // const allSlides = document.querySelectorAll(".swiper-slide:not(.swiper-slide-duplicate)"); // при активном loop для корректного изображения числа в num_last используется такой метод 
-       // allSliders.innerHTML = allSlides.length < 10 ? `0${allSlides.length}` : allSlides.length;
+      // const allSlides = document.querySelectorAll(".swiper-slide:not(.swiper-slide-duplicate)"); // при активном loop для корректного изображения числа в num_last используется такой метод 
+      // allSliders.innerHTML = allSlides.length < 10 ? `0${allSlides.length}` : allSlides.length;
       allSliders.innerHTML = swiper.slides.length < 10 ? `0${swiper.slides.length}` : swiper.slides.length;
     },
     slideChange: function (swiper) {
@@ -120,9 +120,9 @@ function top() {
   window.scrollTo({
     top: 0,
     behavior: "smooth"
-});
+  });
 }
-buttonUp.addEventListener("click", function() {
+buttonUp.addEventListener("click", function () {
   top()
 })
 
@@ -149,24 +149,25 @@ b.forEach(function (b) {
 
 const btnMenu = document.querySelector(".btn");
 const menu = document.querySelector(".menu");
+
 function toggleMenu() {
-    menu.classList.toggle("menu-active");
+  menu.classList.toggle("menu-active");
 }
 
 btnMenu.addEventListener("click", function (e) {
-    e.stopPropagation();
-    toggleMenu();
+  e.stopPropagation();
+  toggleMenu();
 });
 
 document.addEventListener("click", function (e) {
-    const target = e.target;
-    const itsMenu = target == menu || menu.contains(target);
-    const itsBtnMenu = target == btnMenu;
-    const menuIsActive = menu.classList.contains("menu-active");
+  const target = e.target;
+  const itsMenu = target == menu || menu.contains(target);
+  const itsBtnMenu = target == btnMenu;
+  const menuIsActive = menu.classList.contains("menu-active");
 
-    if (!itsMenu && !itsBtnMenu && menuIsActive) {
-        toggleMenu();
-    }
+  if (!itsMenu && !itsBtnMenu && menuIsActive) {
+    toggleMenu();
+  }
 });
 
 // ===================================================================================================================================================
@@ -176,9 +177,9 @@ document.addEventListener("click", function (e) {
 const btn = document.querySelector(".btn");
 const video = document.querySelector(".video video");
 
-btn.addEventListener("click", function() {
+btn.addEventListener("click", function () {
   video.play();
-  video.setAttribute("controls","controls");
+  video.setAttribute("controls", "controls");
   btn.classList.add("hidden")
 })
 
@@ -187,7 +188,7 @@ btn.addEventListener("click", function() {
 // при  прокручивание скролом до 1200 пикселей высоты классу контейнер дается доп класс
 
 const con = document.querySelector(".container");
-document.addEventListener("scroll", function() {
+document.addEventListener("scroll", function () {
   let pop = Math.floor(scrollY);
   console.log(pop)
   // console.log(`${scrollY}px`)
@@ -198,13 +199,28 @@ document.addEventListener("scroll", function() {
   }
 })
 
+// const header = document.querySelector(".header");
+// const headerContent = document.querySelector(".header__content")
+
+// document.addEventListener("scroll", function () {
+//   let checkingHeight = Math.floor(scrollY);
+
+//   if (checkingHeight >= header.clientHeight) {
+//     header.classList.add("header-scroll")
+//     header.style.minHeight = `${headerContent.clientHeight}px`;
+//   } else {
+//     header.classList.remove("header-scroll")
+//     header.style.minHeight = "";
+//   }
+// })
+
 // ===================================================================================================================================================
 
 // Копирует текст с инпута copyText при нажатии на кнопку copyButton
 
 const copyButton = document.querySelector(".copy-btn");
 
-copyButton.addEventListener("click", function() {
+copyButton.addEventListener("click", function () {
   copyFunction()
 })
 
@@ -212,6 +228,86 @@ function copyFunction() {
   var copyText = document.querySelector(".copy-value");
   copyText.select();
   document.execCommand("copy");
-} 
+}
+
+// ===================================================================================================================================================
+
+// Запрос на сервер при отправке формы   
+
+const form = document.querySelector(".calculator-form"); // форма
+
+const requestUrl = "https://jsonplaceholder.typicode.com/users"; // Для проверки работает всё или нет, выступает в качестве сервера
+
+function sendRequest(method, url, body = null) {
+  const headers = {
+    'Content-Type': 'application/json',
+  };
+
+  return fetch(url, {
+    method: method,
+    body: JSON.stringify(body),
+    headers: headers,
+  }).then(response => {
+    return response.json()
+  })
+
+}
+
+const body = { // то что передается
+  carCost: form.querySelector(".cost-input").value,
+  anInitialFee: form.querySelector(".installment-symm-input").value,
+  leasingTerm: form.querySelector(".term-input").value,
+  amountOfTheLeaseAgreement: form.querySelector(".calculator-form__payment").innerText,
+  monthlyPaymentFrom: form.querySelector(".calculator-form__amount").innerText,
+}
+
+document.querySelector(".calculator-form__button").addEventListener("click", function (e) { // кнопка формы при которой передается информация
+  e.preventDefault()
+
+  sendRequest("POST", requestUrl, body)
+    .then(data => console.log(data))
+    .catch(err => console.log(err))
+})
+
+// ===================================================================================================================================================
+
+// Остановка работы функции
+
+document.addEventListener("click", function (e) {
+
+  const targetElement = e.target;
+
+  if (targetElement.closest(".popup__close")) {
+    popup.classList.remove("popup-active")
+    popup.classList.remove("popup-check")
+    popupScroll = null; // Остановка работы функции
+  }
+
+
+})
+
+function popupScroll() { // Функция
+  if (popupCheck) {
+    let coordY = Math.floor(scrollY);
+    if (coordY >= 100) {
+      popup.classList.add("popup-active")
+    } else {
+      popup.classList.remove("popup-active")
+    }
+  }
+}
+
+// ===================================================================================================================================================
+
+// Запрещает писать в инпут опреденные элементы
+
+const inputName = document.querySelector(".input-name");
+let banNumber = /[0-9]/g; // Запрещает писать цифры
+let banEnglishLetter = /[A-Za-zA]/g; // Запрещает писать английские буквы
+let banLetter = /[A-Za-zA-Яа-яЁё]/g; // Запрещает писать все буквы
+inputName.oninput = function () {
+  // this.value = this.value.replace(banNumber,"")
+  this.value = this.value.replace(banEnglishLetter, "")
+}
 
 // ===================================================================================================================================================
