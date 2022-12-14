@@ -269,6 +269,40 @@ document.querySelector(".calculator-form__button").addEventListener("click", fun
     .catch(err => console.log(err))
 })
 
+// Запрос на сервер при получение данных
+
+function createNode(element) { // функция по созданию элемента
+  return document.createElement(element);
+}
+
+function append(parent, el) { // функция для добавления элементов на страницу
+return parent.appendChild(el);
+}
+
+const ul = document.getElementById('authors'); // куда будут вставляться наши элементы
+const url = 'https://randomuser.me/api/?results=10'; // здесь находится адрес откуда подтягиваются данные
+
+fetch(url) // вызываем метод fetch
+.then((resp) => resp.json()) // Чтобы конвертировать возвращаемый объект в формат JSON, используем метод json(). Параметр resp принимает значение объекта, возвращаемого fetch(url). используем метод json(), чтобы конвертировать resp в данные JSON:
+.then(function(data) { // включаем метод промиса метод fetch() возвращает промис. Если возвращается промис resolve, будет выполнена функция метода then(). Эта функция содержит код для обработки данных, получаемых от API.
+let authors = data.results; // создаем переменную с именем authors, принимающую значение data.results. results из конца url
+return authors.map(function(author) { // Для каждого автора в переменной authors нам нужно создать элемент списка, выводящий портрет и имя автора. Для этого отлично подходит метод map()
+  let li = createNode('li'); // создаем элементы
+  let img = createNode('img'); // создаем элементы
+  let span = createNode('span'); // создаем элементы
+  img.src = author.picture.medium; // возвращается объект. поэтому так обращаемся author.picture.medium 
+  span.innerHTML = `${author.name.first} ${author.name.last}`; // возвращается объект. поэтому так обращаемся author.name.first , author.name.last
+  append(li, img); // вставляем элементы
+  append(li, span); // вставляем элементы
+  append(ul, li); // вставляем элементы
+})
+})
+.catch(function(error) { // включаем метод catch() API, вызываемый с помощью метода fetch(), может не работать или на нем могут возникнуть ошибки. Если это произойдет, будет возвращен промис reject. Метод catch используется для обработки reject. Код метода catch() выполняется в случае возникновения ошибки при вызове выбранного API.
+console.log(error);
+});
+
+// <ul id="authors"></ul> штмл
+
 // ===================================================================================================================================================
 
 // Остановка работы функции
@@ -309,5 +343,22 @@ inputName.oninput = function () {
   // this.value = this.value.replace(banNumber,"")
   this.value = this.value.replace(banEnglishLetter, "")
 }
+
+// ===================================================================================================================================================
+
+// Если нужно чтобы попап появлялся после того как пользователь перестанет скролить страницу. Попап появится через 4 секунды
+
+let popupTimer, timeOut = 4000;
+
+function displayPopup() {
+  document.querySelector(".popup").classList.add("popup-active")
+}
+
+popupTimer = setTimeout(displayPopup, timeOut);
+
+window.addEventListener("scroll", function (e) {
+  clearTimeout(popupTimer);
+  popupTimer = setTimeout(displayPopup, timeOut);
+})
 
 // ===================================================================================================================================================

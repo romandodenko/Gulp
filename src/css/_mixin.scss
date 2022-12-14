@@ -571,3 +571,55 @@ input[type="submit"] {
 // }
 
 // ===================================================================================================================================================
+
+// Бесконечно движущийся блок (ticker slider)
+
+.ticker {
+  position: relative;
+  overflow: hidden;
+}
+
+.ticker__wrapper {
+  display: flex;
+}
+
+.ticker__item {
+  font-size: 70px;
+  font-weight: 700;
+  white-space: nowrap;
+  flex-shrink: 0;
+  padding: 0 50px;
+  animation-name: ticker;
+  animation-timing-function: linear;
+  animation-duration: 10s;
+  animation-iteration-count: infinite;
+}
+
+@keyframes ticker {
+  0% {
+    transform: translateZ(0);
+  }
+  100% {
+    transform: translate3d(-100%,0,0);
+  }
+}
+
+  // <div class="ticker">
+  //   <div class="ticker__wrapper">
+  //     <div class="ticker__item">
+  //       Ticker-animation
+  //     </div>
+  //     <div class="ticker__item">
+  //       Ticker-animation
+  //     </div>
+  //     <div class="ticker__item">
+  //       Ticker-animation
+  //     </div>
+  //     <div class="ticker__item">
+  //       Ticker-animation
+  //     </div>
+  //   </div>
+  // </div>
+  
+// ===================================================================================================================================================
+
