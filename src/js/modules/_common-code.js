@@ -362,3 +362,76 @@ window.addEventListener("scroll", function (e) {
 })
 
 // ===================================================================================================================================================
+
+// Можно делать анимацию , суть в том что если до родителя остается 400 пикселей то срабатывает код
+
+window.addEventListener("scroll", function () { 
+  let scrollY = window.scrollY;
+  let mapOffset = this.document.querySelector("#map").offsetTop; // родитель
+  if (scrollY >= mapOffset - 400) { // если до родителя остается 400 пикселей то срабатывает этот код
+    document.querySelectorAll(".list__item").forEach(function(e) { // элемент родителя
+      e.style.opacity = 1
+      e.style.transform = "translateY(0)"
+    })
+  } else {
+    document.querySelectorAll(".list__item").forEach(function(e) { // элемент родителя
+      e.style.opacity = 0
+      e.style.transform = "translateY(50px)"
+    })
+  }
+
+})
+
+// ===================================================================================================================================================
+
+// можно сделать анимацию при скролле, помимо опасити можно использовать трансформ, и так далее
+
+window.addEventListener("scroll", function () {
+  let scrollY = window.scrollY; // возвращает число пикселей, на которое документ пролистали в данный момент по вертикали.
+
+  let mapOffset = document.querySelector("#map").offsetTop; // родитель по которому будет срабатывать весь код когда до него останется 700 пикселей
+
+  if (scrollY >= mapOffset - 700) {
+
+    document.querySelectorAll(".modules-container-card").forEach(function (e) { // элементы в родителе, можно просто повешать на родителя
+
+      const contentElement = document.querySelector("#map"); // родитель
+
+      const windowHeight = window.innerHeight; // возвращает высоту элемента, включая внутренние отступы, в пикселях.
+
+      const finalPosition = scrollY / (contentElement.offsetTop - windowHeight) * 0.3; 
+
+      const bigImageTranslate = 10 / 4.1 * finalPosition; // расчет с какой интенсивностью будет меняться число которое вставляется в опасити
+
+      e.style.opacity = `${bigImageTranslate}`;
+
+    })
+
+  } else {
+
+    document.querySelectorAll(".modules-container-card").forEach(function (e) {
+
+      e.style.opacity = 0
+
+    })
+
+  }
+
+})
+
+// ===================================================================================================================================================
+
+// как проверить отправляется форма или нет
+
+function checkedFormSubmit() {
+      
+// код, либо можно отправить форму на сервер
+
+}
+
+
+/* <form onsubmit="checkedFormSubmit();return false" class="form" action="#!" name="Форма расчёта" autocomplete="on" aria-label="Форма">
+
+</form> */
+
+// ===================================================================================================================================================
