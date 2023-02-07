@@ -18,6 +18,9 @@ const swiper = new Swiper('.hero__swiper', {
   // disableOnInteraction: false,
   // waitForTransition: false, если нужно чтобы слайды листались когда пользователь уходит со страницы
   // },
+  // grid: { // если нужно сделать слайдер не в 1 строку
+  //   rows: 2,
+  // },
   // thumbs: { // Читаем ниже что даёт эта настройка
   //   swiper: thumbsSwiper,
   // },

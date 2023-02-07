@@ -1,6 +1,11 @@
+// Инпут маска
+
 var selector = document.querySelector("input[type='tel']");
-var im = new Inputmask("+7 (999)-999-99-99");
+var im = new Inputmask("+7(999)999-99-99");
 im.mask(selector);
+
+// ------------------------------------------------- Старое подключение
+
 // if ((document.querySelector(".input-tel").value.indexOf('_') == -1)) // Если нужно по макету чтобы при введение числа в инпуте появлялась допустим галочка , то инпут маска маской не будет давать это сделать, тогда делаем вот такое условие
 new JustValidate('.contacts__form', {
   colorWrong: "#FF6972",
@@ -55,7 +60,6 @@ new JustValidate('.contacts__form', {
 
 /* Обязательно инпутам добавить name и проверь пути к mail.php в js и html
 
-
 <form action="mail.php" class="contacts__form" method="post" enctype="multipart/form-data">
 <h3 class="contacts__form-subtitle">Заказать обратный звонок</h3>
 <input type="hidden" name="admin_email[]" value="exigonyashka@yandex.ru">
@@ -68,5 +72,75 @@ new JustValidate('.contacts__form', {
 <button class="contacts__form-btn" type="submit">Заказать</button>
 </form> 
 
-
 */
+
+// ------------------------------------------------- Старое подключение
+
+// ------------------------------------------------- Новое подключение
+
+const validator = new JustValidate('#form', { // можно использовать классы вместо ид
+
+  errorFieldStyle: { // Стили для инпута
+    backgroundColor: 'red',
+  },
+  errorLabelStyle: { // Стили для ошибки
+    color: '#F13F58',
+  }
+
+});
+
+validator
+  .addField('#login', [{ // можно использовать классы вместо ид
+      rule: 'required',
+      errorMessage: 'Введите ваш логин или email',
+    },
+    {
+      rule: 'minLength',
+      value: 1,
+      errorMessage: 'Минимальное количество букв - 1',
+    },
+  ])
+  .addField('#checkpoint', [{
+    validator: (value) => { // Своя проверка, будет работать как rule
+      const ckeckPoint = document.getElementById("checkpoint");
+      return Boolean(ckeckPoint.value == controlStoke)
+    },
+    errorMessage: 'Название ошибки',
+    // validator: (value) => { // Своя проверка, будет работать как rule
+    //   const phone = selector.inputmask.unmaskedvalue(); // Получает чистое значение инпута в котором инпут маск
+    //   return Boolean(Number(phone) && phone.length == 0);
+    // }
+  }, ])
+  .addField('#password', [{
+      rule: 'required',
+      errorMessage: 'Введите ваш пароль',
+    },
+    {
+      rule: 'minLength',
+      value: 6,
+      errorMessage: 'Пароль должен быть не менее 6 символов',
+    },
+  ])
+  .addField('#retrypassword', [{
+    rule: 'required',
+    errorMessage: 'Повторите ваш пароль',
+  }, ])
+  .onSuccess((event) => { // Если форма проходит валидацию то происходит код ниже
+    alert("Форма отправлена!");
+    document.getElementById("form").querySelectorAll("input").forEach(function (e) {
+      e.value = "";
+    })
+  })
+
+//   <form class="block-form__form form" id="form" action="#!" name="form-change-password" autocomplete="on">
+//   <div class="form__label">
+//    <span class="form__required">*</span>
+//    <input class="form__input" name="text" id="login" type="text" placeholder="Email / Логин">
+//    </div>
+//   <button class="form__button" type="submit" aria-label="Изменить пароль">
+//     Изменить пароль
+//     <svg width="32" height="9">
+//       <use xlink:href="./img/svg/sprites.svg#arrow"></use>
+//     </svg>
+//   </button>
+// </form>
