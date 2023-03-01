@@ -1,3 +1,5 @@
+// Слайдер
+
 const swiper = new Swiper('.hero__swiper', {
   loop: true,
   // loopAdditionalSlides: 3, // Добавляет количество слайдов которые будут склонированы после создания цикла

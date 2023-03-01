@@ -1,3 +1,5 @@
+// Яндекс карта
+
 const mapClass = document.querySelector(".contacts__map")
 if (mapClass) {
   ymaps.ready(init);

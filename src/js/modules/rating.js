@@ -1,3 +1,5 @@
+// Рейтинг
+
 const ratings = document.querySelectorAll(".rating");
 
 if (ratings.length > 0) {

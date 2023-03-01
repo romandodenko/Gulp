@@ -1,3 +1,5 @@
+// Кастомный range 
+
 // не забыть подключить файлы nouislider
 const rangeSlider = document.querySelector(".wrapper-input__range");
 const btnClose = document.querySelector(".wrapper-value__button"); // Закрыть оболочку вывода значений

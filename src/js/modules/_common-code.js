@@ -688,50 +688,6 @@ document.addEventListener("click",function(e) {
 
 // ===================================================================================================================================================
 
-// Фильтр , работает через атрибут дата - data-work-type
-
-document.addEventListener("click", function (e) {
-  const elementInteractive = e.target;
-
-  if (elementInteractive.classList.contains("tabs__btn") && !elementInteractive.classList.contains("active")) {
-
-    const activeElement = document.querySelector(".tabs__btn.active");
-
-    const elements = document.querySelectorAll(".tabs__item");
-
-    const elementType = elementInteractive.dataset.workType;
-
-    activeElement.classList.remove("active");
-
-    elementInteractive.classList.add("active");
-
-    elements.forEach(element => {
-      !elementType || element.dataset.workType === elementType ?
-        element.hidden = false : element.hidden = true;
-    })
-
-  }
-
-})
-
-/* <div class="tabs">
-<div class="tabs__wrapper-btn">
-  <button data-work-type="" class="tabs__btn active">All</button>
-  <button data-work-type="1" class="tabs__btn">1</button>
-  <button data-work-type="2" class="tabs__btn">2</button>
-  <button data-work-type="3" class="tabs__btn">3</button>
-</div>
-<div class="tabs__wrapper-item">
-<div data-work-type="1" class="tabs__item">wrapper-1</div>
-<div data-work-type="2" class="tabs__item">wrapper-2</div>
-<div data-work-type="2" class="tabs__item">wrapper-2</div>
-<div data-work-type="2" class="tabs__item">wrapper-2</div>
-<div data-work-type="3" class="tabs__item">wrapper-3</div>
-</div>
-</div> */
-
-// ===================================================================================================================================================
-
 // Анимация, если элемент попадается в поле зрения пользователя то даётся класс актив, можно менять ширину просмотра с помощью threshold, т.е получать класс раньше или позже
 
 let observer = new IntersectionObserver(function(entries) {
@@ -899,5 +855,46 @@ document.querySelectorAll(".wrapper-input__input").forEach(function(a) {
 })
 
 /* <input class="wrapper-input__input" type="number"> */
+
+// ===================================================================================================================================================
+
+  function setCookie(name, value, days) {
+    let expires = "";
+    if (days) {
+      let date = new Date();
+      date.setTime(date.getTime() + days * 24 * 60 * 60 * 1000);
+      expires = "; expires=" + date.toUTCString();
+    }
+    document.cookie = name + "=" + (value || "") + expires + "; path=/";
+  }
+
+  function getCookie(name) {
+    let matches = document.cookie.match(
+      new RegExp(
+        "(?:^|; )" +
+          name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, "\\$1") +
+          "=([^;]*)"
+      )
+    );
+    return matches ? decodeURIComponent(matches[1]) : undefined;
+  }
+
+  function checkCookies() {
+    let cookieNote = document.querySelector(".popup-active"); // элемент
+    let cookieBtnAccept = cookieNote.querySelector(".popup__button"); // кнопка
+
+    // Если куки cookies_policy нет или она просрочена, то показываем уведомление
+    if (!getCookie("cookies_policy")) {
+      cookieNote.classList.add("show");
+    }
+
+    // При клике на кнопку устанавливаем куку cookies_policy на один год
+    cookieBtnAccept.addEventListener("click", function () {
+      setCookie("cookies_policy", "true", 365);
+      cookieNote.classList.remove("show");
+    });
+  }
+
+  checkCookies();
 
 // ===================================================================================================================================================

@@ -1,3 +1,5 @@
+// Валидация
+
 // Инпут маска
 
 var selector = document.querySelector("input[type='tel']");

@@ -1,3 +1,5 @@
+// Выпадающее меню (dropdown)
+
 const params = {
   btnClassName: "header-select__btn",
   activeClassName: "is-active",

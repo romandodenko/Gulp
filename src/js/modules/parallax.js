@@ -1,3 +1,5 @@
+//  Паралакс эффект
+
 const parallax = document.querySelector(".parallax")
 
 if (parallax) {

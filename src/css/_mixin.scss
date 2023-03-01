@@ -679,4 +679,96 @@ input[type="submit"] {
 // <input class="rating__input" type="radio" name="el1">
 // </div>
 
+// Если с свг
+
+.rating {
+  position: relative;
+  display: flex;
+  padding: 0 20px;
+  border: 2px solid #000;
+  width: fit-content;
+  gap: 5px;
+  transform: rotate(180deg);
+}
+
+.rating__input {
+  width: 25px;
+  height: 23px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  position: relative;
+  z-index: 2;
+}
+
+svg {
+  position: absolute;
+  stroke: #979797;
+  z-index: 1;
+  transform: rotate(35deg);
+  transition: stroke .3s linear;
+}
+
+.one {
+  top: 0;
+  left: 20px;
+}
+
+.two {
+  top: 0;
+  left: 50px;
+}
+
+.free {
+  top: 0;
+  right: 50%;
+  transform: translateX(50%) rotate(35deg);
+}
+
+.four {
+  top: 0;
+  right: 50px;
+}
+
+.five {
+  top: 0;
+  right: 20px;
+}
+
+.rating__input:hover~svg,
+.rating__input:hover svg,
+.rating__input:checked~svg,
+.rating__input:checked svg {
+  stroke: red;
+}
+
+// <div class="rating">
+// <input class="rating__input" type="radio" name="el1">
+// <svg class="one" width="25" height="23" viewBox="0 0 25 23" fill="none" xmlns="http://www.w3.org/2000/svg">
+//   <path
+//     d="M12.7327 18.3074L12.5 18.1851L12.2673 18.3074L5.81675 21.6987L7.0487 14.5159L7.09314 14.2568L6.9049 14.0733L1.68627 8.98641L8.89824 7.93845L9.15838 7.90065L9.27471 7.66493L12.5 1.12978L15.7253 7.66493L15.8416 7.90065L16.1018 7.93845L23.3137 8.98641L18.0951 14.0733L17.9069 14.2568L17.9513 14.5159L19.1833 21.6987L12.7327 18.3074Z" />
+// </svg>
+// <input class="rating__input" type="radio" name="el1">
+// <svg class="two" width="25" height="23" viewBox="0 0 25 23" fill="none" xmlns="http://www.w3.org/2000/svg">
+//   <path
+//     d="M12.7327 18.3074L12.5 18.1851L12.2673 18.3074L5.81675 21.6987L7.0487 14.5159L7.09314 14.2568L6.9049 14.0733L1.68627 8.98641L8.89824 7.93845L9.15838 7.90065L9.27471 7.66493L12.5 1.12978L15.7253 7.66493L15.8416 7.90065L16.1018 7.93845L23.3137 8.98641L18.0951 14.0733L17.9069 14.2568L17.9513 14.5159L19.1833 21.6987L12.7327 18.3074Z" />
+// </svg>
+// <input class="rating__input" type="radio" name="el1">
+// <svg class="free" width="25" height="23" viewBox="0 0 25 23" fill="none" xmlns="http://www.w3.org/2000/svg">
+//   <path
+//     d="M12.7327 18.3074L12.5 18.1851L12.2673 18.3074L5.81675 21.6987L7.0487 14.5159L7.09314 14.2568L6.9049 14.0733L1.68627 8.98641L8.89824 7.93845L9.15838 7.90065L9.27471 7.66493L12.5 1.12978L15.7253 7.66493L15.8416 7.90065L16.1018 7.93845L23.3137 8.98641L18.0951 14.0733L17.9069 14.2568L17.9513 14.5159L19.1833 21.6987L12.7327 18.3074Z" />
+// </svg>
+// <input class="rating__input" type="radio" name="el1">
+// <svg class="four" width="25" height="23" viewBox="0 0 25 23" fill="none" xmlns="http://www.w3.org/2000/svg">
+//   <path
+//     d="M12.7327 18.3074L12.5 18.1851L12.2673 18.3074L5.81675 21.6987L7.0487 14.5159L7.09314 14.2568L6.9049 14.0733L1.68627 8.98641L8.89824 7.93845L9.15838 7.90065L9.27471 7.66493L12.5 1.12978L15.7253 7.66493L15.8416 7.90065L16.1018 7.93845L23.3137 8.98641L18.0951 14.0733L17.9069 14.2568L17.9513 14.5159L19.1833 21.6987L12.7327 18.3074Z" />
+// </svg>
+// <input class="rating__input" type="radio" name="el1">
+// <svg class="five" width="25" height="23" viewBox="0 0 25 23" fill="none" xmlns="http://www.w3.org/2000/svg">
+//   <path
+//     d="M12.7327 18.3074L12.5 18.1851L12.2673 18.3074L5.81675 21.6987L7.0487 14.5159L7.09314 14.2568L6.9049 14.0733L1.68627 8.98641L8.89824 7.93845L9.15838 7.90065L9.27471 7.66493L12.5 1.12978L15.7253 7.66493L15.8416 7.90065L16.1018 7.93845L23.3137 8.98641L18.0951 14.0733L17.9069 14.2568L17.9513 14.5159L19.1833 21.6987L12.7327 18.3074Z" />
+// </svg>
+// </div>
+
 // ===================================================================================================================================================

@@ -21,14 +21,7 @@ export const images = () => {
 }
 
 export const imagesBuild = () => {
-   app.gulp.src(app.path.dev.imagesWebpSvg)
-  .pipe(app.gulp.dest(app.path.build.images))
   return app.gulp.src(app.path.dev.imagesBuild)
   .pipe(imagemin())
   .pipe(app.gulp.dest(app.path.build.images))
-}
-
-export const svgSprites = () => {
-  return app.gulp.src(app.path.dev.svgSprite)
- .pipe(app.gulp.dest(app.path.build.svgSprite))
 }

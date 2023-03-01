@@ -1,3 +1,5 @@
+// При ховере на блок меняются картинки
+
 const products = document.querySelectorAll('.product'); // класс блока  в котором лежит блок картинки
 const body = document.querySelector("body");
 if (products) { // проверка на элемент, можно не делать

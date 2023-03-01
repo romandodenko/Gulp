@@ -1,3 +1,5 @@
+// При скролле даётся класс
+
 const headerElement = document.querySelector(".header")
 
 const callback = function (entries, observer) {

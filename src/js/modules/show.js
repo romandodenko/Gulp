@@ -1,3 +1,5 @@
+// Подгрузка элементов
+
 function showCode(showBtn, itemsNum, collapseBtn, listItem, lists) {
   const show = document.querySelector(`.${showBtn}`); // кнопка показать ещё
   const collapse = document.querySelector(`.${collapseBtn}`); // кнопка скрывает показанные элементы

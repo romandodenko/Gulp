@@ -1,3 +1,5 @@
+// Передвижение блока , когда вводишь мышкой
+
 const furniture = document.querySelector(".furniture__body");
 const body = document.querySelector("body");
 

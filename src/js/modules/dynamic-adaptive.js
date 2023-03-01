@@ -1,3 +1,5 @@
+// Динамические адаптив
+
 function DynamicAdapt(type) {
   this.type = type;
 }

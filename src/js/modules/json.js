@@ -1,3 +1,5 @@
+// Работа с json файлом
+
 document.addEventListener("click", function (e) {
   if (e.target.closest(".button")) {
     getProducts(e.target)

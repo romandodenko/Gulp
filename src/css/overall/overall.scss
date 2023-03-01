@@ -9,24 +9,23 @@
   max-width: 1320px;
   padding: 0 20px;
   margin: 0 auto;
+
   @media (max-width: 991px) {
     padding: 0 15px;
   }
+
   @media (max-width: 600px) {
     padding: 0 10px;
   }
 }
 
-body {
-  background-color: transparent;
-}
-
 .page {
   display: flex;
   flex-direction: column;
-  font-family: 'Roboto400';
+  font-family: Roboto, Arial, Helvetica, sans-serif;
   min-height: 100vh;
   overflow: hidden;
+  background-color: transparent;
 }
 
 main {
