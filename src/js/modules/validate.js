@@ -98,8 +98,18 @@ validator
     },
     {
       rule: 'minLength',
-      value: 1,
+      value: true,
       errorMessage: 'Минимальное количество букв - 1',
+    },
+  ])
+  .addField('#email', [{ // можно использовать классы вместо ид
+      rule: 'required',
+      value: true,
+      errorMessage: 'Введите ваш логин или email',
+    },
+    {
+      rule: 'email',
+      errorMessage: 'Введите корректный email',
     },
   ])
   .addField('#checkpoint', [{
@@ -108,41 +118,56 @@ validator
       return Boolean(ckeckPoint.value == controlStoke)
     },
     errorMessage: 'Название ошибки',
-    // validator: (value) => { // Своя проверка, будет работать как rule
-    //   const phone = selector.inputmask.unmaskedvalue(); // Получает чистое значение инпута в котором инпут маск
-    //   return Boolean(Number(phone) && phone.length == 0);
-    // }
   }, ])
-  .addField('#password', [{
+  .addField('#phone', [{
       rule: 'required',
-      errorMessage: 'Введите ваш пароль',
+      value: true,
+      errorMessage: 'Телефон обязателен',
     },
     {
-      rule: 'minLength',
-      value: 6,
-      errorMessage: 'Пароль должен быть не менее 6 символов',
+      rule: 'function',
+      validator: function () {
+        const phone = telSelector.inputmask.unmaskedvalue();
+        return phone.length === 10;
+      },
+      errorMessage: 'Введите корректный телефон',
     },
   ])
-  .addField('#retrypassword', [{
-    rule: 'required',
-    errorMessage: 'Повторите ваш пароль',
-  }, ])
   .onSuccess((event) => { // Если форма проходит валидацию то происходит код ниже
-    alert("Форма отправлена!");
-    document.getElementById("form").querySelectorAll("input").forEach(function (e) {
-      e.value = "";
-    })
+    let formData = new FormData(event.target);
+
+    let xhr = new XMLHttpRequest();
+
+    xhr.onreadystatechange = function () {
+      if (xhr.readyState === 4) {
+        if (xhr.status === 200) {
+          console.log('Отправлено');
+        }
+      }
+    }
+
+    xhr.open('POST', 'mail.php', true);
+    xhr.send(formData);
+
+    event.target.reset();
   })
 
-//   <form class="block-form__form form" id="form" action="#!" name="form-change-password" autocomplete="on">
-//   <div class="form__label">
-//    <span class="form__required">*</span>
-//    <input class="form__input" name="text" id="login" type="text" placeholder="Email / Логин">
-//    </div>
-//   <button class="form__button" type="submit" aria-label="Изменить пароль">
-//     Изменить пароль
-//     <svg width="32" height="9">
-//       <use xlink:href="./img/svg/sprites.svg#arrow"></use>
-//     </svg>
-//   </button>
+//   <form action="#" class="form" method="POST" enctype="multipart/form-data">
+//   <label class="form__label">
+//     <input class="input input-name" type="text" placeholder="Введите имя">
+//   </label>
+//   <label class="form__label">
+//     <input class="input input-mail" type="email" name="Email"
+//       placeholder="Введите email">
+//   </label>
+//   <label class="form__label">
+//     <input class="input input-tel" type="tel" name="Телефон"
+//       placeholder="Введите телефон">
+//   </label>
+//   <label class="form__label">
+//     <textarea class="textarea" name="Сообщение" id="" cols="30" rows="10"
+//       placeholder="Введите ваше сообщение"></textarea>
+//   </label>
+//   <input class="input" type="file" name="file[]" multiple id="myfile">
+//   <button class="button">Отправить</button>
 // </form>

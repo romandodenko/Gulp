@@ -1,7 +1,7 @@
 "use strict"
 
-window.onload = function () {
+window.addEventListener("load", windowLoad);
 
+function windowLoad() {
   --include("./modules/document.js")
-
-}
+};

@@ -1,6 +1,25 @@
-// В этом файле будут собраны участки кода, которые пригодятся в верстке
+// Что есть в данном файле:
+//  1) Проверка элеметов в родителе
+//  2) Кастомная фракция пагинации в слайдере
+//  3) Плавный переход к началу страницы при нажатии на кнопку
+//  4) При ховере появляется скрытый элемент
+//  5) Закрытие при нажатии вне элемента
+//  6) Запуск видео
+//  7) Копирует текст с инпута
+//  8) Запрос на сервер при отправке формы   
+//  9) Запрос на сервер при получение данных
+//  10) Остановка работы функции
+//  11) Запрещает писать в инпут опреденные элементы
+//  12) Как проверить отправляется форма или нет
+//  13) Таймер
+//  14) Крутая фичы для интернет магазинов
+//  15) Плавный переход к элементу через якорь
+//  16) Анимация при появление элемента в экране или при определенном количестве пикселей до элемента
+//  17) Ограничение символов для написания в инпут
+//  18) Куки через функцию
+//  19) Куки через localstorage
 
-// Данный код проверяет сколько в родителе элементов, и дается соответствующий класс
+// Проверка элеметов в родителе. Данный код проверяет сколько в родителе элементов, и дается соответствующий класс
 
 const itemsBlocks = document.querySelectorAll(".items__block"); // родитель
 
@@ -21,34 +40,8 @@ if (itemsBlocks.length) {
   <div class="items__block-item">
     dasdsdsdsdsasdsdaasdadsds
   </div>
-  <div class="items__block-item">
-    dasdsdsdsdsasdsdaasdadsds
-  </div>
-  <div class="items__block-item">
-    dasdsdsdsdsasdsdaasdadsds
-  </div>
-  <div class="items__block-item">
-    dasdsdsdsdsasdsdaasdadsds
-  </div>
 </div>
 <div class="items__block">
-  <div class="items__block-item">
-    dasdsdsdsdsasdsdaasdadsds
-  </div>
-  <div class="items__block-item">
-    dasdsdsdsdsasdsdaasdadsds
-  </div>
-  <div class="items__block-item">
-    dasdsdsdsdsasdsdaasdadsds
-  </div>
-  <div class="items__block-item">
-    dasdsdsdsdsasdsdaasdadsds
-  </div>
-</div>
-<div class="items__block">
-  <div class="items__block-item">
-    dasdsdsdsdsasdsdaasdadsds
-  </div>
   <div class="items__block-item">
     dasdsdsdsdsasdsdaasdadsds
   </div>
@@ -58,13 +51,9 @@ if (itemsBlocks.length) {
 </div>
 </div> */
 
-// Данный код проверяет сколько в родителе элементов, и даем соответствующий класс
-
 // ===================================================================================================================================================
 
-// Данный код делает кастомную фракцию пагинации в свайпере
-
-// Классы меняются на свои , так же кнопки вперед назад меняют чиста в кастомной фракции
+// Кастомная фракция пагинации в слайдере. Данный код делает кастомную фракцию пагинации в свайпере. Классы меняются на свои , так же кнопки вперед назад меняют числа в кастомной фракции
 
 const swiper = new Swiper('.swiper', {
   direction: 'horizontal',
@@ -72,7 +61,6 @@ const swiper = new Swiper('.swiper', {
   observeParents: true,
   slidesPerView: 1,
   spaceBetween: 0,
-  // loop: true,
   pagination: {
     el: '.swiper-pagination',
     clickable: true,
@@ -108,13 +96,11 @@ const swiper = new Swiper('.swiper', {
 </div>
 </div> */
 
-// Данный код делает кастомную фракцию пагинации в свайпере
-
 // ===================================================================================================================================================
 
-// Скрипт позволяет при нажатии на кнопку перейти плавно к началу страницы
+// Плавный переход к началу страницы при нажатии на кнопку. Скрипт позволяет при нажатии на кнопку перейти плавно к началу страницы
 
-// const buttonUp = document.querySelector(".button-up ");
+const buttonUp = document.querySelector(".button-up ");
 
 function top() {
   window.scrollTo({
@@ -130,6 +116,8 @@ buttonUp.addEventListener("click", function () {
 
 // ===================================================================================================================================================
 
+// При ховере появляется скрытый элемент
+
 const b = document.querySelectorAll(".wrapper") // элемент на которой наводишься и должен появляться скрытый список
 const e = document.querySelectorAll(".e"); // скрытый список
 
@@ -143,32 +131,6 @@ b.forEach(function (b) {
     b.querySelector('.e').classList.remove("eeeeee")
   })
 })
-// ===================================================================================================================================================
-
-// Закрытие при нажатии вне элемента
-
-const btnMenu = document.querySelector(".btn");
-const menu = document.querySelector(".menu");
-
-function toggleMenu() {
-  menu.classList.toggle("menu-active");
-}
-
-btnMenu.addEventListener("click", function (e) {
-  e.stopPropagation();
-  toggleMenu();
-});
-
-document.addEventListener("click", function (e) {
-  const target = e.target;
-  const itsMenu = target == menu || menu.contains(target);
-  const itsBtnMenu = target == btnMenu;
-  const menuIsActive = menu.classList.contains("menu-active");
-
-  if (!itsMenu && !itsBtnMenu && menuIsActive) {
-    toggleMenu();
-  }
-});
 
 // ===================================================================================================================================================
 
@@ -286,7 +248,6 @@ document.addEventListener("click", function (e) {
     popupScroll = null; // Остановка работы функции
   }
 
-
 })
 
 function popupScroll() { // Функция
@@ -332,7 +293,7 @@ window.addEventListener("scroll", function (e) {
 
 // ===================================================================================================================================================
 
-// как проверить отправляется форма или нет
+// Как проверить отправляется форма или нет
 
 function checkedFormSubmit() {
 
@@ -340,9 +301,7 @@ function checkedFormSubmit() {
 
 }
 
-/* <form onsubmit="checkedFormSubmit();return false" class="form" action="#!" name="Форма расчёта" autocomplete="on" aria-label="Форма">
-
-</form> */
+/* <form onsubmit="checkedFormSubmit();return false" class="form" action="#!" name="Форма расчёта" autocomplete="on" aria-label="Форма"> </form> */
 
 // ===================================================================================================================================================
 
@@ -459,7 +418,7 @@ if (blockTimer) {
 
 // ===================================================================================================================================================
 
-// Супер круто сделанная фича. Выбираешь в каталоге (через чекбокс) товар, и он появляется над списком.
+// Крутая фича для интернет магазинов. Супер круто сделанная фича. Выбираешь в каталоге (через чекбокс) товар, и он появляется над списком.
 
 const catalogtags = document.querySelector(".catalog__tags");
 
@@ -658,41 +617,11 @@ document.addEventListener("click", function (e) {
 
 // ===================================================================================================================================================
 
-// Плавный переход к элементу через якорь, лучше использовать в лендингах где нет других страниц, так как если переход стоит на другую страницу все будет не оч работать
+// Анимация при появление элемента в экране или при определенном количестве пикселей до элемента. Анимация если элемент попадается в поле зрения пользователя то даётся класс актив, можно менять ширину просмотра с помощью threshold, т.е получать класс раньше или позже
 
-document.addEventListener("click",function(e) {
-  const elementInteractive = e.target;
-
-  if(elementInteractive.hasAttribute("data-goto")) {
-
-    const elementGoto = document.querySelector(`${elementInteractive.dataset.goto}`);
-
-    const headerHeight = document.querySelector(".header").offsetHeight; // блок хеадера
-
-    if(elementGoto) {
-        window.scrollTo({
-          top: elementGoto.offsetTop - headerHeight,
-          behavior: "smooth",
-        })
-    }
-
-  }
-  
-})
-
-/* <a data-goto=".about" class="links__link" href="#!">Link 1</a> // ссылка якорь
-
-<div class="qeq about" style="height: 1000px; background-color: red;"> // элемент якоря
-  about
-</div> */
-
-// ===================================================================================================================================================
-
-// Анимация, если элемент попадается в поле зрения пользователя то даётся класс актив, можно менять ширину просмотра с помощью threshold, т.е получать класс раньше или позже
-
-let observer = new IntersectionObserver(function(entries) {
-  entries.forEach(function(entry) {
-    if(entry.isIntersecting) {
+let observer = new IntersectionObserver(function (entries) {
+  entries.forEach(function (entry) {
+    if (entry.isIntersecting) {
       entry.target.classList.add("active")
       console.log(entry)
     } else {
@@ -703,7 +632,7 @@ let observer = new IntersectionObserver(function(entries) {
   threshold: 0,
 })
 
-document.querySelectorAll(".section").forEach(function(e) {
+document.querySelectorAll(".section").forEach(function (e) {
   observer.observe(e)
 })
 
@@ -756,7 +685,7 @@ document.querySelectorAll(".section").forEach(function(e) {
 
 // ===================================================================================================================================================
 
-// при  прокручивание скролом до 1200 пикселей высоты классу контейнер дается доп класс
+// Анимация при появление элемента в экране или при определенном количестве пикселей до элемента. При  прокручивание скролом до 1200 пикселей высоты классу контейнер дается доп класс
 
 const con = document.querySelector(".container");
 document.addEventListener("scroll", function () {
@@ -787,7 +716,7 @@ document.addEventListener("scroll", function () {
 
 // ===================================================================================================================================================
 
-// Можно делать анимацию , суть в том что если до родителя остается 600 пикселей то срабатывает код
+// Анимация при появление элемента в экране или при определенном количестве пикселей до элемента. Можно делать анимацию , суть в том что если до родителя остается 600 пикселей то срабатывает код
 
 document.addEventListener("scroll", function (e) {
 
@@ -809,48 +738,11 @@ document.addEventListener("scroll", function (e) {
 
 // ===================================================================================================================================================
 
-// можно сделать анимацию при скролле, помимо опасити можно использовать трансформ, и так далее
-
-window.addEventListener("scroll", function () {
-  let scrollY = window.scrollY; // возвращает число пикселей, на которое документ пролистали в данный момент по вертикали.
-
-  let mapOffset = document.querySelector("#map").offsetTop; // родитель по которому будет срабатывать весь код когда до него останется 700 пикселей
-
-  if (scrollY >= mapOffset - 700) {
-
-    document.querySelectorAll(".modules-container-card").forEach(function (e) { // элементы в родителе, можно просто повешать на родителя
-
-      const contentElement = document.querySelector("#map"); // родитель
-
-      const windowHeight = window.innerHeight; // возвращает высоту элемента, включая внутренние отступы, в пикселях.
-
-      const finalPosition = scrollY / (contentElement.offsetTop - windowHeight) * 0.3;
-
-      const bigImageTranslate = 10 / 4.1 * finalPosition; // расчет с какой интенсивностью будет меняться число которое вставляется в опасити
-
-      e.style.opacity = `${bigImageTranslate}`;
-
-    })
-
-  } else {
-
-    document.querySelectorAll(".modules-container-card").forEach(function (e) {
-
-      e.style.opacity = 0
-
-    })
-
-  }
-
-})
-
-// ===================================================================================================================================================
-
 // Ограничение символов для написания в инпут
 
-document.querySelectorAll(".wrapper-input__input").forEach(function(a) {
-  a.oninput = function() {
-    this.value = this.value.substr(0,10);
+document.querySelectorAll(".wrapper-input__input").forEach(function (a) {
+  a.oninput = function () {
+    this.value = this.value.substr(0, 10);
   }
 })
 
@@ -858,43 +750,145 @@ document.querySelectorAll(".wrapper-input__input").forEach(function(a) {
 
 // ===================================================================================================================================================
 
-  function setCookie(name, value, days) {
-    let expires = "";
-    if (days) {
-      let date = new Date();
-      date.setTime(date.getTime() + days * 24 * 60 * 60 * 1000);
-      expires = "; expires=" + date.toUTCString();
-    }
-    document.cookie = name + "=" + (value || "") + expires + "; path=/";
+// Куки через функцию
+
+function setCookie(name, value, days) {
+  let expires = "";
+  if (days) {
+    let date = new Date();
+    date.setTime(date.getTime() + days * 24 * 60 * 60 * 1000);
+    expires = "; expires=" + date.toUTCString();
+  }
+  document.cookie = name + "=" + (value || "") + expires + "; path=/";
+}
+
+function getCookie(name) {
+  let matches = document.cookie.match(
+    new RegExp(
+      "(?:^|; )" +
+      name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, "\\$1") +
+      "=([^;]*)"
+    )
+  );
+  return matches ? decodeURIComponent(matches[1]) : undefined;
+}
+
+function checkCookies() {
+  let cookieNote = document.querySelector(".popup-active"); // элемент
+  let cookieBtnAccept = cookieNote.querySelector(".popup__button"); // кнопка
+
+  // Если куки cookies_policy нет или она просрочена, то показываем уведомление
+  if (!getCookie("cookies_policy")) {
+    cookieNote.classList.add("show");
   }
 
-  function getCookie(name) {
-    let matches = document.cookie.match(
-      new RegExp(
-        "(?:^|; )" +
-          name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, "\\$1") +
-          "=([^;]*)"
-      )
-    );
-    return matches ? decodeURIComponent(matches[1]) : undefined;
-  }
+  // При клике на кнопку устанавливаем куку cookies_policy на один год
+  cookieBtnAccept.addEventListener("click", function () {
+    setCookie("cookies_policy", "true", 365);
+    cookieNote.classList.remove("show");
+  });
+}
 
-  function checkCookies() {
-    let cookieNote = document.querySelector(".popup-active"); // элемент
-    let cookieBtnAccept = cookieNote.querySelector(".popup__button"); // кнопка
-
-    // Если куки cookies_policy нет или она просрочена, то показываем уведомление
-    if (!getCookie("cookies_policy")) {
-      cookieNote.classList.add("show");
-    }
-
-    // При клике на кнопку устанавливаем куку cookies_policy на один год
-    cookieBtnAccept.addEventListener("click", function () {
-      setCookie("cookies_policy", "true", 365);
-      cookieNote.classList.remove("show");
-    });
-  }
-
-  checkCookies();
+checkCookies();
 
 // ===================================================================================================================================================
+
+// Куки через localstorage
+
+const popupId = document.querySelector(".popup").getAttribute("id"); // получается id попапа
+
+const popupStorage = localStorage.getItem("popup"); // создаем ключ в localstorage в который будем помещать popup
+
+if (popupStorage !== null) {
+
+  const popupStorageParse = JSON.parse(popupStorage);
+
+  if (popupStorageParse.indexOf(popupId) !== -1) {
+
+    document.querySelector(".popup").classList.add("popup-disabled");
+
+    setTimeout(() => {
+      localStorage.removeItem(popupId)
+    }, 5000000);
+
+  }
+}
+
+document.addEventListener("click", function (e) {
+
+  const itemTarget = e.target;
+
+  if (itemTarget.closest(".popup__btn")) {
+
+    document.querySelector(".popup").classList.add("popup-disabled");
+
+    localStorage.setItem("popup", JSON.stringify(popupId));
+
+  }
+})
+
+// .popup {
+//     position: fixed;
+//     display: flex;
+//     align-items: center;
+//     justify-content: center;
+//     top: 0;
+//     left: 0;
+//     width: 100vw;
+//     height: 100vh;
+//     z-index: 100;
+//     transition: opacity .3s linear, visibility .3s linear;
+//   &.popup-disabled {
+//     display: none;
+//   }
+//   &__close {
+//     position: absolute;
+//     top: 0;
+//     left: 0;
+//     width: 100%;
+//     height: 100%;
+//     background-color: rgba(0, 0, 0, .5);
+//     z-index: 1;
+//   }
+//   &__body {
+//     position: relative;
+//     z-index: 2;
+//     background-color: #fff;
+//     width: 600px;
+//     padding: 30px 0;
+//   }
+//   &__text {
+//     text-align: center;
+//     font-size: 30px;
+//     line-height: 1.3;
+//     color: #000;
+//     font-weight: 400;
+//     margin-bottom: 30px;
+//   }
+//   &__btn {
+//     display: flex;
+//     align-items: center;
+//     justify-content: center;
+//     padding: 10px 20px;
+//     background-color: #000;
+//     font-weight: 400;
+//     font-size: 20px;
+//     line-height: 20px;
+//     color: #fff;
+//     width: fit-content;
+//     min-width: 200px;
+//     min-height: 60px;
+//     margin: 0 auto;
+//     cursor: pointer;
+//   }
+// }
+
+/* <div class="popup" id="popup">
+<div class="popup__close"></div>
+<div class="popup__body">
+  <p class="popup__text">
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum vel rem ullam ipsum dicta expedita quisquam pariatur, doloremque sed quasi. Accusantium soluta nesciunt alias excepturi aut nobis harum quas eius!
+  </p>
+  <button class="popup__btn">Click</button>
+</div>
+</div> */

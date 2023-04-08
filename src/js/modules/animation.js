@@ -1,17 +1,22 @@
-// Гриншок 
+// Гриншок - плавный скролл страницы и скроллтриггер
+
+// не забыть подключить библиотеку, из папки animates, gsap и все файлы
 
 gsap.registerPlugin(ScrollTrigger, ScrollSmoother)
 
+// if (document.body.clientWidth >= 1024) { // отключаем работу плавного скролла и скролл триггера
 if (ScrollTrigger.isTouch !== 1) { // работает только на устройствах которые не tach
 
 	ScrollSmoother.create({
 		wrapper: '.wrapper', // оболочка
-		content: '.content', // контент который будет плавно скролиться
+		content: '.content', // контент который будет плавно скролиться, не забыть прописать will-change: transform;
 		smooth: 1.5, // скорость
 		effects: true // возможность влиять на скорость скрола у отдельных элементов data-speed=".6"
 	})
 
-	gsap.fromTo('.hero-section', { opacity: 1 }, { // первые {} - код который до выполнения анимации, вторые {} - код во время выполнения анимации
+	gsap.fromTo('.hero-section', {
+		opacity: 1
+	}, { // первые {} - код который до выполнения анимации, вторые {} - код во время выполнения анимации
 		opacity: 0,
 		scrollTrigger: {
 			trigger: '.hero-section', // когда в поле зрения появляется этот элемент, начинается анимация
@@ -24,8 +29,12 @@ if (ScrollTrigger.isTouch !== 1) { // работает только на уст�
 	let itemsL = gsap.utils.toArray('.gallery__left .gallery__item') // если таких элементов много, то это нужно для того чтобы при достижение определенного элемента начиналась анимация
 
 	itemsL.forEach(item => {
-		gsap.fromTo(item, { opacity: 0, x: -50 }, {
-			opacity: 1, x: 0,
+		gsap.fromTo(item, {
+			opacity: 0,
+			x: -50
+		}, {
+			opacity: 1,
+			x: 0,
 			scrollTrigger: {
 				trigger: item,
 				start: '-850',
@@ -38,8 +47,12 @@ if (ScrollTrigger.isTouch !== 1) { // работает только на уст�
 	let itemsR = gsap.utils.toArray('.gallery__right .gallery__item')
 
 	itemsR.forEach(item => {
-		gsap.fromTo(item, { opacity: 0, x: 50 }, {
-			opacity: 1, x: 0,
+		gsap.fromTo(item, {
+			opacity: 0,
+			x: 50
+		}, {
+			opacity: 1,
+			x: 0,
 			scrollTrigger: {
 				trigger: item,
 				start: '-750',
@@ -51,8 +64,40 @@ if (ScrollTrigger.isTouch !== 1) { // работает только на уст�
 
 }
 
+// Если , на странице где используется плавный скролл gsap'a есть аккордеон, то делаем так. onComplete: () => ScrollTrigger.refresh() расчитывает по новой высоту страницы, если аккордеон находится в низу страницы, и при открытии дергается страница то нужно вместо этого onComplete: () => ScrollTrigger.refresh() писать вот так onUpdate: () => ScrollTrigger.refresh(),
+
+// if (elementInteractive.closest(".menu-restaraunt__item")) { // Открытие и закрытие бургера
+
+//   const menuResItem = elementInteractive.closest(".menu-restaraunt__item");
+
+//   const menuResItemBottom = elementInteractive.closest(".menu-restaraunt__item").querySelector(".menu-restaraunt__bottom");
+
+//   if (!menuResItem.classList.contains("active")) {
+
+//     menuResItem.classList.add("active");
+
+//     gsap.to(menuResItemBottom, {
+//       height: "auto",
+//       onComplete: () => ScrollTrigger.refresh()
+//      });
+
+//   } else if(menuResItem.classList.contains("active")){
+
+//     menuResItem.classList.remove("active");
+
+//     gsap.to(menuResItemBottom, {
+//       height: 0,
+//       onComplete: () => ScrollTrigger.refresh()
+//      });
+//   }
+
+// }
+
 // ------------------------------------------------------------------------------------------------------------------------------------------------
 
+// Гриншок 
+
+// не забыть подключить библиотеку, из папки animates, gsap 
 
 // const openBtn = document.querySelector(".open-btn")
 // const collapseBtn = document.querySelector(".collapse-btn")
@@ -84,6 +129,45 @@ if (ScrollTrigger.isTouch !== 1) { // работает только на уст�
 
 // AOS
 
+// не забыть подключить библиотеку, из папки animates, aos все файлы
+
 // AOS.init({
 //   duration: 900,
 // });
+
+// ------------------------------------------------------------------------------------------------------------------------------------------------
+
+// Плавный скролл 
+
+// не забыть подключить библиотеку, из папки animates, smooth-scroll-page, smooth-scroll.js
+
+SmoothScroll({
+	animationTime: 800,
+	stepSize: 170,
+
+	accelerationDelta: 50,
+	accelerationMax: 1,
+
+	keyboardSupport: true,
+	arrowScroll: 50,
+
+	pulseAlgorithm: true,
+	pulseScale: 4,
+	pulseNormalize: 1,
+
+	touchpadSupport: false,
+	fixedBackground: true,
+	excluded: ''
+})
+
+// Плавный скролл butty
+
+// не забыть подключить библиотеку, из папки animates, smooth-scroll-page, butty.js
+
+// const options = {
+//   wrapperId: 'scrolles', // блок, в котором будет происходить плавный скролл
+//   wrapperDamper: 0.10, // время
+//   cancelOnTouch: true // Хз))
+// };
+
+// butter.init(options);

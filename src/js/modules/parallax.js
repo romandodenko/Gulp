@@ -1,4 +1,4 @@
-//  Паралакс эффект
+//  Паралакс эффект , лучше применять в тот момент когда нужно наложить параллакс на фон блока
 
 const parallax = document.querySelector(".parallax")
 
@@ -77,14 +77,8 @@ if (parallax) {
   }
 }
 
-
-
 /* 
-
-
             HTML
-
-
 
 <div class="wrapper">
 <section class="parallax">
@@ -110,9 +104,8 @@ if (parallax) {
 
           CSS
 
-          .parallax {
+.parallax {
   min-height: 100vh;
-
 }
 .parallax__body {
   position: fixed;
@@ -194,5 +187,57 @@ if (parallax) {
   z-index: 3;
 }
 
-
 */
+
+//  Паралакс эффект , лучше применять в тот момент когда нужно наложить параллакс на элементы. Не забыть подключить файл из папки resources - parallax
+
+// var scene = document.getElementById('scene');
+// var parallaxInstance = new Parallax(scene);
+
+  /* <div id="scene">
+  <div class="image" data-depth="0.2">
+    <img src="./3BZ1khslVBc.jpg" alt="">
+  </div>
+  <div class="image-2" data-depth-x="-0.5">
+    <img src="./3JO6YwYgClk.jpg" alt="">
+  </div>
+    <div class="image-2" data-depth-y="-0.5">
+    <img src="./3JO6YwYgClk.jpg" alt="">
+  </div>
+  </div>
+
+  #scene {
+    position: absolute;
+    top: 0;
+    left: 0;
+    min-height: 100vh;
+    width: 80vw;
+    background-color: #cacaca;
+  }
+  .image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 200px;
+    height: 200px;
+    overflow: hidden;
+    border-radius: 50%;
+  }
+
+  .image-2 {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 200px;
+    height: 200px;
+    overflow: hidden;
+    border-radius: 50%;
+  }
+
+  img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: center;
+  } */

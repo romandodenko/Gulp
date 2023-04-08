@@ -42,9 +42,29 @@ testWebP(function (support) {
   }
 });
 
-// Плавный скролл к элементу
+// Плавный скролл на странице
 
-var scroll = new SmoothScroll('a[href*="#"]', {
-  speed: 1000,
-  speedAsDuration: true
+const pageLinks = document.querySelectorAll('a[href^="#"]');
+
+// добавляем обработчик события на каждую ссылку
+pageLinks.forEach(link => {
+  link.addEventListener('click', function (event) {
+    // отменяем стандартное поведение ссылки
+    event.preventDefault();
+
+    // получаем id элемента, на который ссылается якорь
+    const id = this.getAttribute('href').substring(1);
+
+    // находим элемент на странице по id
+    const element = document.getElementById(id);
+
+    // вычисляем координаты элемента на странице
+    const top = element.getBoundingClientRect().top + window.pageYOffset;
+
+    // запускаем анимацию скролла к элементу
+    window.scrollTo({
+      top,
+      behavior: 'smooth'
+    });
+  });
 });

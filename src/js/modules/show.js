@@ -7,29 +7,23 @@ function showCode(showBtn, itemsNum, collapseBtn, listItem, lists) {
   const list = document.querySelector(`.${lists}`);
   const productsLength = itemsList.length; // получаем количество карточек
   let items = itemsNum; // элементы которые изначально показаны на странице, у меня в примере 6 , если меняем здесь чисто то и меняем число в items ниже, где вешаем событие на collapse
-  console.log(productsLength)
-  if (productsLength > items) { // проверка, если элементов больше чем показано, то кнопка показать ещё появляется
+  if (productsLength > items) { // если при загрузке страницы нужно чтобы кнопка показывалась
     show.classList.add("is-visible")
-    show.addEventListener("click", function () {
-      items += 5; // число элементов которые будут добавляться при клике на кнопку показать ещё
-
+  }
+  show.addEventListener("click", function () {
+    // if (productsLength > (items - 3)) { Если плохо работает, то пробуем так // пишем вместо 3 чисто из items +3 которое ниже
+    if (productsLength > items) { // пишем вместо 3 чисто из items +3 которое ниже
+      items += 3; // число элементов которые будут добавляться при клике на кнопку показать ещё
       const array = Array.from(list.children); // собираем массив элементов в списке
-
       const visibleItems = array.slice(0, items) // видимые элементы
-
       visibleItems.forEach(function (visibleItems) {
         visibleItems.classList.add("is-visible")
       })
-
-      if (items === productsLength) { // если элементов больше нет которые нужно показать кнопка скрывается
-        show.classList.remove("is-visible")
-        collapse.classList.add("is-visible")
-      } else if (items > productsLength) {
-        show.classList.remove("is-visible")
-        collapse.classList.add("is-visible")
-      }
-    })
-  }
+    } else {
+      show.classList.remove("is-visible")
+      collapse.classList.add("is-visible")
+    }
+  })
 
   collapse.addEventListener("click", function () {
     itemsList.forEach(function (it) {
@@ -43,6 +37,7 @@ function showCode(showBtn, itemsNum, collapseBtn, listItem, lists) {
     }
   })
 }
+
 showCode("класс кнопки которая показывает элементы", "число элементов которое показывается", "класс кнопки которая скрывает элементы", "класс элементов списка", "класс списка")
 
 

@@ -1,62 +1,69 @@
-<?
-require_once 'PHPMailer/PHPMailerAutoload.php';
+<?php
+// Файлы phpmailer
+require 'phpmailer/PHPMailer.php';
+require 'phpmailer/SMTP.php';
+require 'phpmailer/Exception.php';
 
-$admin_email = array();
-foreach ( $_POST["admin_email"] as $key => $value ) {
-	array_push($admin_email, $value);
-}
-
-$form_subject = trim($_POST["form_subject"]);
-
-$mail = new PHPMailer;
-$mail->CharSet = 'UTF-8';
-
-
+$title = "Тема письма";
+$file = $_FILES['file'];
 
 $c = true;
-$message = '';
+// Формирование самого письма
+$title = "Заголовок письма";
 foreach ( $_POST as $key => $value ) {
-	if ( $value != ""  && $key != "admin_email" && $key != "form_subject" ) {
-		if (is_array($value)) {
-			$val_text = '';
-			foreach ($value as $val) {
-				if ($val && $val != '') {
-					$val_text .= ($val_text==''?'':', ').$val;
-				}
-			}
-			$value = $val_text;
-		}
-		$message .= "
-		" . ( ($c = !$c) ? '<tr>':'<tr>' ) . "
-		<td style='padding: 10px; width: auto;'><b>$key:</b></td>
-		<td style='padding: 10px;width: 100%;'>$value</td>
-		</tr>
-		";
-	}
+  if ( $value != "" && $key != "project_name" && $key != "admin_email" && $key != "form_subject" ) {
+    $body .= "
+    " . ( ($c = !$c) ? '<tr>':'<tr style="background-color: #f8f8f8;">' ) . "
+      <td style='padding: 10px; border: #e9e9e9 1px solid;'><b>$key</b></td>
+      <td style='padding: 10px; border: #e9e9e9 1px solid;'>$value</td>
+    </tr>
+    ";
+  }
 }
-$message = "<table style='width: 50%;'>$message</table>";
 
+$body = "<table style='width: 100%;'>$body</table>";
 
-// От кого
-$mail->setFrom('adm@' . $_SERVER['HTTP_HOST'], 'Blanchard - художественная галерея');
- 
-// Кому
-foreach ( $admin_email as $key => $value ) {
-	$mail->addAddress($value);
+// Настройки PHPMailer
+$mail = new PHPMailer\PHPMailer\PHPMailer();
+
+try {
+  $mail->isSMTP();
+  $mail->CharSet = "UTF-8";
+  $mail->SMTPAuth   = true;
+
+  // Настройки вашей почты , если что нужно менять почты для каждого сайта
+  $mail->Host = 'smtp.yandex.ru'; // SMTP сервера вашей почты
+  $mail->Username   = 'gorikgornov'; // Логин на почте , если использовать yandex то нужно указывать логин, а не всю почту
+  $mail->Password   = '777555ppc333ppp1'; // Пароль на почте
+  $mail->SMTPSecure = 'ssl';
+  $mail->Port       = 465;
+
+  $mail->setFrom('gorikgornov@yandex.ru', 'Заявка с вашего сайта'); // Адрес самой почты и имя отправителя
+
+  // Получатель письма
+  $mail->addAddress('');
+
+  // Прикрипление файлов к письму
+  if (!empty($file['name'][0])) {
+    for ($ct = 0; $ct < count($file['tmp_name']); $ct++) {
+      $uploadfile = tempnam(sys_get_temp_dir(), sha1($file['name'][$ct]));
+      $filename = $file['name'][$ct];
+      if (move_uploaded_file($file['tmp_name'][$ct], $uploadfile)) {
+          $mail->addAttachment($uploadfile, $filename);
+          $rfile[] = "Файл $filename прикреплён";
+      } else {
+          $rfile[] = "Не удалось прикрепить файл $filename";
+      }
+    }
+  }
+
+  // Отправка сообщения
+  $mail->isHTML(true);
+  $mail->Subject = $title;
+  $mail->Body = $body;
+
+  $mail->send();
+
+} catch (Exception $e) {
+  $status = "Сообщение не было отправлено. Причина ошибки: {$mail->ErrorInfo}";
 }
-// Тема письма
-$mail->Subject = $form_subject;
- 
-// Тело письма
-$body = $message;
-// $mail->isHTML(true);  это если прям верстка
-$mail->msgHTML($body);
-
-// Приложения
-if ($_FILES){
-	foreach ( $_FILES['file']['tmp_name'] as $key => $value ) {
-		$mail->addAttachment($value, $_FILES['file']['name'][$key]);
-	}
-}
-$mail->send();
-?>
