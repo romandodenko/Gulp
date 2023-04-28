@@ -1,5 +1,7 @@
 // Яндекс карта
 
+// !!!!!!!!!!!!!!!!! Карта яндекс работает только с апи ключом разработчика, делается в яндекс кабинет разработчика. По правилам ничего с карты удалять нельзя, никакие метки. Если нужно удалить то нужно купить платный апи ключ и написать яндекс !!!!!!!!!!!!!!!!!!
+
 const mapClass = document.querySelector(".contacts__map")
 if (mapClass) {
   ymaps.ready(init);
@@ -19,13 +21,13 @@ if (mapClass) {
     });
 
     myMap.geoObjects.add(myPlacemark);
-    myMap.controls.remove('geolocationControl'); // удаляем геолокацию
-    myMap.controls.remove('searchControl'); // удаляем поиск
-    myMap.controls.remove('trafficControl'); // удаляем контроль трафика
-    myMap.controls.remove('typeSelector'); // удаляем тип
-    myMap.controls.remove('fullscreenControl'); // удаляем кнопку перехода в полноэкранный режим
-    myMap.controls.remove('zoomControl'); // удаляем контрол зуммирования
-    myMap.controls.remove('rulerControl'); // удаляем контрол правил
+    // myMap.controls.remove('geolocationControl'); // удаляем геолокацию
+    // myMap.controls.remove('searchControl'); // удаляем поиск
+    // myMap.controls.remove('trafficControl'); // удаляем контроль трафика
+    // myMap.controls.remove('typeSelector'); // удаляем тип
+    // myMap.controls.remove('fullscreenControl'); // удаляем кнопку перехода в полноэкранный режим
+    // myMap.controls.remove('zoomControl'); // удаляем контрол зуммирования
+    // myMap.controls.remove('rulerControl'); // удаляем контрол правил
   }
 
 

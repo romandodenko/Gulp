@@ -24,6 +24,7 @@ export const path = {
     dist: `${devFolder}/`,
     html: `${devFolder}/**/*.html`,
     copyBuild: `${devFolder}/**`,
+    jsonFile: `${devFolder}/json/`,
   },
   src: {
     js: `${srcFolder}/js/main.js`,
@@ -34,6 +35,7 @@ export const path = {
     svg: `${srcFolder}/img/**/*.svg`,
     html: `${srcFolder}/**/*.html`,
     src: `${srcFolder}/**`,
+    jsonFile: `${srcFolder}/json/**`,
   },
   watch: {
     js: `${srcFolder}/js/**/*.js`,

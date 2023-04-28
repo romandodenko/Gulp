@@ -23,6 +23,7 @@ import { scss, cssBuild } from './gulp/tasks/scss.js';
 import { js } from './gulp/tasks/js.js';
 import { images, imagesBuild } from './gulp/tasks/images.js';
 import { fonts } from './gulp/tasks/fonts.js';
+import { jsonFile } from './gulp/tasks/jsonFile.js';
 
 // Наблюдатель за изменениями в файлах
 function watcher() {
@@ -31,11 +32,11 @@ function watcher() {
   gulp.watch(path.watch.js, js);
   gulp.watch(path.watch.images, images);
   gulp.watch(path.watch.video);
-  gulp.watch(path.watch.jsonFile);
+  gulp.watch(path.watch.jsonFile, jsonFile);
 }
 
 // Построение сценариев задач по умолчанию
-const mainTasks = gulp.series(gulp.parallel(copy, fonts, html, scss, images));
+const mainTasks = gulp.series(gulp.parallel(copy, fonts, html, scss, images, jsonFile));
 
 const dev = gulp.series(reset, mainTasks, js, gulp.parallel(watcher, resetFonts, cleanScss, cleanJs, server));
 
