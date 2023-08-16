@@ -33,15 +33,15 @@ try {
 
   // Настройки вашей почты , если что нужно менять почты для каждого сайта
   $mail->Host = 'smtp.yandex.ru'; // SMTP сервера вашей почты
-  $mail->Username   = 'gorikgornov'; // Логин на почте , если использовать yandex то нужно указывать логин, а не всю почту
-  $mail->Password   = '777555ppc333ppp1'; // Пароль на почте
+  $mail->Username   = 'gorikgoSSrnov'; // Логин на почте , если использовать yandex то нужно указывать логин, а не всю почту
+  $mail->Password   = '777555ppcSS333ppp1QQ'; // Пароль на почте
   $mail->SMTPSecure = 'ssl';
   $mail->Port       = 465;
 
   $mail->setFrom('gorikgornov@yandex.ru', 'Заявка с вашего сайта'); // Адрес самой почты и имя отправителя
 
   // Получатель письма
-  $mail->addAddress('');
+  $mail->addAddress('creed6695@mail.ru');
 
   // Прикрипление файлов к письму
   if (!empty($file['name'][0])) {

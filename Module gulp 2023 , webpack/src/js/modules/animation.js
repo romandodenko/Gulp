@@ -69,30 +69,41 @@ export function animation() {
 
 	// Если , на странице где используется плавный скролл gsap'a есть аккордеон, то делаем так. onComplete: () => ScrollTrigger.refresh() расчитывает по новой высоту страницы, если аккордеон находится в низу страницы, и при открытии дергается страница то нужно вместо этого onComplete: () => ScrollTrigger.refresh() писать вот так onUpdate: () => ScrollTrigger.refresh(),
 
-	// if (elementInteractive.closest(".menu-restaraunt__item")) { // Открытие и закрытие бургера
+	// if (elementInteractive.closest(".casino__button")) { // Открытие и закрытие бургера
 
-	//   const menuResItem = elementInteractive.closest(".menu-restaraunt__item");
+	// 	const casinoItem = elementInteractive.closest(".casino__item");
 
-	//   const menuResItemBottom = elementInteractive.closest(".menu-restaraunt__item").querySelector(".menu-restaraunt__bottom");
+	// 	const casinoItemPays = casinoItem.querySelector(".casino__pays");
 
-	//   if (!menuResItem.classList.contains("active")) {
+	// 	if (!casinoItem.classList.contains("active")) {
 
-	//     menuResItem.classList.add("active");
+	// 		document.querySelectorAll(".casino__item").forEach(function(e) {
+	// 			e.classList.remove("active");
+	// 			gsap.to(e.querySelector(".casino__pays"), {
+	// 				opacity: .2,
+	// 				marginTop: "-45px",
+	// 				height: payHeight,
+	// 			});
+	// 		})
 
-	//     gsap.to(menuResItemBottom, {
-	//       height: "auto",
-	//       onComplete: () => ScrollTrigger.refresh()
-	//      });
+	// 		casinoItem.classList.add("active");
 
-	//   } else if(menuResItem.classList.contains("active")){
+	// 		gsap.to(casinoItemPays, {
+	// 			opacity: 1,
+	// 			marginTop: 0,
+	// 			height: 'auto',
+	// 		});
 
-	//     menuResItem.classList.remove("active");
+	// 	} else if (casinoItem.classList.contains("active")) {
 
-	//     gsap.to(menuResItemBottom, {
-	//       height: 0,
-	//       onComplete: () => ScrollTrigger.refresh()
-	//      });
-	//   }
+	// 		casinoItem.classList.remove("active");
+
+	// 		gsap.to(casinoItemPays, {
+	// 			opacity: .2,
+	// 			marginTop: "-45px",
+	// 			height: payHeight,
+	// 		});
+	// 	}
 
 	// }
 

@@ -20,6 +20,10 @@
 //  19) Куки через localstorage
 //  20) trim() убирает пустое пространство у элемента
 //  21) Перекидывание элементов из 1 блока в другой
+//  22) Вставка видео на разнообразных разрешениях
+//  23) Как найти цсс свойство через js
+//  24) Закрытие при клике вне элемента
+//  25) Нумерование элементов
 
 // Проверка элеметов в родителе. Данный код проверяет сколько в родителе элементов, и дается соответствующий класс
 
@@ -976,4 +980,71 @@ if (tenderi) {
 </tr>
 <tr class="tenderi__tr tenderi__tr_bottom"></tr>
 </table> */
+// ---------------------------------------------------------------------------
+// Вставка видео на разнообразных разрешениях
+if (heroPrecetItem) {
+  if (document.body.clientWidth >= 1024) {
+    let template = `
+      <video class="hero__precet-video" src="./video/video-decstop.mp4" autoplay loop preload="none" muted playsinline width="100" height="100"></video>
+      `;
+    heroPrecetItem.insertAdjacentHTML("beforeend", template);
+  } else if (document.body.clientWidth <= 600) {
+    let template = `
+      <video class="hero__precet-video" src="./video/video-mobile.mp4" autoplay loop preload="none" muted playsinline width="100" height="100"></video>
+      `;
+    heroPrecetItem.insertAdjacentHTML("beforeend", template);
+  } else if (document.body.clientWidth <= 1024) {
+    let template = `
+      <video class="hero__precet-video" src="./video/video-tablet.mp4" autoplay loop preload="none" muted playsinline width="100" height="100"></video>
+      `;
+    heroPrecetItem.insertAdjacentHTML("beforeend", template);
+  }
+}
+
+// ---------------------------------------------------------------------------
+
+// Как найти цсс свойство через js
+const pay = document.querySelector(".casino__pay");
+
+const findPayHeight = pay.getBoundingClientRect();
+
+const payHeight = findPayHeight.height;
+
+// ---------------------------------------------------------------------------
+
+// Закрытие при клике вне элемента
+document.addEventListener("click", function (e) {
+  const elementInteractive = e.target;
+
+  if (elementInteractive.closest(".rdropdown")) {
+
+    if (!elementInteractive.closest(".rdropdown").classList.contains("active")) {
+      elementInteractive.closest(".rdropdown").classList.add("active");
+    }
+
+  } else {
+    document.querySelectorAll(".rdropdown").forEach(function (rd) {
+      rd.classList.remove("active");
+    })
+  }
+})
+
+// ---------------------------------------------------------------------------
+
+// Нумерование элементов
+const nummerInit = document.querySelector(".nummer");
+
+const nummerAll = document.querySelectorAll(".nummer");
+
+if(nummerInit) {
+  nummerAll.forEach(function(e, i) {
+    const likesSliderSlideIndex = e.querySelector(".nummer-num");
+    if((i + 1) < 10) {
+      likesSliderSlideIndex.innerHTML = "0" + (i + 1);
+    } else {
+      likesSliderSlideIndex.innerHTML = i + 1;
+    } 
+  })
+}
+
 // ---------------------------------------------------------------------------

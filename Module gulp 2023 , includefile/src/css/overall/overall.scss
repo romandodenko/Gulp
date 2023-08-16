@@ -53,3 +53,15 @@ main {
   border: 0;
   clip: rect(0 0 0 0);
 }
+
+.webp {
+  & .hero {
+    background-image: url(../../img/);
+  }
+}
+
+.no-webp {
+  & .hero {
+    background-image: url(../../img/);
+  }
+}
