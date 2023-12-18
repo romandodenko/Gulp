@@ -11,10 +11,16 @@
 
   // Цвета
   --background-page: #fff; // бекграунд страницы
-
+  --main: #ffffff;
+  --black: #000000;
+  --white: #ffffff;
+  --i: calc(1vw + 1vh);
+  
   --hover: #7B68EE; // цвет при ховере
   --active: #4169E1; // цвет при активе
 }
+
+// font-size: calc(var(--i) * 2); пример адаптивного шрифта
 
 .container {
   max-width: var(--container);
@@ -36,8 +42,9 @@
   font-family: var(--font-main);
   min-height: 100vh;
   overflow: hidden;
+  color: var(--main);
   background-color: var(--background-page);
-}
+} 
 
 main {
   flex: 1 1 auto;
@@ -52,16 +59,4 @@ main {
   overflow: hidden;
   border: 0;
   clip: rect(0 0 0 0);
-}
-
-.webp {
-  & .hero {
-    background-image: url(../../img/);
-  }
-}
-
-.no-webp {
-  & .hero {
-    background-image: url(../../img/);
-  }
 }

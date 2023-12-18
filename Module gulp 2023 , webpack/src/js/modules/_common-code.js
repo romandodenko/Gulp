@@ -24,6 +24,12 @@
 //  23) Как найти цсс свойство через js
 //  24) Закрытие при клике вне элемента
 //  25) Нумерование элементов
+//  26) Как у url после определенной строки получить значения
+//  27) IntersectionObserver - анимация, показ элементов при скролле и тд
+//  28) Плавный скролл на странице с помощью js
+//  29) Прибавляем 0.1 к элементу списка
+//  30) Разбиваем строку на элементы, а потом вставляем обратно обернув в спан
+//  31) Сокрытие пагинации в слайдере
 
 // Проверка элеметов в родителе. Данный код проверяет сколько в родителе элементов, и дается соответствующий класс
 
@@ -296,6 +302,78 @@ window.addEventListener("scroll", function (e) {
   clearTimeout(popupTimer);
   popupTimer = setTimeout(displayPopup, timeOut);
 })
+
+// При клике на кнопку все сбрасывается а потом по новой
+
+// let popupTimer, timeOut = 1000;
+
+const listItem = document.querySelectorAll(".list__item");
+
+function displayPopup() {
+  const q = Math.round(Math.random() * 2);
+
+  listItem.forEach(function (e, i) {
+    e.classList.remove('active');
+
+    if (i === q) {
+      e.classList.add('active');
+    }
+  })
+}
+
+popupTimer = setInterval(displayPopup, timeOut);
+
+window.addEventListener("click", function (e) {
+  let eTarget = e.target;
+
+  if (eTarget.closest(".list__exit")) { // Открытие и закрытие бургера
+    listItem.forEach(function (e) {
+      e.classList.remove('active');
+    })
+
+    clearTimeout(popupTimer);
+    popupTimer = setInterval(displayPopup, timeOut);
+  }
+
+})
+
+/* <ul class="list">
+  <li class="list__item">
+    <button class="list__exit"></button>
+  </li>
+  <li class="list__item">
+    <button class="list__exit"></button>
+  </li>
+  <li class="list__item">
+    <button class="list__exit"></button>
+  </li>
+</ul> */
+
+// .list {
+//   width: 100%;
+// }
+
+// .list__item {
+//   opacity: 0;
+//   display: flex;
+//   align-items: center;
+//   gap: 32px;
+//   height: 300px;
+//   width: 100%;
+//   background-color: red;
+//   margin-bottom: 32px;
+// }
+
+// .list__item.active {
+//   opacity: 1;
+// }
+
+// .list__exit {
+//   cursor: pointer;
+//   flex: 0 0 32px;
+//   height: 32px;
+//   background-color: blue;
+// }
 
 // ===================================================================================================================================================
 
@@ -623,71 +701,47 @@ document.addEventListener("click", function (e) {
 
 // ===================================================================================================================================================
 
-// Анимация при появление элемента в экране или при определенном количестве пикселей до элемента. Анимация если элемент попадается в поле зрения пользователя то даётся класс актив, можно менять ширину просмотра с помощью threshold, т.е получать класс раньше или позже
+// IntersectionObserver - анимация, показ элементов при скролле и тд
 
-let observer = new IntersectionObserver(function (entries) {
-  entries.forEach(function (entry) {
+const reloadItems = document.querySelectorAll('.reload-item')
+
+const options = {
+  root: null,
+  // root: document.querySelector( '#viewport' ), область наблюдения, по умолчанию это viewport, но можно указать другой элемент. главное помнить что это должен быть родитель
+  rootMargin: '0px', // В этот параметр мы можем передать значения, которыми можно увеличить или уменьшить область root-элемента
+  threshold: .5, // 0 значит что функция сработает когда первый пиксель коснется границы элемента на котором обсервер, у меня тут reloadItems. 0.5 половина, 1 когда весь элемент проскролишь
+}
+
+const callback = function (entries, observer) {
+
+  entries.forEach(entry => {
+    const ei = entry.target;
+    reloadItems.forEach(function (e, i) {
+      if ((i + 1) <= 3) {
+        e.classList.add("visible")
+      }
+    })
     if (entry.isIntersecting) {
-      entry.target.classList.add("active")
-      console.log(entry)
-    } else {
-      entry.target.classList.remove("active")
+      ei.classList.add("visible");
+      if (ei.nextElementSibling) {
+        ei.nextElementSibling.classList.add("visible")
+      }
     }
+
   })
-}, {
-  threshold: 0,
+
+}
+
+const observer = new IntersectionObserver(callback, options);
+
+reloadItems.forEach(i => {
+  observer.observe(i);
 })
 
-document.querySelectorAll(".section").forEach(function (e) {
-  observer.observe(e)
-})
-
-// .section {
-//   width: 100%;
-//   height: 1000px;
-// }
-// .section-1 {
-//   background-color: red;
-// }
-// .section-2 {
-//   background-color: bisque;
-// }
-// .title {
-//   transform: translateY(-100px);
-//   opacity: 0;
-//   margin-bottom: 100px;
-//   transition: opacity .3s linear, transform .3s linear;
-// }
-// .text {
-//   transform: translateX(-100px);
-//   opacity: 0;
-//   transition: opacity .3s linear, transform .3s linear;
-// }
-// .section.active .title {
-//   transform: translateY(0);
-//   opacity: 1;
-// }
-// .section.active .text {
-//   transform: translateX(0);
-//   opacity: 1;
-// }
-
-/* <section class="section section-1">
-<h1 class="title">
-  Lorem, ipsum dolor.
-</h1>
-<p class="text">
-  Lorem, ipsum dolor sit amet consectetur adipisicing elit. Obcaecati, impedit sunt quibusdam suscipit dignissimos quisquam recusandae autem rem molestias, expedita fugit consequatur totam corrupti, odio eos dolorum tempora veritatis fuga.
-</p>
-</section>
-<section class="section section-2">
-<h2 class="title">
-  Lorem, ipsum dolor.
-</h2>
-<p class="text">
-  Lorem, ipsum dolor sit amet consectetur adipisicing elit. Obcaecati, impedit sunt quibusdam suscipit dignissimos quisquam recusandae autem rem molestias, expedita fugit consequatur totam corrupti, odio eos dolorum tempora veritatis fuga.
-</p>
-</section> */
+/* <li class="card__item reload-item gal-init"> 
+</li>
+<li class="card__item reload-item gal-init"> 
+</li> */
 
 // ===================================================================================================================================================
 
@@ -1002,6 +1056,7 @@ if (heroPrecetItem) {
 }
 
 // ---------------------------------------------------------------------------
+
 // Как найти цсс свойство через js
 const pay = document.querySelector(".casino__pay");
 
@@ -1035,15 +1090,150 @@ const nummerInit = document.querySelector(".nummer");
 
 const nummerAll = document.querySelectorAll(".nummer");
 
-if(nummerInit) {
-  nummerAll.forEach(function(e, i) {
+if (nummerInit) {
+  nummerAll.forEach(function (e, i) {
     const likesSliderSlideIndex = e.querySelector(".nummer-num");
-    if((i + 1) < 10) {
+    if ((i + 1) < 10) {
       likesSliderSlideIndex.innerHTML = "0" + (i + 1);
     } else {
       likesSliderSlideIndex.innerHTML = i + 1;
-    } 
+    }
   })
+}
+
+// ---------------------------------------------------------------------------
+
+// Как у url после определенной строки получить значения
+const currentUrl = window.location.href; // получаем url
+
+const pageUrl = currentUrl;
+
+const pageNumber = pageUrl.split('page=').pop(); // получаем строку после page=
+
+// ---------------------------------------------------------------------------
+
+// Плавный скролл на странице с помощью js
+
+const pageLinks = document.querySelectorAll('a[href^="#"]');
+
+// добавляем обработчик события на каждую ссылку
+pageLinks.forEach(link => {
+  link.addEventListener('click', function (event) {
+    // отменяем стандартное поведение ссылки
+    event.preventDefault();
+
+    // получаем id элемента, на который ссылается якорь
+    const id = this.getAttribute('href').substring(1);
+
+    // находим элемент на странице по id
+    const element = document.getElementById(id);
+
+    // вычисляем координаты элемента на странице
+    const top = element.getBoundingClientRect().top + window.pageYOffset;
+
+    // запускаем анимацию скролла к элементу
+    window.scrollTo({
+      top,
+      behavior: 'smooth'
+    });
+  });
+});
+
+// ---------------------------------------------------------------------------
+
+// Прибавляем 0.1 к элементу списка
+
+const aboutList = document.querySelectorAll(".about__list");
+
+let timerAboutList = 0;
+
+aboutList.forEach(function (e) {
+
+  let thisAboutItem = e.querySelectorAll(".about__item");
+
+  thisAboutItem.forEach(function (o, i) {
+    if ((i + 1) <= thisAboutItem.length) {
+
+      timerAboutList += 0.1;
+      o.style.animationDelay = timerAboutList + "s";
+
+      if ((i + 1) == thisAboutItem.length) {
+        timerAboutList = 0;
+      }
+
+    }
+  })
+
+})
+
+// ---------------------------------------------------------------------------
+
+// Разбиваем строку на элементы, а потом вставляем обратно обернув в спан
+
+const contactsListLink = document.querySelectorAll(".contacts-list__link");
+
+contactsListLink.forEach(function (e) {
+
+  let bodyLink = e.dataset.content;
+  let bodyLinkSplit = bodyLink.split('');
+
+  bodyLinkSplit.forEach(function (q) {
+    let template = ` 
+   <span>
+     ${q}
+   </span> 
+   `;
+
+    e.innerHTML += template;
+  })
+})
+
+/* <a class="contacts-list__link tx-16-12" data-content="creed6695@mail.ru" href="mailto:creed6695@mail.ru"></a> */
+
+// ---------------------------------------------------------------------------
+
+// Сокрытие пагинации в слайдере
+
+if (elementInteractive.closest(".reviews-pag")) {
+  let elpag = elementInteractive.closest(".reviews-pag");
+
+  const reviewsPagAll = document.querySelectorAll(".reviews-pag");
+
+  let elpagNext = elpag.nextElementSibling;
+
+  let elpagPrev = elpag.previousElementSibling;
+
+  if (elpagNext) {
+
+    reviewsPagAll.forEach(function (pag) {
+      pag.classList.remove("reviews-pag-next");
+    })
+
+    elpagNext.classList.add("reviews-pag-next");
+
+    let elpagNextNext = elpagNext.nextElementSibling;
+
+    if (elpagNextNext) {
+      elpagNextNext.classList.add("reviews-pag-next");
+    }
+
+  }
+
+  if (elpagPrev) {
+
+    reviewsPagAll.forEach(function (pag) {
+      pag.classList.remove("reviews-pag-prev");
+    })
+
+    elpagPrev.classList.add("reviews-pag-prev");
+
+    let elpagPrevPrev = elpagPrev.previousElementSibling;
+
+    if (elpagPrevPrev) {
+      elpagPrevPrev.classList.add("reviews-pag-prev");
+    }
+
+  }
 }
 
 // ---------------------------------------------------------------------------
