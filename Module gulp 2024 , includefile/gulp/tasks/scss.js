@@ -18,7 +18,7 @@ export const scss = () => {
   .pipe(sass().on('error', sass.logError))
   .pipe(autoprefixer({
     grid: true,
-    overrideBrowserslist: ["last 3 versions"],
+    overrideBrowserslist: ["last 2 versions"],
     cascade: false
   }))
   .pipe(sourcemaps.write())
@@ -34,7 +34,7 @@ export const scss = () => {
   .pipe(sass().on('error', sass.logError))
   .pipe(autoprefixer({
     grid: true,
-    overrideBrowserslist: ["last 3 versions"],
+    overrideBrowserslist: ["last 2 versions"],
     cascade: false
   }))
   .pipe(sourcemaps.write())
@@ -48,7 +48,7 @@ export const cssBuild = () => {
   .pipe(sass().on('error', sass.logError))
   .pipe(autoprefixer({
     grid: true,
-    overrideBrowserslist: ["last 3 versions"],
+    overrideBrowserslist: ["last 2 versions"],
     cascade: false
   }))
   .pipe(cleanCss())

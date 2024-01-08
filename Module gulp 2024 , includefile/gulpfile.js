@@ -16,7 +16,7 @@ global.app = {
 
 // Ипорт задач
 import { copy, copyBuild } from './gulp/tasks/copy.js';
-import { reset, resetBuild, cleanScss, cleanCss, cleanJs, resetFonts} from './gulp/tasks/reset.js';
+import { reset, resetBuild, cleanScss, cleanCss, cleanJs, cleanImages, resetFonts} from './gulp/tasks/reset.js';
 import { html, htmlBuild } from './gulp/tasks/html.js'
 import { server } from './gulp/tasks/server.js';
 import { scss, cssBuild } from './gulp/tasks/scss.js';
@@ -38,7 +38,7 @@ function watcher() {
 // Построение сценариев задач по умолчанию
 const mainTasks = gulp.series(gulp.parallel(copy, fonts, html, scss, images, jsonFile));
 
-const dev = gulp.series(reset, mainTasks, js, gulp.parallel(watcher, resetFonts, cleanScss, cleanJs, server));
+const dev = gulp.series(reset, mainTasks, js, gulp.parallel(watcher, resetFonts, cleanScss, cleanImages, cleanJs, server));
 
 // Выполнения сценария по умолчанию
 gulp.task('default', dev);
