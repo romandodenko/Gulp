@@ -98,6 +98,13 @@ $maxWidthContainer: 1320; // обязательно для адаптивног�
   box-shadow: inset 1px 1px 10px #f3faf7;
 }
 
+// чтобы скроолбар работал на файрфоксе
+
+* {
+  scrollbar-color: сначала цвет webkit-scrollbar-thumb, потом webkit-scrollbar;
+  scrollbar-width: thin;
+}
+
 /* Стрелки */
 
 ::-webkit-scrollbar-button:vertical:start:decrement {
@@ -162,7 +169,7 @@ $maxWidthContainer: 1320; // обязательно для адаптивног�
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  max-width: 300px; 
+  max-width: 300px;
 }
 
 // ===================================================================================================================================================
@@ -843,14 +850,14 @@ div {
 // ===================================================================================================================================================
 
 // Анимация градиента в кнопке
-.but-gr { 
+.but-gr {
   background: linear-gradient(180deg, #4374F6 0%, #5137FF 100%);
   background: linear-gradient(-45deg, #F07C63, #4374F6, #5137FF, #E45372, #FFCF02);
   background-size: 400% !important;
   -webkit-animation: Gradient 10s ease infinite !important;
   -moz-animation: Gradient 10s ease infinite !important;
-  animation: Gradient 10s ease infinite !important; 
-} 
+  animation: Gradient 10s ease infinite !important;
+}
 
 @keyframes Gradient {
   0% {
@@ -872,7 +879,7 @@ div {
 
 .wrapper-games-slider {
   display: grid;
-  grid-template-columns: 1fr; 
+  grid-template-columns: 1fr;
 }
 
 // <div class="wrapper-games-slider">
@@ -890,12 +897,11 @@ div {
 .qeq {
   border: 12px solid transparent;
   border-radius: 24px;
-  background: 
-  linear-gradient(black,black) padding-box,
-  linear-gradient(45deg, 
-  #ff52e5, 
-  #f6d242)
-  border-box;
+  background:
+    linear-gradient(black, black) padding-box,
+    linear-gradient(45deg,
+      #ff52e5,
+      #f6d242) border-box;
 }
 
 // ===================================================================================================================================================

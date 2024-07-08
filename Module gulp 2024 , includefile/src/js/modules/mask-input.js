@@ -1,5 +1,6 @@
   // data-tel-input не забыть добавить этот аттрибут инпуту
-
+  const phoneInputs = document.querySelectorAll("[data-tel-input]")
+  
     var getInputNumbersValue = function (input) {
       // Return stripped input value — just numbers
       return input.value.replace(/\D/g, '');

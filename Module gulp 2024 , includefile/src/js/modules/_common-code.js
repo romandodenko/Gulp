@@ -30,6 +30,13 @@
 //  29) Прибавляем 0.1 к элементу списка
 //  30) Разбиваем строку на элементы, а потом вставляем обратно обернув в спан
 //  31) Сокрытие пагинации в слайдере
+//  32) Появление элемента при ховере, клике и фокусе
+//  33) Убираем пробел в строке. Например: 1 220 200 Получится: 1220200
+//  34) Как сделать чтобы у одинаковых слайдеров листались свои слайды при клике на кнопку
+//  35) Как разделить строку точкой или запятой
+//  36) Прибавляем рандомное число от к числу. В примере прибавляем от 1 до 5
+//  37) Форматировать число, форматирование зависит от страны. Пример 10000 - 10 000
+//  38) Как вытащить число из строки
 
 // Проверка элеметов в родителе. Данный код проверяет сколько в родителе элементов, и дается соответствующий класс
 
@@ -1237,3 +1244,282 @@ if (elementInteractive.closest(".reviews-pag")) {
 }
 
 // ---------------------------------------------------------------------------
+
+// Появление элемента при ховере, клике и фокусе
+
+document.addEventListener("mouseover", function (e) {
+
+  const elementInteractive = e.target;
+
+  if (elementInteractive.closest(".dropdown")) {
+    elementInteractive.closest(".dropdown").classList.add("active");
+  } else {
+    document.querySelector('.dropdown').classList.remove("active");
+  }
+})
+
+document.addEventListener("click", function (e) {
+
+  const elementInteractive = e.target;
+
+  if (elementInteractive.closest(".dropdown")) {
+    elementInteractive.closest(".dropdown").classList.add("active");
+  } else {
+    document.querySelector('.dropdown').classList.remove("active");
+  }
+})
+
+document.addEventListener("focusin", function (e) {
+
+  const elementInteractive = e.target;
+
+  if (elementInteractive.closest(".dropdown__link_visible")) {
+    elementInteractive.closest(".dropdown").classList.add("active");
+  }
+})
+
+// ---------------------------------------------------------------------------
+
+// Убираем пробел в строке. Например: 1 220 200 Получится: 1220200
+
+let lineCollectedFromq = "1 220 200";
+console.log('Убираем пробелы: ' + lineCollectedFromq.replaceAll(' ', ''));
+
+// ---------------------------------------------------------------------------
+
+// Как сделать чтобы у одинаковых слайдеров листались свои слайды при клике на кнопку
+
+const compSlider = document.querySelectorAll(".comp-slider");
+
+function sliderInit(classer, index) {
+  const compSwiper = new Swiper(classer, {
+    observer: true,
+    observeParents: true,
+    watchOverflow: true,
+    slidesPerView: "auto",
+    spaceBetween: 16,
+    direction: 'horizontal',
+    navigation: {
+      nextEl: `.comp-slider-next-${index}`,
+      prevEl: `.comp-slider-prev-${index}`,
+    },
+  });
+}
+
+if (compSlider) {
+  compSlider.forEach(function (e, i) {
+
+    e.querySelector(".prev").classList.add(`comp-slider-prev-${i}`);
+
+    e.querySelector(".next").classList.add(`comp-slider-next-${i}`);
+
+    sliderInit(e, i);
+  });
+};
+
+// Много форм
+
+function sliderInit(classer) { 
+ 
+  let innerForm = document.querySelector(`#${classer}`); 
+
+  let selectorinnerForm = innerForm.querySelector("input[type='tel']");
+  let selectorinnerFormId = selectorinnerForm.getAttribute("id");
+  let imInner = new Inputmask("+7 (999) 999-99-99");
+  imInner.mask(selectorinnerForm);
+ 
+  const validator = new JustValidate(innerForm, {});
+
+  validator 
+    .addField(`#${selectorinnerFormId}`, [{
+        rule: 'required',
+        errorMessage: 'Введите ваш телефон',
+      },
+      {
+        validator: (value) => {
+          const phone = selectorinnerForm.inputmask.unmaskedvalue();
+          return Boolean(Number(phone) && phone.length == 10);
+        },
+        errorMessage: 'Введите корректный номер',
+      },
+    ])
+    .onSuccess((event) => {
+
+      wrapperStates.classList.add("active")
+ 
+      wrapperStates.querySelectorAll(".wrapper-states__state").forEach(function(e) {
+        e.classList.remove("active")
+      })
+
+      wrapperStates.querySelector(".state-send").classList.add("active");
+
+      let formData = new FormData(event.target);
+
+      let xhr = new XMLHttpRequest();
+
+      xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4) {
+          if (xhr.status === 200) {
+            wrapperStates.querySelector(".state-send").classList.remove("active");
+
+             wrapperStates.querySelector(".state-okay").classList.add("active");
+
+          } else {
+            wrapperStates.querySelector(".state-send").classList.remove("active");
+
+             wrapperStates.querySelector(".state-error").classList.add("active");
+          }
+
+        }
+      }
+      xhr.open('POST', 'mail.php', true);
+      xhr.send(formData);
+
+      event.target.reset();
+    })
+
+}
+
+if (compSlider) {
+compSlider.forEach(function (e, i) {
+   
+  e.querySelector(".inner-form__input").classList.add(`inner-form-input-${i}`)
+  e.querySelector(".inner-form__input").setAttribute("name", `inner_form_phone_${i}`)
+  e.querySelector(".inner-form__input").setAttribute("id", `inner_form_phone_${i}`)
+  e.setAttribute("id", `inner-form-${i}`) 
+  e.getAttribute("id") 
+
+  sliderInit(e.getAttribute("id") , i);
+});
+};
+
+/* <div class="inner-form">
+<div class="inner-form__title">
+  Оставить заявку
+</div>
+<form class="inner-form__form" method="POST" action="mail.php" name="Form services" autocomplete="off"
+  aria-label="Форма заказать услугу">
+  <label class="inner-form__label" for="inner_form_phone">
+    <input class="inner-form__input" type="tel" name="inner_form_phone" id="inner_form_phone"
+      placeholder="Введите номер:" required>
+  </label>
+  <button class="inner-form__button" type="submit">
+    Заказать услугу
+  </button>
+</form>
+</div> */
+
+/* <div class="comp-slider swiper">
+<div class="swiper-wrapper">
+  <div class="comp-slider__slide swiper-slide">
+    <img src="." data-rd-image="./img/sportbar-3-1.webp" width="336" height="336"
+      alt="Puck">
+  </div>
+  <div class="comp-slider__slide swiper-slide">
+    <img src="." data-rd-image="./img/sportbar-3-2.webp" width="336" height="336"
+      alt="Puck">
+  </div>
+  <div class="comp-slider__slide swiper-slide">
+    <img src="." data-rd-image="./img/sportbar-3-3.webp" width="336" height="336"
+      alt="Puck">
+  </div>
+  <div class="comp-slider__slide swiper-slide">
+    <img src="." data-rd-image="./img/sportbar-3-4.webp" width="336" height="336"
+      alt="Puck">
+  </div>
+</div>
+<button class="comp-slider__button prev comp-slider-prev">
+  <img src="." data-rd-image="./img/svg/arrow.svg" width="24" height="24" alt="Icon arrow">
+</button>
+<button class="comp-slider__button next comp-slider-next">
+  <img src="." data-rd-image="./img/svg/arrow.svg" width="24" height="24" alt="Icon arrow">
+</button>
+</div> */
+
+// ---------------------------------------------------------------------------
+
+// Как разделить строку точкой или запятой
+
+let heroVotes = document.querySelectorAll(".hero__votes");
+
+heroVotes.forEach(function (e) {
+  let heroVotesSplit = e.querySelector("span").innerHTML.trim().split("", 100000000000);
+  if (heroVotesSplit.length === 4) {
+    heroVotesSplit.splice(1, 0, ",");
+    e.querySelector("span").innerHTML = heroVotesSplit.join("");
+  } else if (heroVotesSplit.length === 5) {
+    heroVotesSplit.splice(2, 0, ",");
+    e.querySelector("span").innerHTML = heroVotesSplit.join("");
+  } else if (heroVotesSplit.length === 6) {
+    heroVotesSplit.splice(3, 0, ",");
+    e.querySelector("span").innerHTML = heroVotesSplit.join("");
+  } else if (heroVotesSplit.length === 7) {
+    heroVotesSplit.splice(1, 0, ",");
+    heroVotesSplit.splice(5, 0, ",");
+    e.querySelector("span").innerHTML = heroVotesSplit.join("");
+  } else if (heroVotesSplit.length === 8) {
+    heroVotesSplit.splice(2, 0, ",");
+    heroVotesSplit.splice(6, 0, ",");
+    e.querySelector("span").innerHTML = heroVotesSplit.join("");
+  } else if (heroVotesSplit.length === 9) {
+    heroVotesSplit.splice(3, 0, ",");
+    heroVotesSplit.splice(7, 0, ",");
+    e.querySelector("span").innerHTML = heroVotesSplit.join("");
+  } else if (heroVotesSplit.length === 10) {
+    heroVotesSplit.splice(1, 0, ",");
+    heroVotesSplit.splice(5, 0, ",");
+    heroVotesSplit.splice(9, 0, ",");
+    e.querySelector("span").innerHTML = heroVotesSplit.join("");
+  } else if (heroVotesSplit.length === 11) {
+    heroVotesSplit.splice(2, 0, ",");
+    heroVotesSplit.splice(6, 0, ",");
+    heroVotesSplit.splice(10, 0, ",");
+    e.querySelector("span").innerHTML = heroVotesSplit.join("");
+  } else if (heroVotesSplit.length === 12) {
+    heroVotesSplit.splice(3, 0, ",");
+    heroVotesSplit.splice(7, 0, ",");
+    heroVotesSplit.splice(11, 0, ",");
+    e.querySelector("span").innerHTML = heroVotesSplit.join("");
+  }
+});
+
+// ---------------------------------------------------------------------------
+
+// Прибавляем рандомное число от к числу. В примере прибавляем от 1 до 5
+
+/* <div class="hero__votes tx-14" style="color: var(--white);">Votes <span class="notranslate">100</span></div> */
+
+function getRandomNum(min, max) {
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  return Math.floor(Math.random() * (max - min) + min);
+}
+
+let timerRetry = setInterval(() => {
+
+  const heroVotes = document.querySelectorAll(".hero__votes span");
+
+  heroVotes.forEach(function (e) {
+
+    let heroVotesNum = Number(e.innerHTML.trim().replace(/[\s.,%]/g, ''));
+
+    let randonNum = getRandomNum(1, 5);
+
+    let numCreate = (heroVotesNum + randonNum);
+
+    e.innerHTML = numCreate;
+
+  })
+
+}, 1000);
+
+// Форматировать число, форматирование зависит от страны. Пример 10000 - 10 000
+
+new Intl.NumberFormat('ru-RU').format(100000)
+
+// Как вытащить число из строки
+
+let str = 'asddsadsa 123.123'
+let solid = /[0-9/.]+/
+
+str.match(solid);

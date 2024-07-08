@@ -129,16 +129,58 @@ if (rdUpload) {
   })
 }
 
-// Примечание:
+// Примечание, как работает:
+
 // Если используется фоновая картинка у элемента внутри rd-upload, то добавляем элементу класс rd-background и аттрибут data-rd-image="картинка", должно получиться вот так:
+
 // <div class="rd-background" data-rd-image="./img/image-1.jpg"></div>
+
 // Если используется фоновая картинка у элемента rd-upload, то элементу rd-upload добавляем класс rd-background и аттрибут data-rd-image="картинка", должно получиться вот так:
+
 // <section class="hero rd-upload rd-background" data-rd-image="./img/image-1.jpg"></section>
-//  ----
+
+//  ----------------------------------------------------------------------------------------------------
+
 //  Если нужно вставить картинку с помощью picture, то используем следующую разметку:
+
 // <picture>
 //<source media="(min-width: 991px)" srcset="" type="image/webp" data-rd-image="./img/picture-1.jpg">
 //<source media="(min-width: 601px)" srcset="" type="image/webp" data-rd-image="./img/picture-2.jpg">
 //<source media="(max-width: 600px)" srcset="" type="image/webp" data-rd-image="./img/picture-3.jpg">
 //<img src="." width="337" height="337" alt="Плагин подгрузки изображений и видео">
 //</picture> 
+
+// Плагин переноса длинных слов
+
+const rdTransfer = document.querySelectorAll(".rd-transfer");
+
+rdTransfer.forEach(function (e) {
+
+  let rdTransferBody = e.innerHTML.trim();
+
+  e.innerHTML = '';
+
+  let rdTransferBodySplit = rdTransferBody.split('');
+
+  rdTransferBodySplit.forEach(function (q) {
+    let template = ` 
+   <span>
+     ${q}
+   </span> 
+   `;
+
+    e.innerHTML += template;
+  })
+})
+
+// Примечание, как работает:
+
+// Пишем класс rd-transfer элементу в котором находится длинное слово, которые в теории может вылезти за сайт
+
+/* <div class="tx-60 rd-transfer">
+Одинаддцатиклассница
+</div>
+
+<a class="tx-60 rd-transfer" href="#!">
+Одинаддцатиклассница@mail.com
+</a> */

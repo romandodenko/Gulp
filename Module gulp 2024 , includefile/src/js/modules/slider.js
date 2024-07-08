@@ -13,7 +13,10 @@ const swiper = new Swiper('.hero__swiper', {
   // slidesPerGroup: 1, 
   // centeredSlides: true, // активный слайд будет в центре
   // autoHeight: true,
-  direction: 'horizontal',
+  direction: 'horizontal', // 'vertical' 
+  // mousewheel: { // скролить слайдер
+  //   sensitivity: 1,
+  // },
   // speed: 500, // Автовоспроизведение
   // autoplay: {
   // delay: 5000,
@@ -29,6 +32,7 @@ const swiper = new Swiper('.hero__swiper', {
   pagination: {
     el: '.hero__pagination',
     clickable: true,
+    // type: 'fraction', // меняет тип пагинации
     // dynamicBullets: true, // Если много кружков пагинации
     // dynamicMainBullets: 3, // Показывает количество отображаемых кружков пагинаии при включеном dynamicBullets
   },
