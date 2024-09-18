@@ -36,6 +36,11 @@
   }
 }
 
+.rd-transfer {
+  display: inline-flex;
+  flex-wrap: wrap;
+}
+
 .page {
   display: flex;
   flex-direction: column;
@@ -74,6 +79,7 @@
   align-items: center;
   justify-content: center;
   gap: 3px;
+  position: static;
 
   & .swiper-pagination-bullet {
     width: 4px;
@@ -145,4 +151,13 @@
 
 .fw-900 {
   font-weight: 900;
+}
+
+.rd-upload img {
+  opacity: 0;
+  transition: opacity .3s ease-in-out;
+}
+
+.rd-load img {
+  opacity: 1;
 }

@@ -37,6 +37,12 @@
 //  36) Прибавляем рандомное число от к числу. В примере прибавляем от 1 до 5
 //  37) Форматировать число, форматирование зависит от страны. Пример 10000 - 10 000
 //  38) Как вытащить число из строки
+//  39) Отправляем фетч запрос и обрабатываем ошибки/отправку
+//  40) Сортировка через sort
+//  41) Работа с массивом. Find, filter, map, reduce
+//  42) В строке находим " и заменяем их на '
+//  43) Перемешиваем массив
+//  44) Обработка ошибок async/await, promise
 
 // Проверка элеметов в родителе. Данный код проверяет сколько в родителе элементов, и дается соответствующий класс
 
@@ -180,6 +186,18 @@ function copyFunction() {
   document.execCommand("copy");
 }
 
+// Этот рабочий
+
+const shareValue = document.querySelector(".share-value");
+
+if (shareValue) {
+  shareValue.value = window.location.href;
+}
+
+if (elementInteractive.closest(".button-share")) {
+  navigator.clipboard.writeText(shareValue.value); // shareValue.value то что копируем
+}
+
 // ===================================================================================================================================================
 
 // Запрос на сервер при отправке формы   
@@ -285,12 +303,21 @@ function popupScroll() { // Функция
 // Запрещает писать в инпут опреденные элементы
 
 const inputName = document.querySelector(".input-name");
+
 let banNumber = /[0-9]/g; // Запрещает писать цифры
+
 let banEnglishLetter = /[A-Za-zA]/g; // Запрещает писать английские буквы
+
 let banLetter = /[A-Za-zA-Яа-яЁё]/g; // Запрещает писать все буквы
+
+let banLetter2 = /[^\s()-]/g; // Запрещает писать пробелы и символы
+
 inputName.oninput = function () {
+
   // this.value = this.value.replace(banNumber,"")
+
   this.value = this.value.replace(banEnglishLetter, "")
+
 }
 
 // ===================================================================================================================================================
@@ -1319,18 +1346,18 @@ if (compSlider) {
 
 // Много форм
 
-function sliderInit(classer) { 
- 
-  let innerForm = document.querySelector(`#${classer}`); 
+function sliderInit(classer) {
+
+  let innerForm = document.querySelector(`#${classer}`);
 
   let selectorinnerForm = innerForm.querySelector("input[type='tel']");
   let selectorinnerFormId = selectorinnerForm.getAttribute("id");
   let imInner = new Inputmask("+7 (999) 999-99-99");
   imInner.mask(selectorinnerForm);
- 
+
   const validator = new JustValidate(innerForm, {});
 
-  validator 
+  validator
     .addField(`#${selectorinnerFormId}`, [{
         rule: 'required',
         errorMessage: 'Введите ваш телефон',
@@ -1346,8 +1373,8 @@ function sliderInit(classer) {
     .onSuccess((event) => {
 
       wrapperStates.classList.add("active")
- 
-      wrapperStates.querySelectorAll(".wrapper-states__state").forEach(function(e) {
+
+      wrapperStates.querySelectorAll(".wrapper-states__state").forEach(function (e) {
         e.classList.remove("active")
       })
 
@@ -1362,12 +1389,12 @@ function sliderInit(classer) {
           if (xhr.status === 200) {
             wrapperStates.querySelector(".state-send").classList.remove("active");
 
-             wrapperStates.querySelector(".state-okay").classList.add("active");
+            wrapperStates.querySelector(".state-okay").classList.add("active");
 
           } else {
             wrapperStates.querySelector(".state-send").classList.remove("active");
 
-             wrapperStates.querySelector(".state-error").classList.add("active");
+            wrapperStates.querySelector(".state-error").classList.add("active");
           }
 
         }
@@ -1381,16 +1408,16 @@ function sliderInit(classer) {
 }
 
 if (compSlider) {
-compSlider.forEach(function (e, i) {
-   
-  e.querySelector(".inner-form__input").classList.add(`inner-form-input-${i}`)
-  e.querySelector(".inner-form__input").setAttribute("name", `inner_form_phone_${i}`)
-  e.querySelector(".inner-form__input").setAttribute("id", `inner_form_phone_${i}`)
-  e.setAttribute("id", `inner-form-${i}`) 
-  e.getAttribute("id") 
+  compSlider.forEach(function (e, i) {
 
-  sliderInit(e.getAttribute("id") , i);
-});
+    e.querySelector(".inner-form__input").classList.add(`inner-form-input-${i}`)
+    e.querySelector(".inner-form__input").setAttribute("name", `inner_form_phone_${i}`)
+    e.querySelector(".inner-form__input").setAttribute("id", `inner_form_phone_${i}`)
+    e.setAttribute("id", `inner-form-${i}`)
+    e.getAttribute("id")
+
+    sliderInit(e.getAttribute("id"), i);
+  });
 };
 
 /* <div class="inner-form">
@@ -1523,3 +1550,172 @@ let str = 'asddsadsa 123.123'
 let solid = /[0-9/.]+/
 
 str.match(solid);
+
+// ---------------------------------------------------------------------------
+
+// Отправляем фетч запрос и обрабатываем ошибки/отправку
+
+const formSilk = document.querySelector(".form-silk");
+
+const formSilkButton = document.querySelector(".form-silk__button");
+
+const formSilkInput = document.querySelector(".form-silk__input");
+
+if (formSilkButton) {
+
+  formSilkButton.addEventListener('click', function () {
+    formSilk.classList.remove("kaef");
+
+    formSilk.classList.remove("error");
+
+    formSilk.classList.add("load");
+
+    fetch('https://top10casino-no.com/api/v1/campaigns/setup/', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          group_name: formSilkInput.value
+        })
+      })
+      .then(response => response.json())
+      .then(data => data ? formSilk.classList.add("kaef") & formSilk.classList.remove("error") : formSilk.classList.remove("kaef"))
+      .catch(err => err ? formSilk.classList.add("error") & formSilk.classList.remove("kaef") : formSilk.classList.add("error"));
+
+
+  })
+
+}
+
+// ---------------------------------------------------------------------------
+
+//  Сортировка через sort
+
+const number = [1, 2, 3, 4, 5, 6, 7, 8]
+
+number.sort((a, b) => a - b) // будет от 1 до 8
+
+number.sort((a, b) => b - a) // будет от 8 до 1
+
+// ---------------------------------------------------------------------------
+
+//  Работа с массивом. Find, filter, map, reduce
+
+const students = [{
+    name: 'Иван',
+    age: 18
+  },
+  {
+    name: 'Иван2',
+    age: 14
+  },
+  {
+    name: 'Иван3',
+    age: 13
+  },
+  {
+    name: 'Иван4',
+    age: 12
+  },
+]
+
+students.find(student => student.age === 18) // ищем студента которому 18 
+
+let qeq = []
+
+students.filter(student => student.age === 18 ? qeq.push(student) : '') // если студенты имеются, то они пушатся в новый массив с которым можно работать дальше
+
+students.map(student => student.age) // можно просто получить возраст студентов и дальше работать, либо как указано ниже, переместить в новый массив
+
+console.log(students.map(student => student.age === 12 ? qeq.push(student) : ''))
+
+const students2 = [{
+    name: 'Иван',
+    age: 1,
+    q: 4
+  },
+  {
+    name: 'Иван2',
+    age: 2,
+    q: 2
+  },
+  {
+    name: 'Иван3',
+    age: 3,
+    q: 2
+  },
+  {
+    name: 'Иван4',
+    age: 4,
+    q: 1
+  },
+]
+
+let qe = students.reduce((total, item) => total + item.age * item.q, 0) // производит вычисление, таким образом можно вычислять стоимость корзины
+
+// ---------------------------------------------------------------------------
+
+// В строке находим " и заменяем их на '
+
+const text = '"Roman"""';
+
+let replace = text.split('"').join("'")
+
+// ---------------------------------------------------------------------------
+
+// Перемешиваем массив
+
+let randomCodeForCapcha = ['sAQppS', 'QsPOPP', '19pQsa', 'ZoRtE2', 'CllKsa', 'OopSqqq', 'zirocl', 'oplche', 'oiuytr', 'ilyaqa', 'sAQWWSO', 'soCCer', 'arkadiy', 'saynsa', 'oliIur', 'jKlsas', 'Zxcqqd', 'ssWWeeq', 'Podasdd', 'SSSXXX', 'sA123SO', 'Q20Saq', '#xda@33', 'asSSaa12', 'Oiijcxza', 'iasQ3213', '123sa2', 'AAZaass', 'ppoqasd', 'asdasdasd']
+
+const shuffle = (array) => {
+  let m = array.length,
+    t, i;
+
+  // Пока есть элементы для перемешивания
+  while (m) {
+
+    // Взять оставшийся элемент
+    i = Math.floor(Math.random() * m--);
+
+    // И поменять его местами с текущим элементом
+    t = array[m];
+    array[m] = array[i];
+    array[i] = t;
+  }
+
+  return array;
+}
+
+let shuffleArr = shuffle(randomCodeForCapcha)
+
+// ---------------------------------------------------------------------------
+
+// Обработка ошибок async/await, promise
+
+const q = async () => {
+  try {
+    const res = await fetch('https://facebook.com');
+
+    const data = await res.json();
+
+  } catch (error) {
+    console.log(`Не удалось получить ответ от Facebook: ${error.message}`)
+  }
+}
+
+// --
+
+fetch('https://facebook.com')
+  .then(res => {
+    console.log('После получения ответа от Facebook')
+    return res.json();
+  })
+  .then(data => {
+    console.log('После получения тела ответа')
+  })
+  .catch(error => {
+    console.log(`Не удалось получить ответ от Facebook: ${error.message}`)
+  })
+
+// ---------------------------------------------------------------------------

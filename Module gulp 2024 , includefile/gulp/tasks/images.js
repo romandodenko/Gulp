@@ -13,8 +13,6 @@ export const images = () => {
   .pipe(webp()) // для webp формата 
   .pipe(app.gulp.src(app.path.src.images)) 
   .pipe(app.gulp.dest(app.path.dev.images))
-  .pipe(app.gulp.src(app.path.src.svg))
-  .pipe(app.gulp.dest(app.path.dev.images))
   .pipe(app.plugins.browsersync.stream());
 }
 

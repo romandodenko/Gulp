@@ -10,7 +10,7 @@ export const path = {
     copyBuild: `${buildFolder}/`,
     build: `${buildFolder}/`,
     css: `${buildFolder}/css`,
-    images: `${buildFolder}/img/`,
+    images: `${buildFolder}/img/svg/`,
   },
   dev: {
     js: `${devFolder}/js/`,
@@ -19,7 +19,7 @@ export const path = {
     cssBuild: `${devFolder}/css/*-min.css`,
     fonts: `${devFolder}/fonts/`,
     images: `${devFolder}/img/`,
-    imagesBuild: `${devFolder}/img/**/*.{svg,gif,webp}`,
+    imagesBuild: `${devFolder}/img/svg/*.svg`,
     dist: `${devFolder}/`,
     html: `${devFolder}/**/*.html`,
     copyBuild: `${devFolder}/**`,

@@ -19,7 +19,9 @@
 //  18) Если слайдер не сжимается то нужно родителю задать дисплей грид
 //  19) Бордер радиус градиент
 //  20) Атрибут has
-
+//  21) Переносит длинное слово на другую строчку не ломая сайт
+//  22) Валидация формы на цсс
+//  22) Слайдер на цсс
 
 $maxWidth: 1920; // обязательно для адаптивного шрифта и адаптивного свойства
 $maxWidthContainer: 1320; // обязательно для адаптивного шрифта и адаптивного свойства
@@ -911,3 +913,81 @@ div {
 .item:has(.star) {
   background: #eee;
 }
+
+// ===================================================================================================================================================
+
+// Переносит длинное слово на другую строчку не ломая сайт
+
+div {
+  word-break: break-all;
+  /* Так длинные слова будут переноситься */
+}
+
+// ===================================================================================================================================================
+
+// Валидация формы на цсс
+
+input:user-invalid {
+  border-color: var(--red);
+}
+
+input:user-valid {
+  border-color: var(--green);
+}
+
+// ===================================================================================================================================================
+
+// Слайдер на цсс
+
+
+* {
+  box-sizing: border-box;
+}
+
+.slides {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+}
+
+.slide {
+  min-width: 100vw;
+  height: 100vh;
+  scroll-snap-align: start;
+}
+
+.slide:nth-child(1) {
+  background-color: red;
+}
+
+.slide:nth-child(2) {
+  background-color: rgb(138, 4, 4);
+}
+
+.slide:nth-child(3) {
+  background-color: bisque;
+}
+
+.slide:nth-child(4) {
+  background-color: blueviolet;
+}
+
+.slide:nth-child(5) {
+  background-color: blue;
+}
+
+.slide:nth-child(6) {
+  background-color: yellow;
+}
+
+// <ul class="slides">
+// <li class="slide"></li>
+// <li class="slide"></li>
+// <li class="slide"></li>
+// <li class="slide"></li>
+// <li class="slide"></li>
+// <li class="slide"></li>
+// </ul>
