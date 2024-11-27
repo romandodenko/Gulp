@@ -74,14 +74,14 @@ if (ScrollTrigger.isTouch !== 1) { // работает только на уст�
 
 // 	if (!casinoItem.classList.contains("active")) {
 
-// 		document.querySelectorAll(".casino__item").forEach(function(e) {
-// 			e.classList.remove("active");
-// 			gsap.to(e.querySelector(".casino__pays"), {
-// 				opacity: .2,
-// 				marginTop: "-45px",
-// 				height: payHeight,
-// 			});
-// 		})
+		// document.querySelectorAll(".casino__item").forEach(function(e) {
+		// 	e.classList.remove("active");
+		// 	gsap.to(e.querySelector(".casino__pays"), {
+		// 		opacity: .2,
+		// 		marginTop: "-45px",
+		// 		height: payHeight,
+		// 	});
+		// })
 
 // 		casinoItem.classList.add("active");
 

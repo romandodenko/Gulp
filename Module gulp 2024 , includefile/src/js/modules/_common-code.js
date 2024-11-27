@@ -43,6 +43,7 @@
 //  42) В строке находим " и заменяем их на '
 //  43) Перемешиваем массив
 //  44) Обработка ошибок async/await, promise
+//  45) Много форм с валидацией
 
 // Проверка элеметов в родителе. Данный код проверяет сколько в родителе элементов, и дается соответствующий класс
 
@@ -425,38 +426,131 @@ function checkedFormSubmit() {
 
 // Таймер
 
+// Старый
+
+// const blockTimer = document.querySelector(".block-timer"); // родитель
+// const numDay = document.querySelector(".num-day"); // число дней
+// const numHours = document.querySelector(".num-hours"); // число дней
+// const numMinutes = document.querySelector(".num-minutes"); // число дней
+// const numSeconds = document.querySelector(".num-seconds"); // число дней
+
+// if (blockTimer) {
+
+//   function timerSeconds() {
+//     if (numSeconds.innerHTML != 0) {
+//       numSeconds.innerHTML = numSeconds.innerHTML - 1
+
+//     } else if (numSeconds.innerHTML == 0) {
+//       if (numMinutes.innerHTML != 0) {
+//         numMinutes.innerHTML = numMinutes.innerHTML - 1
+//         numSeconds.innerHTML = 60
+//       }
+
+//     }
+//     if (numMinutes.innerHTML == 0) {
+//       if (numHours.innerHTML != 0) {
+//         numHours.innerHTML = numHours.innerHTML - 1
+//         numMinutes.innerHTML = 60
+//         numSeconds.innerHTML = 60
+//       }
+//     }
+//     if (numHours.innerHTML == 0) {
+//       if (numDay.innerHTML != 0) {
+//         numDay.innerHTML = numDay.innerHTML - 1
+//         numHours.innerHTML = 24
+//         numMinutes.innerHTML = 60
+//         numSeconds.innerHTML = 60
+//       }
+//     }
+//   }
+
+//   setInterval(timerSeconds, 1000)
+
+// }
+
+// Новый
+
+// таймер пушкин 255
+
 const blockTimer = document.querySelector(".block-timer"); // родитель
 const numDay = document.querySelector(".num-day"); // число дней
 const numHours = document.querySelector(".num-hours"); // число дней
 const numMinutes = document.querySelector(".num-minutes"); // число дней
-const numSeconds = document.querySelector(".num-seconds"); // число дней
+const numSeconds = document.querySelector(".num-seconds"); // число дней 
+let arrDates = [31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31] // месяца года 
+let dateEvents = Date.parse('Wed Dec 11 2024 19:00:00 GMT+0700') // день недели, месяц, день, год, время, пояс 
 
+let todayDate = new Date()
+dateEvents = new Date(dateEvents);
+
+if (dateEvents.getMonth() != todayDate.getMonth()) {
+
+  let differenceOfMonths = dateEvents.getMonth() - todayDate.getMonth(); // разница месяцев
+  let isDifferenceTodayDays = arrDates[todayDate.getMonth()] - todayDate.getDate();
+  let isDifferenceEventsDays = dateEvents.getDate();
+  console.log(isDifferenceEventsDays)
+  // if (differenceOfMonths == 2) {
+    numDay.innerHTML = isDifferenceTodayDays + isDifferenceEventsDays + arrDates[todayDate.getMonth() + 1]; // Если сегодняшний месяц октябрь а месяц мероприятия ноябрь, убираем эту строкуarrDates[todayDate.getMonth() + 1]
+    (24 - todayDate.getHours()) < 10 ? numHours.innerHTML = "0" + (24 - todayDate.getHours()) : numHours.innerHTML = 24 - todayDate.getHours();
+    (60 - todayDate.getMinutes()) < 10 ? numMinutes.innerHTML = "0" + (60 - todayDate.getMinutes()) : numMinutes.innerHTML = 60 - todayDate.getMinutes();
+    (60 - todayDate.getSeconds()) < 10 ? numSeconds.innerHTML = "0" + (60 - todayDate.getSeconds()) : numSeconds.innerHTML = 60 - todayDate.getSeconds();
+  // } 
+  
+  // В закомментированом if проверяется разница месяцев(от сегодняшнего до месяца мероприятия). Нужно учитывать разницу месяцев, например если разница 3 месяца, то в это число входит и сегодняшний месяц, и месяц мероприятия. Поэтому их нужно отнять, и получится 1 месяц. И этот месяц нужно прибавить к массиву arrDates[todayDate.getMonth() + 1]. Тогда мы получим точное количество дней до мероприятия.
+
+} else {
+  dateEvents.getDate() - todayDate.getDate() < 10 ? numDay.innerHTML = "0" + (dateEvents.getDate() - todayDate.getDate()) : numDay.innerHTML = dateEvents.getDate() - todayDate.getDate();
+  (24 - todayDate.getHours()) < 10 ? numHours.innerHTML = "0" + (24 - todayDate.getHours()) : numHours.innerHTML = 24 - todayDate.getHours();
+  (60 - todayDate.getMinutes()) < 10 ? numMinutes.innerHTML = "0" + (60 - todayDate.getMinutes()) : numMinutes.innerHTML = 60 - todayDate.getMinutes();
+  (60 - todayDate.getSeconds()) < 10 ? numSeconds.innerHTML = "0" + (60 - todayDate.getSeconds()) : numSeconds.innerHTML = 60 - todayDate.getSeconds();
+}
+ 
 if (blockTimer) {
 
   function timerSeconds() {
     if (numSeconds.innerHTML != 0) {
-      numSeconds.innerHTML = numSeconds.innerHTML - 1
-
+      if (numSeconds.innerHTML <= 10) {
+        numSeconds.innerHTML = "0" + (numSeconds.innerHTML - 1)
+      } else {
+        numSeconds.innerHTML = numSeconds.innerHTML - 1
+      }
     } else if (numSeconds.innerHTML == 0) {
       if (numMinutes.innerHTML != 0) {
-        numMinutes.innerHTML = numMinutes.innerHTML - 1
-        numSeconds.innerHTML = 60
+        if (numMinutes.innerHTML <= 10) {
+          numMinutes.innerHTML = "0" + (numMinutes.innerHTML - 1)
+          numSeconds.innerHTML = 60
+        } else {
+          numMinutes.innerHTML = numMinutes.innerHTML - 1
+          numSeconds.innerHTML = 60
+        }
       }
-
     }
     if (numMinutes.innerHTML == 0) {
       if (numHours.innerHTML != 0) {
-        numHours.innerHTML = numHours.innerHTML - 1
-        numMinutes.innerHTML = 60
-        numSeconds.innerHTML = 60
+        if (numHours.innerHTML <= 10) {
+          numHours.innerHTML = "0" + (numHours.innerHTML - 1)
+          numMinutes.innerHTML = 60
+          numSeconds.innerHTML = 60
+        } else {
+          numHours.innerHTML = numHours.innerHTML - 1
+          numMinutes.innerHTML = 60
+          numSeconds.innerHTML = 60
+        }
       }
     }
     if (numHours.innerHTML == 0) {
       if (numDay.innerHTML != 0) {
-        numDay.innerHTML = numDay.innerHTML - 1
-        numHours.innerHTML = 24
-        numMinutes.innerHTML = 60
-        numSeconds.innerHTML = 60
+        if (numDay.innerHTML <= 10) {
+          numDay.innerHTML = "0" + (numDay.innerHTML - 1)
+          numHours.innerHTML = 24
+          numMinutes.innerHTML = 60
+          numSeconds.innerHTML = 60
+        } else {
+          numDay.innerHTML = numDay.innerHTML - 1
+          numHours.innerHTML = 24
+          numMinutes.innerHTML = 60
+          numSeconds.innerHTML = 60
+        }
       }
     }
   }
@@ -464,6 +558,7 @@ if (blockTimer) {
   setInterval(timerSeconds, 1000)
 
 }
+ 
 
 // <section class="block-timer" style="background-image: url(./img/timer.png);">
 //       <div class="block-timer__container container">
@@ -1344,7 +1439,7 @@ if (compSlider) {
   });
 };
 
-// Много форм
+// Много форм с валидацией
 
 function sliderInit(classer) {
 

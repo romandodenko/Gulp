@@ -135,3 +135,46 @@ const swiper = new Swiper('.hero__swiper', {
   </div>
 </div>
 </div> */
+
+// const slidereThumb = new Swiper(detailProductSliderThumbs, {
+//   observer: true,
+//   observeParents: true,
+//   watchOverflow: true,
+//   slidesPerView: 4,
+//   spaceBetween: 5,
+//   direction: 'horizontal',
+//   grid: {
+//     rows: 2,
+//   },
+//   navigation: {
+//     nextEl: '.cottage-thumb-swiper__next',
+//     prevEl: '.cottage-thumb-swiper__prev',
+//   },
+ 
+// });
+
+// const swiper = new Swiper(detailProductSlider, { 
+//   observer: true,
+//   observeParents: true,
+//   watchOverflow: true,
+//   slidesPerView: 1,
+//   spaceBetween: 32, 
+//   direction: 'horizontal', 
+//   thumbs: { 
+//     swiper: slidereThumb,
+//   },
+//   pagination: {
+//     el: '.hero__pagination',
+//     clickable: true,
+//     // type: 'fraction', // меняет тип пагинации
+//     // dynamicBullets: true, // Если много кружков пагинации
+//     // dynamicMainBullets: 3, // Показывает количество отображаемых кружков пагинаии при включеном dynamicBullets
+//   },
+//   navigation: {
+//     nextEl: '.hero__button-next',
+//     prevEl: '.hero__button-prev',
+//   },
+ 
+// });
+
+ 

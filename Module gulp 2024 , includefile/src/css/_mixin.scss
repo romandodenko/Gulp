@@ -22,6 +22,10 @@
 //  21) Переносит длинное слово на другую строчку не ломая сайт
 //  22) Валидация формы на цсс
 //  22) Слайдер на цсс
+//  23) Паралакс эффект через sticky
+//  24) Анимация текста в виде заполнения( волны )
+//  25) Как сделать border градиент
+//  26) Как сделать сложное закругление у элемента
 
 $maxWidth: 1920; // обязательно для адаптивного шрифта и адаптивного свойства
 $maxWidthContainer: 1320; // обязательно для адаптивного шрифта и адаптивного свойства
@@ -991,3 +995,159 @@ input:user-valid {
 // <li class="slide"></li>
 // <li class="slide"></li>
 // </ul>
+
+// ===================================================================================================================================================
+
+// Паралакс эффект через sticky
+
+main {
+  position: relative;
+  z-index: 1;
+}
+
+section {
+  width: 100%;
+  position: sticky;
+  top: 0;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 60px;
+  color: #fff;
+}
+
+section:nth-child(1) {
+  background-color: red;
+}
+
+section:nth-child(2) {
+  background-color: rgb(15, 114, 114);
+}
+
+section:nth-child(3) {
+  background-color: rgb(25, 45, 136);
+}
+
+section:nth-child(4) {
+  background-color: rgb(202, 166, 46);
+}
+
+section:nth-child(5) {
+  background-color: #faebd7;
+}
+
+// <main>
+// <section>
+//   about
+// </section>
+// <section>
+//   about2
+// </section>
+// <section>
+//   about3
+// </section>
+// <section>
+//   about4
+// </section>
+// <section>
+//   about5
+// </section>
+// </main>
+
+// ===================================================================================================================================================
+
+// Анимация текста в виде заполнения( волны )
+
+h1 {
+  width: fit-content;
+  position: relative;
+}
+
+h1::before {
+  content: attr(data-text);
+  color: red;
+  position: absolute;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  width: 0;
+  height: 100%;
+  border-right: 2px solid blue;
+  animation-name: anim;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  animation-duration: 5s;
+}
+
+@keyframes anim {
+  0% {
+    width: 0;
+  }
+
+  50% {
+    width: 100%;
+  }
+
+  100% {
+    width: 0;
+  }
+}
+
+// <h1 data-text="Анимация">
+// Анимация
+// </h1>
+
+// ===================================================================================================================================================
+
+// Как сделать border градиент
+
+div {
+  border: 1px solid transparent;
+  border-image: var(--linear-gradient);
+  border-image-slice: 1;
+}
+
+// ===================================================================================================================================================
+
+// Как сделать сложное закругление у элемента
+
+.indicator {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100px;
+  height: 100%;
+  pointer-events: none;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  background-color: red;
+  z-index: 1;
+  transition: width .3s ease-in-out, left .3s ease-in-out;
+}
+
+.indicator::before {
+  content: "";
+  position: absolute;
+  left: -30px;
+  bottom: 0;
+  width: 30px;
+  height: 30px;
+  background-color: transparent;
+  border-bottom-right-radius: 20px;
+  box-shadow: 5px 5px 0 5px red;
+}
+
+.indicator::after {
+  content: "";
+  position: absolute;
+  right: -30px;
+  bottom: 0;
+  width: 30px;
+  height: 30px;
+  background-color: transparent;
+  border-bottom-left-radius: 20px;
+  box-shadow: -5px 5px 0 5px red;
+}
+
+// ===================================================================================================================================================

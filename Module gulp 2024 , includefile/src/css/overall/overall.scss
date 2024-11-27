@@ -63,6 +63,10 @@
   }
 }
 
+button, a {
+  color: var(--main);
+}
+
 .visually-hidden {
   position: absolute;
   width: 1px;
@@ -99,7 +103,33 @@
 
 // swiper-button-disabled
 
+.tx-main {
+  font-size: 10px;
+  font-weight: 400;
+  line-height: 1.2;
+
+  @media (max-width: 991px) {
+    font-size: 10px;
+  }
+
+  @media (max-width: 600px) {
+    font-size: 10px;
+  }
+}
+
 // Универсальные классы
+
+.img-contain {
+  object-fit: contain;
+}
+
+.img-cover {
+  object-fit: cover;
+}
+
+.underline {
+  text-decoration: underline;
+}
 
 .text-center {
   text-align: center;
@@ -160,4 +190,18 @@
 
 .rd-load img {
   opacity: 1;
+}
+
+.scroll {
+  padding-bottom: 10px;
+  overflow: auto;
+
+  &::-webkit-scrollbar {
+    height: 4px;
+    background-color: var(--white);
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: var(--brown);
+  }
 }
