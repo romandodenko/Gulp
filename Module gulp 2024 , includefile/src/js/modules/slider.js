@@ -9,9 +9,11 @@ const swiper = new Swiper('.hero__swiper', {
   watchOverflow: true,
   slidesPerView: 1,
   spaceBetween: 32,
+  a11y: { // отключает aria-label у свайпер слайда
+    enabled: false
+  },
   // effect: "fade", анимация перелистывания слайдера
-  // slidesPerGroup: 1, 
-  // centeredSlides: true, // активный слайд будет в центре
+  // slidesPerGroup: 1,  
   // autoHeight: true,
   direction: 'horizontal', // 'vertical' 
   // mousewheel: { // скролить слайдер
@@ -77,6 +79,9 @@ const swiper = new Swiper('.hero__swiper', {
   //   afterInit() {
   // Событие будет запущено сразу после инициализации т.е при загрузке страницы сразу все заработает
   //   }
+  // observerUpdate() {
+  // Событие будет вызвано, если наблюдатель включен и обнаруживает мутации DOM. Т.е при добавление допустим карточки в слайдер будет происходить код тут
+  // }
   // }
 });
 
@@ -150,7 +155,7 @@ const swiper = new Swiper('.hero__swiper', {
 //     nextEl: '.cottage-thumb-swiper__next',
 //     prevEl: '.cottage-thumb-swiper__prev',
 //   },
- 
+
 // });
 
 // const swiper = new Swiper(detailProductSlider, { 
@@ -174,7 +179,5 @@ const swiper = new Swiper('.hero__swiper', {
 //     nextEl: '.hero__button-next',
 //     prevEl: '.hero__button-prev',
 //   },
- 
-// });
 
- 
+// });

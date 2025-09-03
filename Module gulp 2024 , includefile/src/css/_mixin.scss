@@ -1,31 +1,37 @@
 // Что есть в данном файле:
-//  1) Адаптивное свойство
-//  2) Адаптивный шрифт
-//  3) Кастомный скролл
-//  4) Обвод текста
-//  5) Сокрытие текста
-//  6) Убрать у инпута с типом num стрелочки
-//  7) Таймер с свг
-//  8) Таймер цсс
-//  9) Рипл
-//  10) Блик эффект
-//  11) Бесконечно движущийся блок (ticker slider)
-//  12) Рейтинг на цсс
-//  13) Как сделать черно белую карту в яндекс карте
-//  14) Сделать закругление у элемента
-//  15) Если нужно крутить элемент через transform rotate
-//  16) Чтобы слайды не разъежались на всю страницу
-//  17) Анимация градиента в кнопке
-//  18) Если слайдер не сжимается то нужно родителю задать дисплей грид
-//  19) Бордер радиус градиент
-//  20) Атрибут has
-//  21) Переносит длинное слово на другую строчку не ломая сайт
-//  22) Валидация формы на цсс
-//  22) Слайдер на цсс
-//  23) Паралакс эффект через sticky
-//  24) Анимация текста в виде заполнения( волны )
-//  25) Как сделать border градиент
-//  26) Как сделать сложное закругление у элемента
+//  Адаптивное свойство
+//  Адаптивный шрифт
+//  Кастомный скролл
+//  Обвод текста
+//  Сокрытие текста
+//  Убрать у инпута с типом num стрелочки
+//  Таймер с свг
+//  Таймер цсс
+//  Рипл
+//  Блик эффект
+//  Бесконечно движущийся блок (ticker slider)
+//  Рейтинг на цсс
+//  Как сделать черно белую карту в яндекс карте
+//  Сделать закругление у элемента
+//  Если нужно крутить элемент через transform rotate
+//  Чтобы слайды не разъежались на всю страницу
+//  Анимация градиента в кнопке
+//  Если слайдер не сжимается то нужно родителю задать дисплей грид
+//  Бордер радиус градиент
+//  Атрибут has
+//  Переносит длинное слово на другую строчку не ломая сайт
+//  Валидация формы на цсс
+//  Слайдер на цсс
+//  Паралакс эффект через sticky
+//  Анимация текста в виде заполнения( волны )
+//  Как сделать border градиент
+//  Как сделать сложное закругление у элемента
+//  Выравнивание последней строки
+//  CSS Контроль висячих строк в тексте 
+//  Обрезаем угол через clip-path
+//  Убрать иконку у инпута
+//  Кастомный checkbox
+//  Перевёрнутый текст
 
 $maxWidth: 1920; // обязательно для адаптивного шрифта и адаптивного свойства
 $maxWidthContainer: 1320; // обязательно для адаптивного шрифта и адаптивного свойства
@@ -560,64 +566,34 @@ input[type=number]::-webkit-outer-spin-button {
 
 // Блик эффект
 
-.flare-button:after {
-  content: "";
-  display: block;
-  width: 20px;
-  height: 200px;
-  margin-left: 50px;
-  background: #fff;
-  background: -webkit-gradient(linear,
-      left top,
-      left bottom,
-      from(rgba(255, 255, 255, 0.7)),
-      color-stop(50%, white),
-      to(rgba(255, 255, 255, 0.7)));
-  background: linear-gradient(to bottom,
-      rgba(255, 255, 255, 0.7) 0%,
-      white 50%,
-      rgba(255, 255, 255, 0.7) 100%);
-  left: -40px;
-  top: -100px;
-  z-index: 1;
-  -webkit-transform: rotate(45deg);
-  transform: rotate(45deg);
+.flare-button {
+  opacity: 0.8;
   position: absolute;
-  -webkit-animation: movingFlare 3s ease-in-out 0.05s infinite;
-  animation: movingFlare 3s ease-in-out 0.05s infinite;
+  top: -100px;
+  left: -100px;
+  display: block;
+  background: #fff;
+  width: 40px;
+  height: 300px;
+  transition: all 0.1s;
+  transform: rotate(45deg);
+  animation-delay: 0.05s;
+  animation-timing-function: ease-in-out;
+  animation-name: slide;
+  animation-duration: 4s;
+  animation-iteration-count: infinite;
 }
 
-@-webkit-keyframes movingFlare {
+@keyframes slide {
   0% {
-    left: -30px;
-    margin-left: 0px;
+    left: -100px;
+    transform: translateX(0) rotate(45deg)
   }
 
-  30% {
-    left: 110%;
-    margin-left: 80px;
-  }
-
+  30%,
   100% {
-    left: 110%;
-    margin-left: 80px;
-  }
-}
-
-@keyframes movingFlare {
-  0% {
-    left: -30px;
-    margin-left: 0px;
-  }
-
-  30% {
-    left: 110%;
-    margin-left: 80px;
-  }
-
-  100% {
-    left: 110%;
-    margin-left: 80px;
+    left: 120%;
+    transform: translateX(0) rotate(45deg)
   }
 }
 
@@ -834,6 +810,7 @@ svg {
 // ===================================================================================================================================================
 
 // Сделать закругление у элемента
+
 div {
   clip-path: polygon(50px 0, 156% 0, 90% 103%, 0% 100%, 0 50px);
 }
@@ -841,6 +818,7 @@ div {
 // ===================================================================================================================================================
 
 //Если нужно крутить элемент через transform rotate
+
 div {
   transform: rotate(90deg) translate(0%, 100%);
   transform-origin: center right; // обращаем внимание на это свойство
@@ -849,6 +827,15 @@ div {
 // ===================================================================================================================================================
 
 // Чтобы слайды не разъежались на всю страницу
+
+// Просто добавь flex-элементу в котором находится слайдер min-width: 0; и все сразу в норму придет.
+
+.slides {
+  display: grid;
+  grid-template: auto / repeat(2, 1fr);
+  gap: 20px;
+}
+
 .slide {
   min-width: 0;
 }
@@ -896,19 +883,6 @@ div {
 //     </div>
 //   </div> 
 // </div>
-// ===================================================================================================================================================
-
-// Бордер радиус градиент
-
-.qeq {
-  border: 12px solid transparent;
-  border-radius: 24px;
-  background:
-    linear-gradient(black, black) padding-box,
-    linear-gradient(45deg,
-      #ff52e5,
-      #f6d242) border-box;
-}
 
 // ===================================================================================================================================================
 
@@ -1100,12 +1074,65 @@ h1::before {
 
 // ===================================================================================================================================================
 
-// Как сделать border градиент
+// Как сделать border градиент & Бордер радиус градиент
 
 div {
   border: 1px solid transparent;
   border-image: var(--linear-gradient);
   border-image-slice: 1;
+}
+
+// или
+
+.box {
+  width: 100px;
+  height: 100px;
+  border-radius: 15px;
+  position: relative;
+}
+
+.box::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  /* падинг это ширина бордера */
+  padding: 10px;
+  background-image: linear-gradient(to right, #0fffc8, #3782ef);
+  border-radius: inherit;
+  mask: conic-gradient(#000 0 0) content-box exclude, conic-gradient(#000 0 0);
+}
+
+//  или
+
+.qeq {
+  border: 12px solid transparent;
+  border-radius: 24px;
+  background:
+    linear-gradient(black, black) padding-box,
+    linear-gradient(45deg,
+      #ff52e5,
+      #f6d242) border-box;
+}
+
+// или
+
+.frame {
+  position: relative;
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 1px;
+    background: linear-gradient(180deg, #cf863f 0%, #893395 100%);
+
+    -webkit-mask:
+      linear-gradient(#fff 0 0) content-box,
+      linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+  }
 }
 
 // ===================================================================================================================================================
@@ -1151,3 +1178,130 @@ div {
 }
 
 // ===================================================================================================================================================
+
+// Выравнивание последней строки
+
+p {
+  text-align-last: center;
+}
+
+// ===================================================================================================================================================
+
+// CSS Контроль висячих строк  в тексте 
+
+div {
+  text-wrap: pretty
+}
+
+// ===================================================================================================================================================
+
+// Обрезаем угол через clip-path
+
+div {
+  clip-path: polygon(0 0, 85% 0, 100% 100%, 0% 100%); // наклонная черта 90 градусов
+
+  clip-path: polygon(0 0, calc(100% - clamp(1.25rem, 0.6009615385rem + 2.8846153846vw, 3.125rem)) 0, 100% 80px, 100% 100%, 0 100%); // подрезанный уголок сверху
+
+  clip-path: polygon(0% 0%, 90% 0%, 100% 50%, 90% 100%, 0% 100%); // как стрелочка
+}
+
+// ===================================================================================================================================================
+
+// Убрать иконку у инпута
+
+&::-webkit-calendar-picker-indicator {
+  opacity: 0;
+}
+
+// ===================================================================================================================================================
+
+// Кастомный checkbox
+
+.wrapper-checkbox {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  position: relative;
+
+  &__icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    border: 1px solid var(--white);
+    border-radius: 5px;
+    width: 30px;
+    height: 30px;
+    position: relative;
+
+    & span {
+      position: relative;
+      display: none;
+      width: 10px;
+      height: 10px;
+      transform: rotate(-45deg) translate(1px, -2px);
+
+      &::before {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 2px;
+        height: 60%;
+        background-color: #999397;
+        z-index: 1;
+      }
+
+      &::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 2px;
+        background-color: #999397;
+        z-index: 1;
+      }
+    }
+  }
+
+  &__checkbox {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    cursor: pointer;
+
+    &:checked+ {
+      & .wrapper-checkbox__icon {
+        background-color: var(--white);
+
+        & span {
+          display: block;
+        }
+      }
+    }
+  }
+}
+
+//  <div class="wrapper-checkbox mb-30-20">
+//    <input class="wrapper-checkbox__checkbox" type="checkbox" name="checkbox" id="checkbox" required>
+//    <span class="wrapper-checkbox__icon">
+//      <span></span>
+//    </span>
+//    <p class="tx-main">
+//      I agree with the politicians powerballnow-au.com and data processing for my inquiry
+//    </p>
+//  </div>
+
+// ===================================================================================================================================================
+
+// Перевёрнутый текст
+
+div {
+  writing-mode: tb-rl;
+  transform: rotate(180deg);
+}

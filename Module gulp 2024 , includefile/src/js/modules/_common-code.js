@@ -1,82 +1,57 @@
-// Что есть в данном файле:
-//  1) Проверка элеметов в родителе
-//  2) Кастомная фракция пагинации в слайдере
-//  3) Плавный переход к началу страницы при нажатии на кнопку
-//  4) При ховере появляется скрытый элемент
-//  5) Закрытие при нажатии вне элемента
-//  6) Запуск видео
-//  7) Копирует текст с инпута
-//  8) Запрос на сервер при отправке формы   
-//  9) Запрос на сервер при получение данных
-//  10) Остановка работы функции
-//  11) Запрещает писать в инпут опреденные элементы
-//  12) Как проверить отправляется форма или нет
-//  13) Таймер
-//  14) Крутая фичы для интернет магазинов
-//  15) Плавный переход к элементу через якорь
-//  16) Анимация при появление элемента в экране или при определенном количестве пикселей до элемента
-//  17) Ограничение символов для написания в инпут
-//  18) Куки через функцию
-//  19) Куки через localstorage
-//  20) trim() убирает пустое пространство у элемента
-//  21) Перекидывание элементов из 1 блока в другой
-//  22) Вставка видео на разнообразных разрешениях
-//  23) Как найти цсс свойство через js
-//  24) Закрытие при клике вне элемента
-//  25) Нумерование элементов
-//  26) Как у url после определенной строки получить значения
-//  27) IntersectionObserver - анимация, показ элементов при скролле и тд
-//  28) Плавный скролл на странице с помощью js
-//  29) Прибавляем 0.1 к элементу списка
-//  30) Разбиваем строку на элементы, а потом вставляем обратно обернув в спан
-//  31) Сокрытие пагинации в слайдере
-//  32) Появление элемента при ховере, клике и фокусе
-//  33) Убираем пробел в строке. Например: 1 220 200 Получится: 1220200
-//  34) Как сделать чтобы у одинаковых слайдеров листались свои слайды при клике на кнопку
-//  35) Как разделить строку точкой или запятой
-//  36) Прибавляем рандомное число от к числу. В примере прибавляем от 1 до 5
-//  37) Форматировать число, форматирование зависит от страны. Пример 10000 - 10 000
-//  38) Как вытащить число из строки
-//  39) Отправляем фетч запрос и обрабатываем ошибки/отправку
-//  40) Сортировка через sort
-//  41) Работа с массивом. Find, filter, map, reduce
-//  42) В строке находим " и заменяем их на '
-//  43) Перемешиваем массив
-//  44) Обработка ошибок async/await, promise
-//  45) Много форм с валидацией
-
-// Проверка элеметов в родителе. Данный код проверяет сколько в родителе элементов, и дается соответствующий класс
-
-const itemsBlocks = document.querySelectorAll(".items__block"); // родитель
-
-if (itemsBlocks.length) {
-  itemsBlocks.forEach(itemsBlock => {
-    const itemsBlocksItem = itemsBlock.querySelectorAll(".items__block-item").length; // элементы в родителе
-    itemsBlock.classList.add(`items__block-item_${itemsBlocksItem}`); // соответствующий класс
-  })
-}
-
-// Примерная структура кода в штмл
-
-/* <div class="items">
-<div class="items__block">
-  <div class="items__block-item">
-    dasdsdsdsdsasdsdaasdadsds
-  </div>
-  <div class="items__block-item">
-    dasdsdsdsdsasdsdaasdadsds
-  </div>
-</div>
-<div class="items__block">
-  <div class="items__block-item">
-    dasdsdsdsdsasdsdaasdadsds
-  </div>
-  <div class="items__block-item">
-    dasdsdsdsdsasdsdaasdadsds
-  </div>
-</div>
-</div> */
-
+// Что есть в данном файле: 
+//  Кастомная фракция пагинации в слайдере
+//  Плавный переход к началу страницы при нажатии на кнопку 
+//  Запуск видео
+//  Копирует текст с инпута
+//  Запрос на сервер при отправке формы   
+//  Запрос на сервер при получение данных
+//  Остановка работы функции
+//  Запрещает писать в инпут опреденные элементы
+//  Как проверить отправляется форма или нет
+//  Таймер
+//  Крутая фичы для интернет магазинов
+//  Плавный переход к элементу через якорь
+//  Анимация при появление элемента в экране или при определенном количестве пикселей до элемента
+//  Ограничение символов для написания в инпут
+//  Куки через функцию
+//  trim() убирает пустое пространство у элемента
+//  Перекидывание элементов из 1 блока в другой
+//  Вставка видео на разнообразных разрешениях
+//  Как найти цсс свойство через js
+//  Закрытие при клике вне элемента
+//  Нумерование элементов
+//  Как у url после определенной строки получить значения
+//  IntersectionObserver - анимация, показ элементов при скролле и тд
+//  Плавный скролл на странице с помощью js
+//  Прибавляем 0.1 к элементу списка
+//  Разбиваем строку на элементы, а потом вставляем обратно обернув в спан
+//  Сокрытие пагинации в слайдере
+//  Появление элемента при ховере, клике и фокусе
+//  Убираем пробел в строке. Например: 1 220 200 Получится: 1220200
+//  Как сделать чтобы у одинаковых слайдеров листались свои слайды при клике на кнопку
+//  Как разделить строку точкой или запятой
+//  Прибавляем рандомное число от к числу. В примере прибавляем от 1 до 5
+//  Форматировать число, форматирование зависит от страны. Пример 10000 - 10 000
+//  Как вытащить число из строки
+//  Отправляем фетч запрос и обрабатываем ошибки/отправку
+//  Сортировка через sort
+//  Работа с массивом. Find, filter, map, reduce
+//  В строке находим " и заменяем их на '
+//  Перемешиваем массив
+//  Обработка ошибок async/await, promise
+//  Много форм с валидацией
+//  Появление кнопки показать ещё если текста больше чем 15 строк и при клике на неё показываем полный текст
+//  Попап с куки через localStorage
+//  Узнаём чётное ли количество карточек
+//  Проставление динамической даты
+//  Кастомная валидация 
+//  Если ошибка: Mixed Content: The page at 'DOMEN' was loaded over HTTPS, but requested an insecure resource 'DOMEN'. This request has been blocked; the content must be served over HTTPS.
+//  Открытие и закрытие аккордеона
+//  Активная ссылка на каждой странице
+//  Анимация цифр
+//  ProgressBar
+//  Timer с ProgressBar
+  
 // ===================================================================================================================================================
 
 // Кастомная фракция пагинации в слайдере. Данный код делает кастомную фракцию пагинации в свайпере. Классы меняются на свои , так же кнопки вперед назад меняют числа в кастомной фракции
@@ -126,7 +101,7 @@ const swiper = new Swiper('.swiper', {
 
 // Плавный переход к началу страницы при нажатии на кнопку. Скрипт позволяет при нажатии на кнопку перейти плавно к началу страницы
 
-const buttonUp = document.querySelector(".button-up ");
+const buttonUp = document.querySelector(".button");
 
 function top() {
   window.scrollTo({
@@ -138,26 +113,14 @@ buttonUp.addEventListener("click", function () {
   top()
 })
 
-/* <button class="button-up"></button> */
+// либо
 
-// ===================================================================================================================================================
+if (elementInteractive.closest(".button")) {
+  document.getElementById("specform").scrollIntoView();
+}
 
-// При ховере появляется скрытый элемент
-
-const b = document.querySelectorAll(".wrapper") // элемент на которой наводишься и должен появляться скрытый список
-const e = document.querySelectorAll(".e"); // скрытый список
-
-b.forEach(function (b) {
-  b.addEventListener("mouseover", function () {
-    b.querySelector('.e').classList.add("eeeeee") // если много элементов b то пишем так, код означает что данный класс будет даваться е, который находится во враппере на который навели а не у всех врапперов
-  })
-})
-b.forEach(function (b) {
-  b.addEventListener("mouseleave", function () {
-    b.querySelector('.e').classList.remove("eeeeee")
-  })
-})
-
+/* <button class="button"></button> */
+  
 // ===================================================================================================================================================
 
 // Запуск видео
@@ -443,23 +406,23 @@ function checkedFormSubmit() {
 //     } else if (numSeconds.innerHTML == 0) {
 //       if (numMinutes.innerHTML != 0) {
 //         numMinutes.innerHTML = numMinutes.innerHTML - 1
-//         numSeconds.innerHTML = 60
+//         numSeconds.innerHTML = 59
 //       }
 
 //     }
 //     if (numMinutes.innerHTML == 0) {
 //       if (numHours.innerHTML != 0) {
 //         numHours.innerHTML = numHours.innerHTML - 1
-//         numMinutes.innerHTML = 60
-//         numSeconds.innerHTML = 60
+//         numMinutes.innerHTML = 59
+//         numSeconds.innerHTML = 59
 //       }
 //     }
 //     if (numHours.innerHTML == 0) {
 //       if (numDay.innerHTML != 0) {
 //         numDay.innerHTML = numDay.innerHTML - 1
-//         numHours.innerHTML = 24
-//         numMinutes.innerHTML = 60
-//         numSeconds.innerHTML = 60
+//         numHours.innerHTML = 23
+//         numMinutes.innerHTML = 59
+//         numSeconds.innerHTML = 59
 //       }
 //     }
 //   }
@@ -490,12 +453,12 @@ if (dateEvents.getMonth() != todayDate.getMonth()) {
   let isDifferenceEventsDays = dateEvents.getDate();
   console.log(isDifferenceEventsDays)
   // if (differenceOfMonths == 2) {
-    numDay.innerHTML = isDifferenceTodayDays + isDifferenceEventsDays + arrDates[todayDate.getMonth() + 1]; // Если сегодняшний месяц октябрь а месяц мероприятия ноябрь, убираем эту строкуarrDates[todayDate.getMonth() + 1]
-    (24 - todayDate.getHours()) < 10 ? numHours.innerHTML = "0" + (24 - todayDate.getHours()) : numHours.innerHTML = 24 - todayDate.getHours();
-    (60 - todayDate.getMinutes()) < 10 ? numMinutes.innerHTML = "0" + (60 - todayDate.getMinutes()) : numMinutes.innerHTML = 60 - todayDate.getMinutes();
-    (60 - todayDate.getSeconds()) < 10 ? numSeconds.innerHTML = "0" + (60 - todayDate.getSeconds()) : numSeconds.innerHTML = 60 - todayDate.getSeconds();
+  numDay.innerHTML = isDifferenceTodayDays + isDifferenceEventsDays + arrDates[todayDate.getMonth() + 1]; // Если сегодняшний месяц октябрь а месяц мероприятия ноябрь, убираем эту строкуarrDates[todayDate.getMonth() + 1]
+  (24 - todayDate.getHours()) < 10 ? numHours.innerHTML = "0" + (24 - todayDate.getHours()) : numHours.innerHTML = 24 - todayDate.getHours();
+  (60 - todayDate.getMinutes()) < 10 ? numMinutes.innerHTML = "0" + (60 - todayDate.getMinutes()) : numMinutes.innerHTML = 60 - todayDate.getMinutes();
+  (60 - todayDate.getSeconds()) < 10 ? numSeconds.innerHTML = "0" + (60 - todayDate.getSeconds()) : numSeconds.innerHTML = 60 - todayDate.getSeconds();
   // } 
-  
+
   // В закомментированом if проверяется разница месяцев(от сегодняшнего до месяца мероприятия). Нужно учитывать разницу месяцев, например если разница 3 месяца, то в это число входит и сегодняшний месяц, и месяц мероприятия. Поэтому их нужно отнять, и получится 1 месяц. И этот месяц нужно прибавить к массиву arrDates[todayDate.getMonth() + 1]. Тогда мы получим точное количество дней до мероприятия.
 
 } else {
@@ -504,7 +467,7 @@ if (dateEvents.getMonth() != todayDate.getMonth()) {
   (60 - todayDate.getMinutes()) < 10 ? numMinutes.innerHTML = "0" + (60 - todayDate.getMinutes()) : numMinutes.innerHTML = 60 - todayDate.getMinutes();
   (60 - todayDate.getSeconds()) < 10 ? numSeconds.innerHTML = "0" + (60 - todayDate.getSeconds()) : numSeconds.innerHTML = 60 - todayDate.getSeconds();
 }
- 
+
 if (blockTimer) {
 
   function timerSeconds() {
@@ -518,10 +481,10 @@ if (blockTimer) {
       if (numMinutes.innerHTML != 0) {
         if (numMinutes.innerHTML <= 10) {
           numMinutes.innerHTML = "0" + (numMinutes.innerHTML - 1)
-          numSeconds.innerHTML = 60
+          numSeconds.innerHTML = 59
         } else {
           numMinutes.innerHTML = numMinutes.innerHTML - 1
-          numSeconds.innerHTML = 60
+          numSeconds.innerHTML = 59
         }
       }
     }
@@ -529,12 +492,12 @@ if (blockTimer) {
       if (numHours.innerHTML != 0) {
         if (numHours.innerHTML <= 10) {
           numHours.innerHTML = "0" + (numHours.innerHTML - 1)
-          numMinutes.innerHTML = 60
-          numSeconds.innerHTML = 60
+          numMinutes.innerHTML = 59
+          numSeconds.innerHTML = 59
         } else {
           numHours.innerHTML = numHours.innerHTML - 1
-          numMinutes.innerHTML = 60
-          numSeconds.innerHTML = 60
+          numMinutes.innerHTML = 59
+          numSeconds.innerHTML = 59
         }
       }
     }
@@ -542,14 +505,14 @@ if (blockTimer) {
       if (numDay.innerHTML != 0) {
         if (numDay.innerHTML <= 10) {
           numDay.innerHTML = "0" + (numDay.innerHTML - 1)
-          numHours.innerHTML = 24
-          numMinutes.innerHTML = 60
-          numSeconds.innerHTML = 60
+          numHours.innerHTML = 23
+          numMinutes.innerHTML = 59
+          numSeconds.innerHTML = 59
         } else {
           numDay.innerHTML = numDay.innerHTML - 1
-          numHours.innerHTML = 24
-          numMinutes.innerHTML = 60
-          numSeconds.innerHTML = 60
+          numHours.innerHTML = 23
+          numMinutes.innerHTML = 59
+          numSeconds.innerHTML = 59
         }
       }
     }
@@ -558,7 +521,7 @@ if (blockTimer) {
   setInterval(timerSeconds, 1000)
 
 }
- 
+
 
 // <section class="block-timer" style="background-image: url(./img/timer.png);">
 //       <div class="block-timer__container container">
@@ -627,207 +590,8 @@ if (blockTimer) {
 //     </a>
 //    </div>
 //       </div>
-//     </section>
-
-// ===================================================================================================================================================
-
-// Крутая фича для интернет магазинов. Супер круто сделанная фича. Выбираешь в каталоге (через чекбокс) товар, и он появляется над списком.
-
-const catalogtags = document.querySelector(".catalog__tags");
-
-document.addEventListener("click", function (e) {
-
-  const elementInteractive = e.target;
-
-  if (elementInteractive.closest(".catalog__checkbox")) {
-
-    if (elementInteractive.closest(".catalog__checkbox").checked == true) {
-
-      let tagValue = elementInteractive.closest(".catalog__label").querySelector(".catalog__span").innerHTML;
-
-      let tagValueId = elementInteractive.closest(".catalog__label").querySelector(".catalog__checkbox").getAttribute("id");
-
-      let template = `
-        <div class="${tagValueId}">
-          <div class="catalog__tag">
-            <p class="catalog__tag-name">${tagValue}</p>
-            <button class="catalog__tag-exit">x</button>
-          </div>
-        </div>
-      `;
-
-      catalogtags.insertAdjacentHTML("beforeend", template);
-    } else {
-
-      let tagValueId = elementInteractive.closest(".catalog__label").querySelector(".catalog__checkbox").getAttribute("id");
-
-      document.querySelector(`.${tagValueId}`).remove();
-
-    }
-
-  }
-
-  if (elementInteractive.closest(".catalog__tag-exit")) {
-
-    let ele = elementInteractive.closest(".catalog__tag").querySelector(".catalog__tag-name").innerHTML;
-
-    let catalogLabel = document.querySelectorAll(".catalog__label");
-
-    catalogLabel.forEach(function (e) {
-
-      if (e.querySelector(".catalog__span").innerHTML == ele) {
-        e.querySelector(".catalog__checkbox").checked = false;
-      }
-    })
-
-    elementInteractive.closest(".catalog__tag").parentNode.remove();
-
-  }
-})
-
-/* <section class="catalog">
-<div class="catalog__container container">
-  <div class="catalog__left">
-    <div class="catalog__label">
-      <input class="catalog__checkbox" type="checkbox" id="element-one">
-      <span class="catalog__figure"></span>
-      <span class="catalog__span">Пункт номер 1</span>
-    </div>
-    <div class="catalog__label">
-      <input class="catalog__checkbox" type="checkbox" id="element-two">
-      <span class="catalog__figure"></span>
-      <span class="catalog__span">Пункт номер 2</span>
-    </div>
-    <div class="catalog__label">
-      <input class="catalog__checkbox" type="checkbox" id="element-third">
-      <span class="catalog__figure"></span>
-      <span class="catalog__span">Пункт номер 3</span>
-    </div>
-    <div class="catalog__label">
-      <input class="catalog__checkbox" type="checkbox" id="element-four">
-      <span class="catalog__figure"></span>
-      <span class="catalog__span">Пункт номер 4</span>
-    </div>
-    <div class="catalog__label">
-      <input class="catalog__checkbox" type="checkbox" id="element-five">
-      <span class="catalog__figure"></span>
-      <span class="catalog__span">Пункт номер 5</span>
-    </div>
-    <div class="catalog__label">
-      <input class="catalog__checkbox" type="checkbox" id="element-six">
-      <span class="catalog__figure"></span>
-      <span class="catalog__span">Пункт номер 6</span>
-    </div>
-  </div>
-  <div class="catalog__right">
-    <div class="catalog__tags"></div>
-  </div>
-</div>
-</section> */
-
-// .catalog {
-//   font-family: Arial, Helvetica, sans-serif;
-//   padding: 100px 0;
-
-//   &__container {
-//     display: flex;
-//     gap: 20px;
-//   }
-
-//   &__left {
-//     flex: 0 0 300px;
-//   }
-
-//   &__label {
-//     position: relative;
-//     display: flex;
-//     gap: 10px;
-//     align-items: center;
-
-//     &:not(:last-child) {
-//       margin-bottom: 50px;
-//     }
-//   }
-
-//   &__checkbox {
-//     position: absolute;
-//     top: 0;
-//     left: 0;
-//     width: 100%;
-//     height: 100%;
-//     z-index: 5;
-//     cursor: pointer;
-
-//     &:checked {
-//       &+.catalog__figure {
-//         &::after {
-//           opacity: 1;
-//         }
-//       }
-//     }
-//   }
-
-//   &__figure {
-//     display: flex;
-//     align-items: center;
-//     justify-content: center;
-//     flex: 0 0 20px;
-//     height: 20px;
-//     border: 1px solid #000;
-
-//     &::after {
-//       content: "";
-//       width: 10px;
-//       height: 10px;
-//       border-radius: 50%;
-//       background-color: #000;
-//       opacity: 0;
-//       transition: opacity .3s ease;
-//     }
-//   }
-
-//   &__span {
-//     font-size: 16px;
-//     line-height: 1.2;
-//     color: #000;
-//     font-weight: 400;
-//   }
-
-//   &__right {
-//     flex: 0 1 100%;
-//   }
-
-//   &__tags {}
-
-//   &__tag {
-//     display: flex;
-//     align-items: center;
-//     gap: 5px;
-//     background-color: bisque;
-//     border-radius: 10px;
-//     padding: 10px;
-//   }
-
-//   &__tag-name {
-//     font-size: 14px;
-//     line-height: 1.2;
-//     color: #000;
-//     font-weight: 400;
-//   }
-
-//   &__tag-exit {
-//     font-weight: 700;
-//     font-size: 10px;
-//     line-height: 1;
-//     color: #fff;
-//     flex: 0 0 15px;
-//     height: 15px;
-//     background-color: #000;
-//   }
-// }
-
-// https://romandodenko.github.io/site/sites/pet/sitdownpls/catalog.html - вот пример, если че можно просто вставить код и посмотреть че как
-
+//     </section> 
+ 
 // ===================================================================================================================================================
 
 // IntersectionObserver - анимация, показ элементов при скролле и тд
@@ -874,7 +638,7 @@ reloadItems.forEach(i => {
 
 // ===================================================================================================================================================
 
-// Анимация при появление элемента в экране или при определенном количестве пикселей до элемента. При  прокручивание скролом до 1200 пикселей высоты классу контейнер дается доп класс
+// Анимация при появление элемента в экране или при определенном количестве пикселей до элемента. 
 
 const con = document.querySelector(".container");
 document.addEventListener("scroll", function () {
@@ -903,9 +667,7 @@ document.addEventListener("scroll", function () {
 //   }
 // })
 
-// ===================================================================================================================================================
-
-// Анимация при появление элемента в экране или при определенном количестве пикселей до элемента. Можно делать анимацию , суть в том что если до родителя остается 600 пикселей то срабатывает код
+// Либо 
 
 document.addEventListener("scroll", function (e) {
 
@@ -978,109 +740,7 @@ function checkCookies() {
   });
 }
 
-checkCookies();
-
-// ===================================================================================================================================================
-
-// Куки через localstorage
-
-const popupId = document.querySelector(".popup").getAttribute("id"); // получается id попапа
-
-const popupStorage = localStorage.getItem("popup"); // создаем ключ в localstorage в который будем помещать popup
-
-if (popupStorage !== null) {
-
-  const popupStorageParse = JSON.parse(popupStorage);
-
-  if (popupStorageParse.indexOf(popupId) !== -1) {
-
-    document.querySelector(".popup").classList.add("popup-disabled");
-
-    setTimeout(() => {
-      localStorage.removeItem(popupId)
-    }, 5000000);
-
-  }
-}
-
-document.addEventListener("click", function (e) {
-
-  const itemTarget = e.target;
-
-  if (itemTarget.closest(".popup__btn")) {
-
-    document.querySelector(".popup").classList.add("popup-disabled");
-
-    localStorage.setItem("popup", JSON.stringify(popupId));
-
-  }
-})
-
-// .popup {
-//     position: fixed;
-//     display: flex;
-//     align-items: center;
-//     justify-content: center;
-//     top: 0;
-//     left: 0;
-//     width: 100vw;
-//     height: 100vh;
-//     z-index: 100;
-//     transition: opacity .3s linear, visibility .3s linear;
-//   &.popup-disabled {
-//     display: none;
-//   }
-//   &__close {
-//     position: absolute;
-//     top: 0;
-//     left: 0;
-//     width: 100%;
-//     height: 100%;
-//     background-color: rgba(0, 0, 0, .5);
-//     z-index: 1;
-//   }
-//   &__body {
-//     position: relative;
-//     z-index: 2;
-//     background-color: #fff;
-//     width: 600px;
-//     padding: 30px 0;
-//   }
-//   &__text {
-//     text-align: center;
-//     font-size: 30px;
-//     line-height: 1.3;
-//     color: #000;
-//     font-weight: 400;
-//     margin-bottom: 30px;
-//   }
-//   &__btn {
-//     display: flex;
-//     align-items: center;
-//     justify-content: center;
-//     padding: 10px 20px;
-//     background-color: #000;
-//     font-weight: 400;
-//     font-size: 20px;
-//     line-height: 20px;
-//     color: #fff;
-//     width: fit-content;
-//     min-width: 200px;
-//     min-height: 60px;
-//     margin: 0 auto;
-//     cursor: pointer;
-//   }
-// }
-
-/* <div class="popup" id="popup">
-<div class="popup__close"></div>
-<div class="popup__body">
-  <p class="popup__text">
-    Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum vel rem ullam ipsum dicta expedita quisquam pariatur, doloremque sed quasi. Accusantium soluta nesciunt alias excepturi aut nobis harum quas eius!
-  </p>
-  <button class="popup__btn">Click</button>
-</div>
-</div> */
+checkCookies(); 
 
 // ---------------------------------------------------------------------------
 
@@ -1097,8 +757,11 @@ input.addEventListener("change", function () {
   })
 
 })
+
 // ---------------------------------------------------------------------------
+
 // Перекидывание элементов из 1 блока в другой
+
 const tenderi = document.querySelector(".tenderi");
 
 const tenderiRow = document.querySelectorAll(".tenderi__row");
@@ -1163,7 +826,9 @@ if (tenderi) {
 </tr>
 <tr class="tenderi__tr tenderi__tr_bottom"></tr>
 </table> */
+
 // ---------------------------------------------------------------------------
+
 // Вставка видео на разнообразных разрешениях
 if (heroPrecetItem) {
   if (document.body.clientWidth >= 1024) {
@@ -1187,6 +852,7 @@ if (heroPrecetItem) {
 // ---------------------------------------------------------------------------
 
 // Как найти цсс свойство через js
+
 const pay = document.querySelector(".casino__pay");
 
 const findPayHeight = pay.getBoundingClientRect();
@@ -1196,6 +862,7 @@ const payHeight = findPayHeight.height;
 // ---------------------------------------------------------------------------
 
 // Закрытие при клике вне элемента
+
 document.addEventListener("click", function (e) {
   const elementInteractive = e.target;
 
@@ -1212,9 +879,22 @@ document.addEventListener("click", function (e) {
   }
 })
 
+// или ( лучше этот )
+
+if (elementInteractive.closest(".disclaimer")) {
+  if (!elementInteractive.closest(".disclaimer").classList.contains('active')) {
+    elementInteractive.closest(".disclaimer").classList.add("active");
+  } else {
+    document.querySelector(".disclaimer.active") ? document.querySelector(".disclaimer.active").classList.remove("active") : "";
+  }
+} else {
+  document.querySelector(".disclaimer.active") ? document.querySelector(".disclaimer.active").classList.remove("active") : "";
+}
+
 // ---------------------------------------------------------------------------
 
 // Нумерование элементов
+
 const nummerInit = document.querySelector(".nummer");
 
 const nummerAll = document.querySelectorAll(".nummer");
@@ -1233,6 +913,7 @@ if (nummerInit) {
 // ---------------------------------------------------------------------------
 
 // Как у url после определенной строки получить значения
+
 const currentUrl = window.location.href; // получаем url
 
 const pageUrl = currentUrl;
@@ -1288,6 +969,33 @@ aboutList.forEach(function (e) {
 
       if ((i + 1) == thisAboutItem.length) {
         timerAboutList = 0;
+      }
+
+    }
+  })
+
+})
+
+// Если много карточек с рейтингом внутри или другим элементом 
+
+const cards = document.querySelectorAll(".cards");
+ 
+let ratingCard = 10;
+
+cards.forEach(function (e) {
+
+  let thisCardsCard = e.querySelectorAll(".card");
+
+  thisCardsCard.forEach(function (o, i) {
+    let thisCardsCardRating = o.querySelector(".card__rating");
+
+    if ((i + 1) <= thisCardsCard.length) {
+
+      ratingCard -= 0.1;
+      thisCardsCardRating.innerHTML = ratingCard.toFixed(1)
+
+      if ((i + 1) == thisCardsCard.length) {
+        ratingCard = 10;
       }
 
     }
@@ -1814,3 +1522,766 @@ fetch('https://facebook.com')
   })
 
 // ---------------------------------------------------------------------------
+
+// Появление кнопки показать ещё если текста больше чем 15 строк и при клике на неё показываем полный текст
+
+// &__text {
+//   color: var(--dark-main);
+
+//   &.hidden-text {
+//     -webkit-line-clamp: 15;
+//     display: -webkit-box;
+//     -webkit-box-orient: vertical;
+//     overflow: hidden;
+//   }
+// }
+
+if (elementInteractive.closest(".reviews-slider__read")) {
+  const parent = elementInteractive.closest(".reviews-slider__slide");
+  elementInteractive.closest(".reviews-slider__read").classList.toggle('active');
+  parent.querySelector(".reviews-slider__text").classList.toggle('hidden-text');
+}
+
+if (reviewsSliderSlide) {
+  reviewsSliderSlide.forEach(function (e) {
+    let styles = getComputedStyle(e.querySelector(".reviews-slider__text"))
+ 
+    if (parseInt(styles.height) < 360) {
+      e.querySelector(".reviews-slider__text").classList.remove("hidden-text");
+      e.querySelector(".reviews-slider__read").style.display = "none";
+    } else {
+      e.querySelector(".reviews-slider__text").classList.add("hidden-text");
+    }
+  })
+}
+
+// ---------------------------------------------------------------------------
+
+// Попап с куки через localStorage
+
+const cookiePopup = document.querySelector(".popup-cookie");
+
+const popupStorage2 = localStorage.getItem("popup-cookie"); 
+
+if (popupStorage2 !== null) {
+
+  cookiePopup ? cookiePopup.classList.add("disabled") : "";
+}
+
+if (elementInteractive.closest(".popup-cookie__button")) {
+  cookiePopup ? cookiePopup.classList.add("disabled") : "";
+  localStorage.setItem("popup-cookie", 'yes');
+}
+
+// ---------------------------------------------------------------------------
+
+// Узнаём чётное ли количество карточек
+
+const ultimatecricketgamesSayItem = document.querySelectorAll(".ultimatecricketgames-say__item");
+
+function even_or_odd(number) {
+  if (number % 2 === 0) {
+    ultimatecricketgamesSayItem[ultimatecricketgamesSayItem.length - 1].classList.remove("last-element");
+  } else {
+    ultimatecricketgamesSayItem[ultimatecricketgamesSayItem.length - 1].classList.add("last-element");
+  }
+}
+
+if (ultimatecricketgamesSayItem) {
+  even_or_odd(ultimatecricketgamesSayItem.length);
+}
+
+// .rom {
+//   display: grid;
+//   grid-template: auto / repeat(2, 1fr);
+//   gap: 20px;
+// }
+  
+// .last-element {
+//  grid-column: -1 / 1;
+// }
+
+// ---------------------------------------------------------------------------
+
+// Проставление динамической даты
+
+const datesDay = document.querySelector(".dates__day");
+const datesMonth = document.querySelector(".dates__month");
+const datesYear = document.querySelector(".dates__year");
+const datesHours = document.querySelector(".dates__hours");
+const datesMinutes = document.querySelector(".dates__minutes");
+
+const date = new Date();
+
+const datesIsDay = date.getDate();
+const datesIsMonth = date.getMonth();
+const datesIsYear = date.getFullYear();
+const datesIsHours = date.getHours();
+const datesIsMinutes = date.getMinutes();
+
+
+if (datesDay && datesMonth && datesYear && datesMinutes && datesHours) {
+  datesDay.innerHTML = datesIsDay < 10 ? "0" + datesIsDay + "." : datesIsDay + ".";
+  datesMonth.innerHTML = (datesIsMonth + 1) < 10 ? "0" + (datesIsMonth + 1) + "." : (datesIsMonth + 1) + ".";
+  datesYear.innerHTML = datesIsYear;
+  datesHours.innerHTML = datesIsHours + ":";
+  datesMinutes.innerHTML = datesIsMinutes;
+}
+
+<div class="dates tx-16">
+<div class="dates__wrapper">
+  <div class="dates__day"></div>
+  <div class="dates__month"></div>
+  <div class="dates__year"></div>
+</div>
+<div class="dates__wrapper-time">
+  <div class="dates__hours"></div>
+  <div class="dates__minutes"></div>
+</div>
+</div>
+
+// ---------------------------------------------------------------------------
+
+// Кастомная валидация
+
+/* <label class="sert-bottom__label wrapper-error-form-input" for="sertDenominationRecipientName">
+<div class="error tx text-v1"> Это поле обязательное </div>
+<input class="sert-bottom__input-price input" name="Имя получателя:" type="text" id="sertDenominationRecipientName" placeholder="Имя получателя" aria-label="Имя получателя">
+</label>
+<label class="sert-bottom__label wrapper-error-form-input" for="sertDenominationRecipientPhone">
+<div class="error tx text-v1"> Это поле обязательное </div>
+<input class="sert-bottom__input-price input" name="Телефон получателя:" data-tel-input type="tel" id="sertDenominationRecipientPhone" placeholder="Номер телефона" aria-label="Номер телефона">
+</label>
+<label class="sert-bottom__label wrapper-error-form-input" for="sertDenominationRecipientMail">
+<div class="error tx text-v1"> Это поле обязательное </div>
+<input class="sert-bottom__input-price input" name="Эл. адрес получателя:" type="email" id="sertDenominationRecipientMail" placeholder="Эл. адрес" aria-label="Эл. адрес">
+</label> */
+
+if (elementInteractive.closest(".sert-bottom__button")) {
+
+  if (sertDenominationAll.value !== "") {
+    sertDenominationAll.closest(".wrapper-error-form-input").querySelector(".error").classList.remove("active")
+  } else {
+    sertDenominationAll.closest(".wrapper-error-form-input").querySelector(".error").classList.add("active")
+  }
+
+  if (sertBottomItemYourself.classList.contains("active")) {
+    sertDenominationRecipientName.closest(".wrapper-error-form-input").querySelector(".error").classList.remove("active")
+    sertDenominationRecipientPhone.closest(".wrapper-error-form-input").querySelector(".error").classList.remove("active")
+    sertDenominationRecipientMail.closest(".wrapper-error-form-input").querySelector(".error").classList.remove("active")
+
+    if (sertDenominationMyName.value !== "") {
+      sertDenominationMyName.closest(".wrapper-error-form-input").querySelector(".error").classList.remove("active")
+    } else {
+      sertDenominationMyName.closest(".wrapper-error-form-input").querySelector(".error").classList.add("active")
+    }
+
+    if (sertDenominationMyPhone.inputmask.unmaskedvalue().length < 10) {
+      sertDenominationMyPhone.closest(".wrapper-error-form-input").querySelector(".error").classList.add("active")
+    } else {
+      sertDenominationMyPhone.closest(".wrapper-error-form-input").querySelector(".error").classList.remove("active")
+    }
+
+    if (sertDenominationMyMail.value !== "" && sertDenominationMyMail.value.includes("@")) {
+      sertDenominationMyMail.closest(".wrapper-error-form-input").querySelector(".error").classList.remove("active")
+    } else {
+      sertDenominationMyMail.closest(".wrapper-error-form-input").querySelector(".error").classList.add("active")
+    }
+  } else {
+    sertDenominationMyName.closest(".wrapper-error-form-input").querySelector(".error").classList.remove("active")
+    sertDenominationMyPhone.closest(".wrapper-error-form-input").querySelector(".error").classList.remove("active")
+    sertDenominationMyMail.closest(".wrapper-error-form-input").querySelector(".error").classList.remove("active")
+
+    if (sertDenominationRecipientName.value !== "") {
+      sertDenominationRecipientName.closest(".wrapper-error-form-input").querySelector(".error").classList.remove("active")
+    } else {
+      sertDenominationRecipientName.closest(".wrapper-error-form-input").querySelector(".error").classList.add("active")
+    }
+
+    if (sertDenominationRecipientPhone.inputmask.unmaskedvalue().length < 10) {
+      sertDenominationRecipientPhone.closest(".wrapper-error-form-input").querySelector(".error").classList.add("active")
+    } else {
+      sertDenominationRecipientPhone.closest(".wrapper-error-form-input").querySelector(".error").classList.remove("active")
+    }
+
+    if (sertDenominationRecipientMail.value !== "" && sertDenominationRecipientMail.value.includes("@")) {
+      sertDenominationRecipientMail.closest(".wrapper-error-form-input").querySelector(".error").classList.remove("active")
+    } else {
+      sertDenominationRecipientMail.closest(".wrapper-error-form-input").querySelector(".error").classList.add("active")
+    }
+  }
+
+  if (sertDenominationTime.value !== "") {
+    sertDenominationTime.closest(".wrapper-error-form-input").querySelector(".error").classList.remove("active")
+  } else {
+    sertDenominationTime.closest(".wrapper-error-form-input").querySelector(".error").classList.add("active")
+  }
+
+  if (sertDenominationMyDate.value !== "") {
+    sertDenominationMyDate.closest(".wrapper-error-form-input").querySelector(".error").classList.remove("active")
+  } else {
+    sertDenominationMyDate.closest(".wrapper-error-form-input").querySelector(".error").classList.add("active")
+  }
+
+
+  if (document.querySelectorAll(".error.active").length === 0) {
+    let formData = new FormData(sertBottomDenomination);
+
+    let xhr = new XMLHttpRequest();
+
+    xhr.onreadystatechange = function() {
+      if (xhr.readyState === 4) {
+        if (xhr.status === 200) {
+          document.querySelector(".wrapper-error").classList.remove("active");
+          document.querySelector(".wrapper-spinner").classList.remove("active");
+          document.querySelector(".okay").classList.add("active");
+          document.querySelector(".sert-bottom__button-price.active") ? document.querySelector(".sert-bottom__button-price.active").classList.remove("active") : '';
+        } else {
+          document.querySelector(".wrapper-spinner").classList.remove("active");
+          document.querySelector(".wrapper-error").classList.add("active");
+        }
+      }
+    }
+
+    xhr.open('POST', '/local/templates/exigo/assets/mail.php', true);
+    xhr.send(formData);
+
+    sertBottomDenomination.reset();
+  }
+
+
+} 
+  
+// --------------------------------------------------------------------------- 
+
+// Если ошибка: Mixed Content: The page at 'DOMEN' was loaded over HTTPS, but requested an insecure resource 'DOMEN'. This request has been blocked; the content must be served over HTTPS. Пишем код ниже в head
+
+// <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests"> 
+
+// --------------------------------------------------------------------------- 
+
+// Открытие и закрытие аккордеона
+
+if (elementInteractive.closest(".laplandlucky-faq__button")) {
+  const accordion = elementInteractive.closest(".laplandlucky-faq__item");
+  const accordionBottom = accordion.querySelector(".laplandlucky-faq__bottom");
+
+  if (!accordion.classList.contains("active")) {
+    
+    document.querySelectorAll(".laplandlucky-faq__item").forEach(function (e) {
+      e.classList.remove("active");
+      e.querySelector(".laplandlucky-faq__bottom").style.height = 0;
+    })
+
+    accordion.classList.add("active");
+    accordionBottom.style.height = accordionBottom.scrollHeight + 'px';
+
+  } else {
+
+    accordion.classList.remove("active");
+    accordionBottom.style.height = 0;
+
+  }
+}
+ 
+//  <ul>
+//     <li class="laplandlucky-faq mb-16 p-16 bg-blue brr-24">
+//       <div class="laplandlucky-faq__top">
+//         <strong class="tx-24 color-white Oswald fw-700 uppercase">
+//           Hur deltar jag i Postkodlotteriet?
+//         </strong>
+//         <button class="laplandlucky-faq__button hover-opacity" aria-label="Öppet dragspel">
+//           <span style="background-image: url('/img/laplandlucky-icons/laplandlucky-icon-arrow.webp');"></span>
+//         </button>
+//       </div>
+//       <div class="laplandlucky-faq__bottom">
+//         <div class="laplandlucky-faq__texts">
+//           <p class="tx-main color-gray">
+//             Köp bara en lott online på den officiella webbplatsen och ange ditt postnummer. Klart! Din lott
+//             deltar automatiskt i de veckovisa dragningarna.
+//           </p>
+//         </div>
+//       </div>
+//     </li>
+//     <li class="laplandlucky-faq mb-16 p-16 bg-blue brr-24">
+//       <div class="laplandlucky-faq__top">
+//         <strong class="tx-24 color-white Oswald fw-700 uppercase">
+//           Vad kan jag vinna?
+//         </strong>
+//         <button class="laplandlucky-faq__button hover-opacity" aria-label="Öppet dragspel">
+//           <span style="background-image: url('/img/laplandlucky-icons/laplandlucky-icon-arrow.webp');"></span>
+//         </button>
+//       </div>
+//       <div class="laplandlucky-faq__bottom">
+//         <div class="laplandlucky-faq__texts">
+//           <p class="tx-main color-gray">
+//             Allt från kontantpriser och bilar till resor och stora jackpottar. Huvudvinsten kan uppgå till
+//             tiotals miljoner kronor – och du delar glädjen med dina grannar!
+//           </p>
+//         </div>
+//       </div>
+//     </li>
+//     <li class="laplandlucky-faq mb-16 p-16 bg-blue brr-24">
+//       <div class="laplandlucky-faq__top">
+//         <strong class="tx-24 color-white Oswald fw-700 uppercase">
+//           Vart går pengarna från lotterna?
+//         </strong>
+//         <button class="laplandlucky-faq__button hover-opacity" aria-label="Öppet dragspel">
+//           <span style="background-image: url('/img/laplandlucky-icons/laplandlucky-icon-arrow.webp');"></span>
+//         </button>
+//       </div>
+//       <div class="laplandlucky-faq__bottom">
+//         <div class="laplandlucky-faq__texts">
+//           <p class="tx-main color-gray">
+//             En stor del av vinsten går till välgörenhet. Varje år fördelas hundratals miljoner kronor till
+//             organisationer som arbetar med mänskliga rättigheter, miljö, hälsa och utbildning.
+//           </p>
+//         </div>
+//       </div>
+//     </li>
+//   </ul>
+
+//  .laplandlucky-faq {
+//    position: relative;
+
+//    &.active {
+//      & .laplandlucky-faq__button span {
+//        transform: rotate(180deg);
+//      }
+//    }
+
+//    &__top {
+//      display: flex;
+//      align-items: center;
+//      justify-content: space-between;
+//      gap: 10px;
+//    }
+
+//    &__button {
+//      flex-shrink: 0;
+//      width: 20px;
+//      height: 10px;
+
+//      &::before {
+//        content: "";
+//        position: absolute;
+//        top: 0;
+//        left: 0;
+//        width: 100%;
+//        height: 100%;
+//        z-index: 1;
+//      }
+
+//      & span {
+//        display: block;
+//        width: 100%;
+//        height: 100%;
+//        background-position: center;
+//        background-repeat: no-repeat;
+//        background-size: contain;
+//        transition: transform .3s ease-in-out;
+//      }
+//    }
+
+//    &__bottom {
+//      height: 0;
+//      overflow: hidden;
+//      transition: height .3s ease-in-out;
+//      & a, button {
+//       position: relative;
+//       z-index: 2;
+//      }
+//    }
+
+//    &__texts {
+//      padding-top: 16px;
+//    }
+//  }
+
+// .laplandlucky-faq {
+//   &__item {
+//     &.active {
+//       & .span-line {
+//         opacity: 0;
+//       }
+//     }
+//   }
+
+//   &__top {
+//     position: relative;
+//     display: flex;
+//     align-items: center;
+//     justify-content: space-between;
+//     gap: 10px;
+//   }
+
+//   &__button {
+//     width: 24px;
+//     height: 24px;
+//     flex-shrink: 0;
+
+//     &::before {
+//       content: "";
+//       position: absolute;
+//       top: 0;
+//       left: 0;
+//       width: 100%;
+//       height: 100%;
+//       z-index: 1;
+//     }
+
+//     & span {
+//       position: relative;
+//       width: 100%;
+//       height: 100%;
+//       display: block;
+
+//       & span {
+//         display: block;
+//         border-radius: 10px;
+//         background-color: var(--white);
+//         transition: opacity .3s ease-in-out;
+
+//         &:first-child {
+//           width: 100%;
+//           height: 4px;
+//           top: 50%;
+//           left: 0;
+//           transform: translateY(-50%);
+//         }
+
+//         &:last-child {
+//           left: 50%;
+//           transform: translateX(-50%);
+//           bottom: 3px;
+//           width: 4px;
+//           height: 100%;
+//         }
+//       }
+//     }
+//   }
+
+//   &__texts {
+//     padding: 0 24px 24px 24px;
+//   }
+
+//   &__bottom {
+//     height: 0;
+//     overflow: hidden;
+//     transition: height .3s ease-in-out;
+//     & a, button {
+//      position: relative;
+//      z-index: 2;
+//     }
+//   }
+// }
+
+// --------------------------------------------------------------------------- 
+ 
+// Активная ссылка на каждой странице
+
+const dataPage = document.querySelector(".data-page");
+
+const navLinks = document.querySelectorAll(".breadcrumbs-link");
+
+if (dataPage) {
+  const dataPageValue = dataPage.innerHTML.trim();
+
+  navLinks.forEach(function (e) {
+    const dataset = e.dataset.page;
+
+    if (dataset === dataPageValue) {
+      e.classList.add('active');
+    }
+  })
+}
+
+/* <div class="data-page" style="display: none;">1</div> */
+
+/* <a class="nav__link breadcrumbs-link" href="#!" data-page="1"></a> */
+
+// --------------------------------------------------------------------------- 
+
+// Анимация цифр
+
+const statSection = document.querySelector("#stat");
+if (statSection) {
+  function animateNumber(element, start, end, duration) {
+    let startTimestamp = null;
+    const step = (timestamp) => {
+      if (!startTimestamp) startTimestamp = timestamp;
+      const progress = Math.min(
+        (timestamp - startTimestamp) / duration,
+        1
+      );
+      element.textContent = Math.floor(progress * (end - start) + start);
+      if (progress < 1) {
+        window.requestAnimationFrame(step);
+      }
+    };
+    window.requestAnimationFrame(step);
+  }
+
+  const statNumbers = document.querySelectorAll(".stat-number");
+  const observerOptions = {
+    threshold: 0.5,
+  };
+
+  const observer = new IntersectionObserver((entries, observer) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        statNumbers.forEach((number) => {
+          const targetValue = +number.getAttribute("data-target");
+          animateNumber(number, 0, targetValue, 2000);
+        });
+        observer.unobserve(statSection);
+      }
+    });
+  }, observerOptions);
+
+  observer.observe(statSection);
+}
+
+/* <div class="rollscape-top__bottom" id="stat">
+  <li class="rollscape-top__list-item">
+    <div class="tx-40-30 KronaOne color-white stat-number" data-target="342433">
+      342433
+    </div>
+      <div class="tx-24-16 Marcellus uppercase color-white">
+        Games
+    </div>
+  </li>
+</div> */
+
+// --------------------------------------------------------------------------- 
+
+//  ProgressBar
+
+const progress = document.querySelectorAll(".progress");
+
+if (progress) {
+  progress.forEach(el => {
+    const isValue = el.dataset.value;
+    const circle = el.querySelector(".progress__value");
+    const radius = circle.r.baseVal.value;
+
+    const circleLength = 2 * Math.PI * radius;
+
+    circle.style.strokeDasharray = circleLength;
+    circle.style.strokeDashoffset = circleLength * (1 - isValue / 100);
+  });
+};
+
+  <div class="progress" data-value="1">
+    <svg class="progress__svg" viewBox="0 0 120 120">
+      <circle class="progress__background" cx="60" cy="60" r="54" />
+      <circle class="progress__value" cx="60" cy="60" r="54" />
+    </svg>
+  </div>
+
+// .progress {
+//   --size: 150px;
+//   --stroke-width: 5;
+
+//   position: relative;
+//   margin: 0 auto;
+//   display: block;
+//   width: var(--size);
+//   aspect-ratio: 1 / 1;
+// }
+
+// .progress::after {
+//   content: attr(data-value) "%";
+//   position: absolute;
+//   inset: 0;
+//   display: flex;
+//   align-items: center;
+//   justify-content: center;
+//   font-size: 28px;
+//   font-family: sans-serif;
+//   color: #000;
+// }
+
+// .progress__svg {
+//   width: 100%;
+//   height: 100%;
+//   transform: rotate(-90deg);
+// }
+
+// .progress__background,
+// .progress__value {
+//   fill: none;
+//   stroke-width: var(--stroke-width);
+// }
+
+// .progress__background {
+//   stroke: #800080; 
+// }
+
+// .progress__value {
+//   stroke: #cd853f;
+// }
+
+// --------------------------------------------------------------------------- 
+
+// Timer с ProgressBar
+
+function initializeCountdownTimer() {
+	const hoursElement = document.getElementById('hours')
+	const minutesElement = document.getElementById('minutes')
+	const secondsElement = document.getElementById('seconds')
+	const progressCircle = document.querySelector('.ll-progress-circle')
+
+	if (!hoursElement || !minutesElement || !secondsElement) return
+
+	// Check if there's a stored end time
+	let endTime = localStorage.getItem('lotteryEndTime')
+
+	// If no stored end time or it's in the past, set a new one (24 hours from now)
+	if (!endTime || new Date(parseInt(endTime)) <= new Date()) {
+		endTime = new Date().getTime() + 24 * 60 * 60 * 1000 // 24 hours in milliseconds
+		localStorage.setItem('lotteryEndTime', endTime)
+	} else {
+		endTime = parseInt(endTime)
+	}
+
+	// Update the timer every second
+	function updateTimer() {
+		const now = new Date().getTime()
+		const distance = endTime - now
+
+		// Calculate time components
+		const hours = Math.floor(
+			(distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+		)
+		const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60))
+		const seconds = Math.floor((distance % (1000 * 60)) / 1000)
+
+		// Update DOM elements
+		hoursElement.textContent = hours.toString().padStart(2, '0')
+		minutesElement.textContent = minutes.toString().padStart(2, '0')
+		secondsElement.textContent = seconds.toString().padStart(2, '0')
+
+		// Update progress circle
+		if (progressCircle) {
+			// Calculate progress (1 - remaining time ratio)
+			const totalSeconds = 24 * 60 * 60 // 24 hours in seconds
+			const remainingSeconds = hours * 3600 + minutes * 60 + seconds
+			const progress = 1 - remainingSeconds / totalSeconds
+
+			// Calculate circle properties
+			const radius = progressCircle.r.baseVal.value
+			const circumference = radius * 2 * Math.PI
+
+			// Calculate stroke-dashoffset
+			const dashOffset = circumference * (1 - progress)
+
+			// Update circle properties
+			progressCircle.style.strokeDasharray = `${circumference} ${circumference}`
+			progressCircle.style.strokeDashoffset = dashOffset
+		}
+
+		// If countdown is over, reset it
+		if (distance < 0) {
+			endTime = new Date().getTime() + 24 * 60 * 60 * 1000
+			localStorage.setItem('lotteryEndTime', endTime)
+		}
+	}
+
+	// Initial update
+	updateTimer()
+
+	// Update every second
+	setInterval(updateTimer, 1000)
+}
+
+	initializeCountdownTimer()
+
+//<div class="ll-timer">
+//  <svg class="ll-progress-svg" width="220" height="220" viewBox="0 0 220 220">
+//    <circle class="ll-progress-bg" cx="110" cy="110" r="100" fill="none" stroke-width="10"></circle>
+//    <circle class="ll-progress-circle" cx="110" cy="110" r="100" fill="none" stroke-width="10"></circle>
+//  </svg>
+//  <div class="ll-timer-display">
+//    <div class="ll-time-section">
+//      <span id="hours">23</span>
+//      <span class="ll-time-label">Hrs</span>
+//    </div>
+//    <div class="ll-time-divider">:</div>
+//    <div class="ll-time-section">
+//      <span id="minutes">04</span>
+//      <span class="ll-time-label">Min</span>
+//    </div>
+//    <div class="ll-time-divider">:</div>
+//    <div class="ll-time-section">
+//      <span id="seconds">09</span>
+//      <span class="ll-time-label">Sec</span>
+//    </div>
+//  </div>
+//</div>
+  
+// .ll-timer {
+// 	position: relative;
+// 	display: flex;
+// 	justify-content: center;
+// 	align-items: center;
+// 	margin: 0 auto;
+// 	width: 220px;
+// 	height: 220px;
+// }
+
+// .ll-progress-svg {
+// 	position: absolute;
+// 	top: 0;
+// 	left: 0;
+// 	transform: rotate(-90deg);
+// }
+
+// .ll-progress-bg {
+// 	stroke: rgba(255, 255, 255, 0.1);
+// 	stroke-linecap: round;
+// }
+
+// .ll-progress-circle {
+// 	stroke: red;
+// 	stroke-linecap: round;
+// 	transition: stroke-dashoffset 0.5s ease;
+// }
+
+// .ll-timer-display {
+// 	display: flex;
+// 	justify-content: center;
+// 	align-items: center;
+// 	background-color: rgba(0, 0, 0, 0.2);
+// 	border-radius: 50%;
+// 	width: 180px;
+// 	height: 180px;
+// 	padding: 10px;
+// }
+
+// .ll-time-section {
+// 	display: flex;
+// 	flex-direction: column;
+// 	align-items: center;
+// }
+
+// .ll-time-section span:first-child {
+// 	font-size: 2rem;
+// 	font-weight: 700;
+// 	color: white;
+// }
+
+// .ll-time-label {
+// 	font-size: 0.875rem;
+// 	text-transform: uppercase;
+// 	color: var(--ll-text-muted);
+// }
+
+// .ll-time-divider {
+// 	font-size: 2rem;
+// 	font-weight: 700;
+// 	color: white;
+// 	margin: 0 20px;
+// }
+
+// --------------------------------------------------------------------------- 

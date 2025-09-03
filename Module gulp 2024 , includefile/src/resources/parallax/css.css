@@ -1,0 +1,26 @@
+.hero-section {
+	position: relative;
+	min-height: 900px;
+
+	  --parallax-x: 0px;
+  --parallax-y: 0px;
+}
+
+.hero-section::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) translate(var(--parallax-x), var(--parallax-y));
+  width: 1400px;
+  height: 395px;
+  background-image: url("img/hero-img-f.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  z-index: 0;
+  pointer-events: none;
+  /* Don't interfere with interactions */
+  transition: transform 0.1s ease-out;
+  /* Smooth parallax animation */
+}

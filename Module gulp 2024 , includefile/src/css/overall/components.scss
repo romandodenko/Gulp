@@ -1,0 +1,112 @@
+:root {
+  // Шрифты
+  --font-main: "Inter", sans-serif; // главный шрифт на странице
+
+  // Контейнер
+  --container-width: 1500px; // ширина контейнера
+  --container-step: 20px; // падинги по бокам на пк
+  --container-step-tablet: 15px; // падинги по бокам на планшетах
+  --container-step-mobile: 10px; // падинги по бокам на мобилках
+  --container: calc(var(--container-width) + (var(--container-step) * 2)); // сам контейнер
+
+  // Цвета
+  --background-page: #fff; // бекграунд страницы
+  --main: #ffffff;
+  --black: #000000;
+  --white: #ffffff;
+  --i: calc(1vw + 1vh);
+
+  --hover: #7B68EE; // цвет при ховере
+  --active: #4169E1; // цвет при активе
+}
+
+// font-size: calc(var(--i) * 2); пример адаптивного шрифта
+
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  border: 0;
+  clip: rect(0 0 0 0);
+}
+
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+  position: static;
+
+  & .swiper-pagination-bullet {
+    width: 4px;
+    height: 4px;
+    opacity: .3;
+    border-radius: 50%;
+    margin: 0 !important;
+    background-color: var(--white);
+  }
+
+  & .swiper-pagination-bullet-active {
+    width: 6px;
+    height: 6px;
+    opacity: 1;
+  }
+}
+
+// swiper-button-disabled 
+
+.tx-main {
+  font-size: 10px;
+  font-weight: 400;
+  line-height: 1.2;
+
+  @media (max-width: 991px) {
+    font-size: 10px;
+  }
+
+  @media (max-width: 600px) {
+    font-size: 10px;
+  }
+}
+
+.hover-opacity {
+  transition: opacity .3s ease-in-out;
+
+  @media (any-hover: hover) {
+    &:hover {
+      opacity: .5;
+    }
+  }
+
+  &:focus-visible {
+    opacity: .5;
+  }
+
+  &:active {
+    opacity: .5;
+    transition-duration: .1s;
+  }
+}
+
+.hover-color {
+  transition: color .3s ease-in-out;
+
+  @media (any-hover: hover) {
+    &:hover {
+      color: var(--hover);
+    }
+  }
+
+  &:focus-visible {
+    color: var(--hover);
+  }
+
+  &:active {
+    color: var(--active);
+    transition-duration: .1s;
+  }
+}

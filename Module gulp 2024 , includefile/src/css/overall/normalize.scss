@@ -31,7 +31,7 @@ aside {
 
 html,
 body {
-  height: 100%;
+  // height: 100%;
   width: 100%;
   font-size: 100%;
   line-height: 1;
@@ -63,6 +63,10 @@ input {
 textarea::placeholder,
 input::placeholder {
   color: inherit;
+}
+
+textarea {
+  resize: none;
 }
 
 button {
@@ -132,4 +136,12 @@ input::-webkit-inner-spin-button {
 
 input[type='number'] {
   -moz-appearance: textfield;
+}
+
+address {
+  font-style: normal;
+}
+
+strong {
+  display: block;
 }
